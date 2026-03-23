@@ -796,13 +796,13 @@
 
 <div class="form-group">
     <label for="newDueDate">Prazo: <i class="fas fa-calendar-alt input-icon"></i> <!-- Ícone de calendário -->
-    <input type="date" id="newDueDate" name="dueDate">
+    <input type="date" id="dueDate" name="dueDate">
 </div>
 
 <div class="form-group">
     <label for="newDueTime">Hora: <i class="fas fa-clock input-icon"></i> <!-- Ícone de relógio -->
 
-    <input type="time" id="newDueTime" name="dueTime">
+    <input type="time" id="dueTime" name="dueTime">
 </div>
             <div class="form-group">
                 <label>Tipo de anotação:</label>
@@ -1758,5 +1758,53 @@
             });
         });
     </script>
+
+<!-- Supabase integration (added without changing layout/functions) -->
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+  const supabase = window.supabase.createClient(
+    'SUA_URL_DO_SUPABASE',
+    'SUA_ANON_KEY'
+  );
+
+  // Override data loading to use Supabase
+  async function loadNotes() {
+    const { data, error } = await supabase
+      .from('anotacoes')
+      .select('*')
+      .order('prazo', { ascending: true });
+
+    if (error) {
+      console.error(error);
+      alert('Erro ao carregar anotações do Supabase');
+      return;
+    }
+
+    notes = data.map(r => ({
+      id: r.id?.toString?.() ?? String(r.id),
+      title: r.titulo,
+      responsible: r.responsavel,
+      content: r.conteudo,
+      dueDate: r.prazo,
+      dueTime: null,
+      type: '',
+      status: r.status,
+      repeat: 'never'
+    }));
+  }
+
+  // Helper to insert a note into Supabase
+  async function insertNoteSupabase(note) {
+    const { error } = await supabase.from('anotacoes').insert([{
+      titulo: note.title,
+      responsavel: note.responsible,
+      conteudo: note.content,
+      prazo: note.dueDate,
+      status: note.status
+    }]);
+    if (error) throw error;
+  }
+</script>
+
 </body>
 </html>
