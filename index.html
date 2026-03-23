@@ -796,13 +796,13 @@
 
 <div class="form-group">
     <label for="newDueDate">Prazo: <i class="fas fa-calendar-alt input-icon"></i> <!-- Ícone de calendário -->
-    <input type="date" id="newDueDate" name="dueDate">
+    <input type="date" id="dueDate" name="dueDate">
 </div>
 
 <div class="form-group">
     <label for="newDueTime">Hora: <i class="fas fa-clock input-icon"></i> <!-- Ícone de relógio -->
 
-    <input type="time" id="newDueTime" name="dueTime">
+    <input type="time" id="dueTime" name="dueTime">
 </div>
             <div class="form-group">
                 <label>Tipo de anotação:</label>
@@ -1018,15 +1018,6 @@
                 return Date.now().toString(36) + Math.random().toString(36).substr(2);
             }
 
-            function saveNotes() {
-                localStorage.setItem('notes', JSON.stringify(notes));
-            }
-
-            function loadNotes() {
-                const storedNotes = localStorage.getItem('notes');
-                if (storedNotes) {
-                    notes = JSON.parse(storedNotes);
-                }
             }
 
             function saveCustomOptions() {
@@ -1767,8 +1758,7 @@
     "sb_publishable_WF847q2u65RADUDK7wgp_A_pJumLJ3u"
   );
 
-  async function loadNotes() {
-    const { data, error } = await supabase
+  async = await supabase
       .from('anotacoes')
       .select('*')
       .order('prazo', { ascending: true });
@@ -1816,6 +1806,46 @@
   document.addEventListener('DOMContentLoaded', () => {
     loadNotes();
   });
+</script>
+
+
+<!-- Supabase integration (clean & single source of truth) -->
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+  const supabase = window.supabase.createClient(
+    "https://koegynrtboafzpxtmglw.supabase.co",
+    "sb_publishable_WF847q2u65RADUDK7wgp_A_pJumLJ3u"
+  );
+
+  async function loadNotes() {
+    const { data, error } = await supabase
+      .from('anotacoes')
+      .select('*')
+      .order('prazo', { ascending: true });
+
+    if (error) {
+      console.error(error);
+      alert('Erro ao carregar anotações do Supabase');
+      return;
+    }
+
+    notes = data.map(r => ({
+      id: r.id?.toString() ?? String(r.id),
+      title: r.titulo,
+      responsible: r.responsavel,
+      content: r.conteudo,
+      dueDate: r.prazo,
+      dueTime: null,
+      type: '',
+      status: r.status,
+      repeat: 'never'
+    }));
+
+    if (typeof renderNotes === 'function') renderNotes();
+    if (typeof updateMetricCards === 'function') updateMetricCards();
+  }
+
+  document.addEventListener('DOMContentLoaded', loadNotes);
 </script>
 
 </body>
