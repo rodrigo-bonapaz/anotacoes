@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>CERTHIL | Anotações</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome (ícones) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=xFcnrjgEGRFGQ-wj6Fbqwf8HqJ_VLAn7yGFPXrMnvFRR_XsE4VbNoYnFG_OVD6QjlohJIWu69po5L15USbkqi_NLTPMBhX8XGKn9nb4Wit49B9N-q2doNP5oQfCbClzoE6fPjTVO1OMuiFeThevJUwh1QqyrM6c9gwYhosDMTsTIN_YyeFSdHUixInm6lAie3vcKamktwgzxd-rte9HQnPaQ3bfka7i8hxxbeFbLDLq-Sm9AsVM1lah57_RhKAj5ZZ9ed239H5Jstksp6ild0zQCYP0hr5PDsyTkScf5pxgq76K_ashL_PJyCdBT2AzhPvJlyd4iIr-fuSw1N3owiOsWx6MFEsiBvTJMJs_NEdpjmQrSrjLpSo8zpaDreQMXcOJ5fDA2iTeana-_XBCUAjnHCnCK_oTYzCa2mIGbehStV0HIIgXFBzaLqG8YIPh2JHicGBPCSUasyOmp30MFbKrnBqL9x0Szahn2SZpTzxsbQtUB5VXhWRLuiGiuIp_ylyL2cYqqjz3qTUqAM0gxfHhT0IyTNIXDbt614sCJJF1ADlGuhk2mmv2rkzPqZuO4R4DcapdYmM_t5jg92156ooJcNRR5qEAnc-0fw62IqywA2EtOHgF95B3Y_Zl7pml89War4KpiWRrukVmqkPJDzSt5MiEca06jx2XzSzyD4ze0anFz17eWgZwBkKffP4xdNtQL168n4T857hV0-vNJKY5hjkLOhsAezK7egrUC_zqT5uIbDcyJjNeHHQx5QzB6OcYB8X7ZAroq6LIkRMAzrWXpYW8aE23jeUmVSd3fl1G20cDUNG107UM-oXq-C1toPqyI2yXLcKuZUQQwR08f17HoUKWaVerLnJfI3TfyL_J9xG44Ha5TfexPSjh40LqtFh0E68Nre8oO6rH3eiCqukK3pRBvLxP8Ld7zMrluWzuUZpq1TbDLjpWiXBWIaBXg5mGl_dEcJkwPfIgcznKowYNwlFOzlinQvFISQ4X38ebhEHv6blQzUnTuINB97aY_IwQv7ie5OrCXbda-aFqHM6OPaeDd5wHz5i_9h3dCiykCohCzru3h3tBER2fmbgoF_Y4Oy7gu5InCeEyrfQ4Io3OXDlbGSWekM2tZdDRzsGWnmdp5gru2MtL-_fKbfi4OZv9_NLXci-96pJ1lH0WosfjWgCigsUCFIxEY5UIqMAKycgmJ9-whflCYIzjyutlY1u9dzAbhEZQsmgpLxn8EW83fsyNDwftDE_2QoQaqexBCush1rRm_K5vr1b_QA8tIgQoW4hbqoMHaE1At-uh4DIxkUA27p0tlUQhqq-pskXmDyGH_QzWGLBjEXs0PeKDIHZW3ik_eqzIxMOcXRX6bmFGvVUHwURJhxGy74_UbTh50kgZFT2zF_1d4DJ0XW7-yDTeKZYfzNwGTzByanlZJZg54i-Ci3FsQ-78TwbcdIZwnWEyDbwbzVajVdq6l5XA09P-k1skkuJ0Tf5fdPZ5kLhyULhOePTOcrY4HZ9jzO4nkL2frGqx85f-wT1CgCqrC75y1hydSkFEuJY4TU1_4GhtC72QLubb5nb0yCnSl8vhriNkVqR7IMKC38isbhuGulIkTTlTtwVyLo5eVorWrCloeEOk2c21w8rSpyaiGaa8" nonce="85707193d8ff5fdaa6c4e7a8369f3524" charset="UTF-8"></script><style>
+        :root {
+            --primary-green: #5d8b6d;
+            --primary-green-dark: #2f5b3a;
+            --accent-orange: #c26b2a;
+            --bg-page: #edf0f5;
+            --card-bg: #ffffff;
+            --border-soft: #dde3ec;
+            --text-main: #333;
+            --text-muted: #777;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --success: #28a745;
+            --info: #3498db;
+
+            /* Cores de Status OTIMIZADAS e com melhor contraste (Texto e Fundo do Badge) */
+            --status-nao-analisado-bg: #e0e0e0; /* Cinza claro */
+            --status-nao-analisado-text: #424242; /* Cinza escuro */
+
+            --status-pendente-bg: #fff3e0; /* Laranja claro */
+            --status-pendente-text: #e65100; /* Laranja escuro */
+
+            --status-em-processamento-bg: #e3f2fd; /* Azul claro */
+            --status-em-processamento-text: #1565c0; /* Azul escuro */
+
+            --status-programado-bg: #e1f5fe; /* Azul céu claro */
+            --status-programado-text: #0277bd; /* Azul céu escuro */
+
+            --status-cancelado-bg: #ffebee; /* Vermelho claro */
+            --status-cancelado-text: #c62828; /* Vermelho escuro */
+
+            --status-concluido-bg: #e8f5e9; /* Verde claro */
+            --status-concluido-text: #2e7d32; /* Verde escuro */
+
+            /* Cores dos Cards de Métricas (conforme imagem) */
+            --card-total-bg: #e8f5e9; /* Verde claro */
+            --card-total-border: #4caf50; /* Verde */
+            --card-total-text: #2e7d32; /* Verde escuro */
+
+            --card-pendentes-bg: #fffde7; /* Amarelo claro */
+            --card-pendentes-border: #ffeb3b; /* Amarelo */
+            --card-pendentes-text: #fbc02d; /* Amarelo escuro */
+
+            --card-atrasadas-bg: #ffebee; /* Vermelho claro */
+            --card-atrasadas-border: #f44336; /* Vermelho */
+            --card-atrasadas-text: #c62828; /* Vermelho escuro */
+
+            --card-concluidas-bg: #e0f2f7; /* Azul claro */
+            --card-concluidas-border: #29b6f6; /* Azul */
+            --card-concluidas-text: #0288d1; /* Azul escuro */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            overflow: hidden; /* Evita scroll na página principal */
+        }
+
+        .panel-left {
+            width: 350px; /* Largura inicial */
+            min-width: 280px;
+            max-width: 500px;
+            background-color: var(--card-bg);
+            border-right: 1px solid var(--border-soft);
+            display: flex;
+            flex-direction: column;
+            position: relative; /* Para o resizer */
+            overflow-y: auto; /* Barra de rolagem para o conteúdo do painel esquerdo */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .resizer {
+            width: 5px;
+            height: 100%;
+            background-color: var(--border-soft);
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .panel-left-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .panel-left-header i {
+            font-size: 2.5em;
+            color: var(--primary-green);
+            margin-right: 10px;
+        }
+
+        .panel-left-header h1 {
+            font-size: 1.5em;
+            color: var(--primary-green-dark);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .panel-left-header p {
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .panel-left-info {
+            font-size: 0.75em;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .panel-left h2 {
+            font-size: 1.2em;
+            color: var(--primary-green-dark);
+            margin-top: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .panel-left h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-orange);
+            margin: 5px auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: var(--text-main);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="time"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: var(--text-main);
+            background-color: var(--bg-page);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="date"]:focus,
+        .form-group input[type="time"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-green);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .input-with-icon {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .input-with-icon input {
+            flex-grow: 1;
+            padding-right: 40px; /* Espaço para o ícone */
+        }
+
+        .input-with-icon .icon {
+            position: absolute;
+            right: 10px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-soft);
+            padding: 8px;
+            border-radius: 5px;
+            background-color: var(--bg-page);
+            min-height: 40px; /* Garante altura mínima */
+        }
+
+        .chip {
+            display: flex;
+            align-items: center;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .chip.selected {
+            background-color: var(--accent-orange);
+        }
+
+        .chip .remove-chip {
+            margin-left: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .chip .remove-chip:hover {
+            color: white;
+        }
+
+        .add-new-option {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .add-new-option input {
+            flex-grow: 1;
+        }
+
+        .add-new-option button {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s ease;
+        }
+
+        .add-new-option button:hover {
+            background-color: var(--primary-green-dark);
+        }
+
+        .repeat-options {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            background-color: var(--bg-page);
+        }
+
+        .repeat-options label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        .repeat-options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .custom-repeat-options {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-soft);
+        }
+
+        .custom-repeat-options .day-checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .custom-repeat-options .day-checkboxes label {
+            margin-bottom: 0;
+        }
+
+        .custom-repeat-options .fill-week-button {
+            background-color: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85em;
+            margin-top: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .custom-repeat-options .fill-week-button:hover {
+            background-color: #a85a23;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .form-actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .form-actions .btn-cancel {
+            background-color: #ccc;
+            color: var(--text-main);
+        }
+
+        .form-actions .btn-cancel:hover {
+            background-color: #bbb;
+        }
+
+        .form-actions .btn-save {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .form-actions .btn-save:hover {
+            background-color: var(--primary-green-dark);
+        }
+
+        .panel-right {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto; /* Permite rolagem no painel direito */
+        }
+
+        .metric-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .metric-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+            max-width: 25%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-soft);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .metric-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-card.total {
+            border-color: var(--card-total-border);
+            color: var(--card-total-text);
+            background-color: var(--card-total-bg);
+        }
+
+        .metric-card.pendentes {
+            border-color: var(--card-pendentes-border);
+            color: var(--card-pendentes-text);
+            background-color: var(--card-pendentes-bg);
+        }
+
+        .metric-card.atrasadas {
+            border-color: var(--card-atrasadas-border);
+            color: var(--card-atrasadas-text);
+            background-color: var(--card-atrasadas-bg);
+        }
+
+        .metric-card.concluidas {
+            border-color: var(--card-concluidas-border);
+            color: var(--card-concluidas-text);
+            background-color: var(--card-concluidas-bg);
+        }
+
+        .metric-card h3 {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .metric-card p {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .actions-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            flex-grow: 1;
+            min-width: 250px;
+        }
+
+        .filter-group input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .filter-group button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .filter-group .btn-filter {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .filter-group .btn-filter:hover {
+            background-color: var(--primary-green-dark);
+        }
+
+        .filter-group .btn-clear {
+            background-color: #ccc;
+            color: var(--text-main);
+        }
+
+        .filter-group .btn-clear:hover {
+            background-color: #bbb;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .export-buttons button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: bold;
+            background-color: var(--accent-orange);
+            color: white;
+            transition: background-color 0.2s ease;
+        }
+
+        .export-buttons button:hover {
+            background-color: #a85a23;
+        }
+
+        .notes-table-container {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            overflow-x: auto; /* Permite rolagem horizontal para tabelas grandes */
+            flex-grow: 1;
+        }
+
+        .notes-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+
+        .notes-table th,
+        .notes-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .notes-table th {
+            background-color: var(--bg-page);
+            font-weight: bold;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .notes-table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .notes-table .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.8em;
+            display: inline-block;
+        }
+
+        /* Estilos para os badges de status */
+        .status-nao-analisado { background-color: var(--status-nao-analisado-bg); color: var(--status-nao-analisado-text); }
+        .status-pendente { background-color: var(--status-pendente-bg); color: var(--status-pendente-text); }
+        .status-em-processamento { background-color: var(--status-em-processamento-bg); color: var(--status-em-processamento-text); }
+        .status-programado { background-color: var(--status-programado-bg); color: var(--status-programado-text); }
+        .status-cancelado { background-color: var(--status-cancelado-bg); color: var(--status-cancelado-text); }
+        .status-concluido { background-color: var(--status-concluido-bg); color: var(--status-concluido-text); }
+
+        .notes-table .actions-icons i {
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: color 0.2s ease;
+        }
+
+        .notes-table .actions-icons .fa-eye { color: var(--info); }
+        .notes-table .actions-icons .fa-eye:hover { color: #2196f3; }
+
+        .notes-table .actions-icons .fa-edit { color: var(--warning); }
+        .notes-table .actions-icons .fa-edit:hover { color: #ffc107; }
+
+        .notes-table .actions-icons .fa-copy { color: var(--primary-green); }
+        .notes-table .actions-icons .fa-copy:hover { color: var(--primary-green-dark); }
+
+        .notes-table .actions-icons .fa-trash-alt { color: var(--danger); }
+        .notes-table .actions-icons .fa-trash-alt:hover { color: #ef5350; }
+
+        .notes-table .late-status {
+            color: var(--danger);
+            font-weight: bold;
+            font-size: 0.8em;
+            display: block; /* Garante que fique abaixo da data */
+            margin-top: 2px;
+        }
+
+        /* Modal de Visualização */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .modal-close-button {
+            color: var(--text-muted);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: var(--text-main);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            color: var(--primary-green-dark);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 10px;
+        }
+
+        .modal-content p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        .modal-content p strong {
+            color: var(--text-main);
+            margin-right: 5px;
+        }
+
+        /* Modal de Importação */
+        #importModal .modal-content {
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #importModal .modal-content h3 {
+            margin-bottom: 25px;
+        }
+
+        #importModal .modal-content button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary-green);
+            transition: background-color 0.2s ease;
+        }
+
+        #importModal .modal-content button:hover {
+            background-color: var(--primary-green-dark);
+        }
+
+        #importModal .modal-content input[type="file"] {
+            display: none; /* Esconde o input de arquivo real */
+        }
+
+        #importModal .modal-content .file-input-label {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 12px 20px;
+            border: 2px dashed var(--border-soft);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            color: var(--text-muted);
+            background-color: var(--bg-page);
+            transition: all 0.2s ease;
+        }
+
+        #importModal .modal-content .file-input-label:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            background-color: #e6f0e9;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .panel-left {
+                width: 100%;
+                max-width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-soft);
+                height: auto; /* Permite que o painel esquerdo se ajuste ao conteúdo */
+                overflow-y: visible; /* Desabilita rolagem interna para telas pequenas */
+            }
+
+            .resizer {
+                display: none; /* Esconde o resizer em telas pequenas */
+            }
+
+            .panel-right {
+                padding: 15px;
+            }
+
+            .metric-cards {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .metric-card {
+                max-width: 100%;
+            }
+
+            .actions-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .filter-group input,
+            .filter-group button {
+                width: 100%;
+            }
+
+            .export-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .notes-table th,
+            .notes-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="panel-left" id="panelLeft">
+        <div class="panel-left-header">
+            <i class="fas fa-clipboard-list"></i>
+            <div>
+                <h1>CERTHIL | Anotações</h1>
+                <p>Ferramenta de apoio pessoal para registrar, organizar e acompanhar anotações, pendências e compromissos.</p>
+            </div>
+        </div>
+        <p class="panel-left-info">Desenvolvido por Rodrigo Bonapaz</p>
+        <hr>
+
+        <h2>Nova Anotação</h2>
+
+        <form id="noteForm">
+            <input type="hidden" id="noteId">
+
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" id="title" placeholder="Título da anotação" required>
+            </div>
+
+            <div class="form-group">
+                <label for="responsible">Responsável:</label>
+                <input type="text" id="responsible" placeholder="Nome do responsável">
+            </div>
+
+            <div class="form-group">
+                <label for="content">Conteúdo:</label>
+                <textarea id="content" placeholder="Detalhes da anotação"></textarea>
+            </div>
+
+<div class="form-group">
+    <label for="newDueDate">Prazo: <i class="fas fa-calendar-alt input-icon"></i> <!-- Ícone de calendário -->
+    <input type="date" id="newDueDate" name="dueDate">
+</div>
+
+<div class="form-group">
+    <label for="newDueTime">Hora: <i class="fas fa-clock input-icon"></i> <!-- Ícone de relógio -->
+
+    <input type="time" id="newDueTime" name="dueTime">
+</div>
+            <div class="form-group">
+                <label>Tipo de anotação:</label>
+                <div id="typeChipsContainer" class="chips-container">
+                    <!-- Chips de tipo serão renderizados aqui -->
+                </div>
+                <div class="add-new-option">
+                    <input type="text" id="newTypeInput" placeholder="Adicionar novo tipo">
+                    <button type="button" id="addTypeButton"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Status:</label>
+                <div id="statusChipsContainer" class="chips-container">
+                    <!-- Chips de status serão renderizados aqui -->
+                </div>
+                <div class="add-new-option">
+                    <input type="text" id="newStatusInput" placeholder="Adicionar novo status">
+                    <button type="button" id="addStatusButton"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="form-group repeat-options">
+                <label>Repetir:</label>
+                <div>
+                    <label><input type="radio" name="repeat" value="never" checked> Nunca</label>
+                    <label><input type="radio" name="repeat" value="daily"> Diariamente</label>
+                    <label><input type="radio" name="repeat" value="weekly"> Semanalmente</label>
+                    <label><input type="radio" name="repeat" value="monthly"> Mensalmente</label>
+                    <label><input type="radio" name="repeat" value="yearly"> Anualmente</label>
+                    <label><input type="radio" name="repeat" value="custom"> Personalizado</label>
+                </div>
+
+                <div id="customRepeatOptions" class="custom-repeat-options" style="display: none;">
+                    <div class="day-checkboxes">
+                        <label><input type="checkbox" name="repeatDay" value="0"> Dom</label>
+                        <label><input type="checkbox" name="repeatDay" value="1"> Seg</label>
+                        <label><input type="checkbox" name="repeatDay" value="2"> Ter</label>
+                        <label><input type="checkbox" name="repeatDay" value="3"> Qua</label>
+                        <label><input type="checkbox" name="repeatDay" value="4"> Qui</label>
+                        <label><input type="checkbox" name="repeatDay" value="5"> Sex</label>
+                        <label><input type="checkbox" name="repeatDay" value="6"> Sáb</label>
+
+
+                    </div>
+                    <button type="button" id="fillWeekButton" class="fill-week-button">Preencher de segunda a sexta</button>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="repeatUntil">Repetir até:</label>
+                        <input type="date" id="repeatUntil">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="cancelButton" class="btn-cancel">Cancelar</button>
+                <button type="submit" id="saveButton" class="btn-save">Salvar Anotação</button>
+            </div>
+        </form>
+        <div class="resizer" id="resizer"></div>
+    </div>
+
+    <div class="panel-right">
+        <div class="metric-cards">
+            <div class="metric-card total" data-filter="total">
+                <h3>Total de Anotações</h3>
+                <p id="totalCount">0</p>
+            </div>
+            <div class="metric-card pendentes" data-filter="pendente">
+                <h3>Pendentes</h3>
+                <p id="pendingCount">0</p>
+            </div>
+            <div class="metric-card atrasadas" data-filter="atrasada">
+                <h3>Atrasadas</h3>
+                <p id="lateCount">0</p>
+            </div>
+            <div class="metric-card concluidas" data-filter="concluida">
+                <h3>Concluídas</h3>
+                <p id="completedCount">0</p>
+            </div>
+        </div>
+
+        <div class="actions-bar">
+            <div class="filter-group">
+                <input type="text" id="filterTextInput" placeholder="Filtrar por título, responsável ou conteúdo...">
+                <button type="button" id="filterButton" class="btn-filter"><i class="fas fa-filter"></i> Filtrar</button>
+                <button type="button" id="clearFilterButton" class="btn-clear"><i class="fas fa-times"></i> Limpar</button>
+            </div>
+            <div class="export-buttons">
+                <button id="exportDataButton"><i class="fas fa-file-export"></i> Exportar Dados</button>
+                <button id="importDataButton"><i class="fas fa-file-import"></i> Importar Dados</button>
+                <button id="exportCalendarButton"><i class="far fa-calendar-alt"></i> Exportar Agenda</button>
+            </div>
+        </div>
+
+        <div class="notes-table-container">
+            <table class="notes-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Título</th>
+                        <th>Responsável</th>
+                        <th>Conteúdo</th>
+                        <th>Prazo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="notesTableBody">
+                    <!-- Anotações serão carregadas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal de Visualização -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" id="modalCloseButton">&times;</span>
+            <h3 id="viewModalTitle"></h3>
+            <p><strong>Tipo:</strong> <span id="viewModalType"></span></p>
+            <p><strong>Responsável:</strong> <span id="viewModalResponsible"></span></p>
+            <p><strong>Prazo:</strong> <span id="viewModalDate"></span> <span id="viewModalTime"></span></p>
+            <p><strong>Status:</strong> <span id="viewModalStatus"></span></p>
+            <p><strong>Repetição:</strong> <span id="viewModalRepeat"></span></p>
+            <p><strong>Conteúdo:</strong> <br><span id="viewModalContent"></span></p>
+        </div>
+    </div>
+
+    <!-- Modal de Importação -->
+    <div id="importModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" id="importModalCloseButton">&times;</span>
+            <h3>Importar Anotações</h3>
+            <p>Selecione um arquivo JSON para importar.</p>
+            <input type="file" id="importFileInput" accept=".json">
+            <label for="importFileInput" class="file-input-label">
+                <i class="fas fa-upload"></i> Escolher Arquivo
+            </label>
+            <button id="importReplaceButton">Substituir Tudo</button>
+            <button id="importAddButton">Adicionar (Manter Existentes)</button>
+            <button id="importUpdateButton">Atualizar (Mesclar)</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const noteForm = document.getElementById('noteForm');
+            const noteIdInput = document.getElementById('noteId');
+            const titleInput = document.getElementById('title');
+            const responsibleInput = document.getElementById('responsible');
+            const contentInput = document.getElementById('content');
+            const dueDateInput = document.getElementById('dueDate');
+            const dueTimeInput = document.getElementById('dueTime');
+            const typeChipsContainer = document.getElementById('typeChipsContainer');
+            const newTypeInput = document.getElementById('newTypeInput');
+            const addTypeButton = document.getElementById('addTypeButton');
+            const statusChipsContainer = document.getElementById('statusChipsContainer');
+            const newStatusInput = document.getElementById('newStatusInput');
+            const addStatusButton = document.getElementById('addStatusButton');
+            const repeatOptions = document.querySelectorAll('input[name="repeat"]');
+            const customRepeatOptionsDiv = document.getElementById('customRepeatOptions');
+            const repeatDayCheckboxes = document.querySelectorAll('input[name="repeatDay"]');
+            const fillWeekButton = document.getElementById('fillWeekButton');
+            const repeatUntilInput = document.getElementById('repeatUntil');
+            const saveButton = document.getElementById('saveButton');
+            const cancelButton = document.getElementById('cancelButton');
+
+            const notesTableBody = document.getElementById('notesTableBody');
+            const filterTextInput = document.getElementById('filterTextInput');
+            const filterButton = document.getElementById('filterButton');
+            const clearFilterButton = document.getElementById('clearFilterButton');
+            const exportDataButton = document.getElementById('exportDataButton');
+            const importDataButton = document.getElementById('importDataButton');
+            const exportCalendarButton = document.getElementById('exportCalendarButton');
+
+            const totalCount = document.getElementById('totalCount');
+            const pendingCount = document.getElementById('pendingCount');
+            const lateCount = document.getElementById('lateCount');
+            const completedCount = document.getElementById('completedCount');
+            const metricCards = document.querySelectorAll('.metric-card');
+
+            const viewModal = document.getElementById('viewModal');
+            const modalCloseButton = document.getElementById('modalCloseButton');
+            const viewModalTitle = document.getElementById('viewModalTitle');
+            const viewModalType = document.getElementById('viewModalType');
+            const viewModalResponsible = document.getElementById('viewModalResponsible');
+            const viewModalDueDate = document.getElementById('viewModalDueDate');
+            const viewModalDueTime = document.getElementById('viewModalDueTime');
+            const viewModalStatus = document.getElementById('viewModalStatus');
+            const viewModalRepeat = document.getElementById('viewModalRepeat');
+            const viewModalContent = document.getElementById('viewModalContent');
+
+            const importModal = document.getElementById('importModal');
+            const importModalCloseButton = document.getElementById('importModalCloseButton');
+            const importFileInput = document.getElementById('importFileInput');
+            const importReplaceButton = document.getElementById('importReplaceButton');
+            const importAddButton = document.getElementById('importAddButton');
+            const importUpdateButton = document.getElementById('importUpdateButton');
+
+            // Resizer do Painel Esquerdo
+            const panelLeft = document.getElementById('panelLeft');
+            const resizer = document.getElementById('resizer');
+
+            let notes = [];
+            let customTypes = ["Tarefa", "Reunião", "Lembrete", "Projeto", "Suporte", "Manutenção", "Outro"];
+            let customStatus = ["Não Analisado", "Pendente", "Em Processamento", "Programado", "Cancelado", "Concluído"];
+            let editingNoteId = null;
+            let currentFilter = 'total'; // Filtro inicial para os cards de métricas
+
+            // --- Funções de Utilitário ---
+            function generateUniqueId() {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            }
+
+            function saveNotes() {
+                localStorage.setItem('notes', JSON.stringify(notes));
+            }
+
+            function loadNotes() {
+                const storedNotes = localStorage.getItem('notes');
+                if (storedNotes) {
+                    notes = JSON.parse(storedNotes);
+                }
+            }
+
+            function saveCustomOptions() {
+                localStorage.setItem('customTypes', JSON.stringify(customTypes));
+                localStorage.setItem('customStatus', JSON.stringify(customStatus));
+            }
+
+            function loadCustomOptions() {
+                const storedTypes = localStorage.getItem('customTypes');
+                const storedStatus = localStorage.getItem('customStatus');
+                if (storedTypes) {
+                    customTypes = JSON.parse(storedTypes);
+                }
+                if (storedStatus) {
+                    customStatus = JSON.parse(storedStatus);
+                }
+            }
+
+            function formatDate(dateString) {
+                if (!dateString) return '';
+                const [year, month, day] = dateString.split('-');
+                return `${day}/${month}/${year}`;
+            }
+
+            function parseDate(dateString) {
+                if (!dateString) return null;
+                const [day, month, year] = dateString.split('/');
+                return `${year}-${month}-${day}`;
+            }
+
+            function isDateLate(dueDate, dueTime) {
+                if (!dueDate) return false;
+                const now = new Date();
+                const dueDateTime = new Date(`${dueDate}T${dueTime || '23:59:59'}`);
+                return dueDateTime < now;
+            }
+
+            // --- Funções de Renderização ---
+            function renderCustomOptions(optionsArray, container, inputElement, type) {
+                container.innerHTML = '';
+                optionsArray.forEach(option => {
+                    const chip = document.createElement('div');
+                    chip.classList.add('chip');
+                    chip.textContent = option;
+                    chip.dataset.value = option; // Armazena o valor para seleção
+
+                    const removeSpan = document.createElement('span');
+                    removeSpan.classList.add('remove-chip');
+                    removeSpan.innerHTML = '&times;';
+                    removeSpan.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Evita que o clique no 'x' selecione o chip
+                        if (confirm(`Tem certeza que deseja remover "${option}"?`)) {
+                            const index = optionsArray.indexOf(option);
+                            if (index > -1) {
+                                optionsArray.splice(index, 1);
+                                saveCustomOptions();
+                                renderCustomOptions(optionsArray, container, inputElement, type);
+                                // Atualiza as anotações para remover o tipo/status se ele for excluído
+                                notes.forEach(note => {
+                                    if (type === 'type' && note.type === option) note.type = '';
+                                    if (type === 'status' && note.status === option) note.status = '';
+                                });
+                                saveNotes();
+                                renderNotes();
+                            }
+                        }
+                    });
+
+                    chip.appendChild(removeSpan);
+                    container.appendChild(chip);
+
+                    chip.addEventListener('click', () => {
+                        // Lógica de seleção/desseleção
+                        const selectedChips = container.querySelectorAll('.chip.selected');
+                        if (type === 'type') { // Apenas um tipo pode ser selecionado
+                            selectedChips.forEach(c => c.classList.remove('selected'));
+                            chip.classList.add('selected');
+                        } else if (type === 'status') { // Apenas um status pode ser selecionado
+                            selectedChips.forEach(c => c.classList.remove('selected'));
+                            chip.classList.add('selected');
+                        }
+                    });
+                });
+            }
+
+            function addCustomOption(optionsArray, container, inputElement, type) {
+                const value = inputElement.value.trim();
+                if (value && !optionsArray.includes(value)) {
+                    optionsArray.push(value);
+                    saveCustomOptions();
+                    renderCustomOptions(optionsArray, container, inputElement, type);
+                    inputElement.value = '';
+                }
+            }
+
+            function renderNotes(filterText = '', filterType = 'total') {
+                notesTableBody.innerHTML = '';
+                let filteredNotes = notes;
+
+                if (filterText) {
+                    const lowerCaseFilter = filterText.toLowerCase();
+                    filteredNotes = notes.filter(note =>
+                        (note.title && note.title.toLowerCase().includes(lowerCaseFilter)) ||
+                        (note.responsible && note.responsible.toLowerCase().includes(lowerCaseFilter)) ||
+                        (note.content && note.content.toLowerCase().includes(lowerCaseFilter))
+                    );
+                }
+
+                // Aplica o filtro dos cards de métricas
+                const now = new Date();
+                if (filterType === 'pendente') {
+                    filteredNotes = filteredNotes.filter(note => {
+                        const dueDateTime = note.dueDate ? new Date(`${note.dueDate}T${note.dueTime || '23:59:59'}`) : null;
+                        return note.status !== 'Concluído' && (dueDateTime === null || dueDateTime >= now);
+                    });
+                } else if (filterType === 'atrasada') {
+                    filteredNotes = filteredNotes.filter(note => {
+                        const dueDateTime = note.dueDate ? new Date(`${note.dueDate}T${note.dueTime || '23:59:59'}`) : null;
+                        return note.status !== 'Concluído' && dueDateTime !== null && dueDateTime < now;
+                    });
+                } else if (filterType === 'concluida') {
+                    filteredNotes = filteredNotes.filter(note => note.status === 'Concluído');
+                }
+                // 'total' não precisa de filtro adicional aqui, já é o padrão
+
+                filteredNotes.forEach(note => {
+                    const row = notesTableBody.insertRow();
+                    row.dataset.id = note.id;
+
+                    const isLate = isDateLate(note.dueDate, note.dueTime) && note.status !== 'Concluído';
+
+                    row.innerHTML = `
+                        <td>${note.type || 'N/A'}</td>
+                        <td>${note.title}</td>
+                        <td>${note.responsible || 'N/A'}</td>
+                        <td>${note.content ? note.content.substring(0, 50) + (note.content.length > 50 ? '...' : '') : 'N/A'}</td>
+                        <td>
+                            ${note.dueDate ? formatDate(note.dueDate) : 'N/A'}
+                            ${note.dueTime ? `<br>${note.dueTime}` : ''}
+                            ${isLate ? '<span class="late-status">Atrasado</span>' : ''}
+                        </td>
+                        <td><span class="status-badge status-${note.status ? note.status.toLowerCase().replace(/\s/g, '-') : 'nao-analisado'}">${note.status || 'Não Analisado'}</span></td>
+                        <td class="actions-icons">
+                            <i class="fas fa-eye" data-action="view" data-id="${note.id}"></i>
+                            <i class="fas fa-edit" data-action="edit" data-id="${note.id}"></i>
+                            <i class="fas fa-copy" data-action="duplicate" data-id="${note.id}"></i>
+                            <i class="fas fa-trash-alt" data-action="delete" data-id="${note.id}"></i>
+                        </td>
+                    `;
+                });
+                updateMetricCards();
+            }
+
+            function updateMetricCards() {
+                const now = new Date();
+                const total = notes.length;
+                let pending = 0;
+                let late = 0;
+                let completed = 0;
+
+                notes.forEach(note => {
+                    const dueDateTime = note.dueDate ? new Date(`${note.dueDate}T${note.dueTime || '23:59:59'}`) : null;
+
+                    if (note.status === 'Concluído') {
+                        completed++;
+                    } else {
+                        if (dueDateTime && dueDateTime < now) {
+                            late++;
+                        } else {
+                            pending++;
+                        }
+                    }
+                });
+
+                totalCount.textContent = total;
+                pendingCount.textContent = pending;
+                lateCount.textContent = late;
+                completedCount.textContent = completed;
+            }
+
+            function resetForm() {
+                editingNoteId = null;
+                noteIdInput.value = '';
+                titleInput.value = '';
+                responsibleInput.value = '';
+                contentInput.value = '';
+                dueDateInput.value = '';
+                dueTimeInput.value = '';
+
+                // Limpa seleção de chips
+                typeChipsContainer.querySelectorAll('.chip.selected').forEach(chip => chip.classList.remove('selected'));
+                statusChipsContainer.querySelectorAll('.chip.selected').forEach(chip => chip.classList.remove('selected'));
+
+                // Reseta opções de repetição
+                document.querySelector('input[name="repeat"][value="never"]').checked = true;
+                customRepeatOptionsDiv.style.display = 'none';
+                repeatDayCheckboxes.forEach(checkbox => checkbox.checked = false);
+                repeatUntilInput.value = '';
+
+                saveButton.textContent = 'Salvar Anotação';
+                cancelButton.textContent = 'Cancelar';
+                cancelButton.style.display = 'inline-block'; // Garante que o botão cancelar esteja visível
+            }
+
+            function loadNoteIntoForm(note) {
+                editingNoteId = note.id;
+                noteIdInput.value = note.id;
+                titleInput.value = note.title;
+                responsibleInput.value = note.responsible;
+                contentInput.value = note.content;
+                dueDateInput.value = note.dueDate;
+                dueTimeInput.value = note.dueTime;
+
+                // Seleciona o tipo
+                typeChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                    if (chip.dataset.value === note.type) {
+                        chip.classList.add('selected');
+                    } else {
+                        chip.classList.remove('selected');
+                    }
+                });
+
+                // Seleciona o status
+                statusChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                    if (chip.dataset.value === note.status) {
+                        chip.classList.add('selected');
+                    } else {
+                        chip.classList.remove('selected');
+                    }
+                });
+
+                // Carrega opções de repetição
+                document.querySelector(`input[name="repeat"][value="${note.repeat || 'never'}"]`).checked = true;
+                if (note.repeat === 'custom' && note.repeatCustom) {
+                    customRepeatOptionsDiv.style.display = 'block';
+                    repeatDayCheckboxes.forEach(checkbox => {
+                        checkbox.checked = note.repeatCustom.days.includes(parseInt(checkbox.value));
+                    });
+                    repeatUntilInput.value = note.repeatCustom.until || '';
+                } else {
+                    customRepeatOptionsDiv.style.display = 'none';
+                }
+
+                saveButton.textContent = 'Salvar Edição';
+                cancelButton.textContent = 'Cancelar Edição';
+            }
+
+            // --- Event Listeners ---
+            addTypeButton.addEventListener('click', () => addCustomOption(customTypes, typeChipsContainer, newTypeInput, 'type'));
+            addStatusButton.addEventListener('click', () => addCustomOption(customStatus, statusChipsContainer, newStatusInput, 'status'));
+
+            noteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const selectedTypeChip = typeChipsContainer.querySelector('.chip.selected');
+                const selectedStatusChip = statusChipsContainer.querySelector('.chip.selected');
+
+                const newNote = {
+                    id: editingNoteId || generateUniqueId(),
+                    title: titleInput.value,
+                    responsible: responsibleInput.value,
+                    content: contentInput.value,
+                    dueDate: dueDateInput.value,
+                    dueTime: dueTimeInput.value,
+                    type: selectedTypeChip ? selectedTypeChip.dataset.value : '',
+                    status: selectedStatusChip ? selectedStatusChip.dataset.value : 'Não Analisado', // Default status
+                    repeat: document.querySelector('input[name="repeat"]:checked').value,
+                    repeatCustom: null
+                };
+
+                if (newNote.repeat === 'custom') {
+                    newNote.repeatCustom = {
+                        days: Array.from(repeatDayCheckboxes).filter(cb => cb.checked).map(cb => parseInt(cb.value)),
+                        until: repeatUntilInput.value
+                    };
+                }
+
+                if (editingNoteId) {
+                    // Modo de edição
+                    const index = notes.findIndex(note => note.id === editingNoteId);
+                    if (index !== -1) {
+                        notes[index] = newNote;
+                        alert('Anotação atualizada com sucesso!');
+                    }
+                } else {
+                    // Modo de nova anotação ou duplicação
+                    notes.push(newNote);
+                    alert('Anotação salva com sucesso!');
+
+                    // Gerar anotações futuras se for repetida
+                    if (newNote.repeat !== 'never' && newNote.dueDate) {
+                        generateFutureNotes(newNote);
+                    }
+                }
+
+                saveNotes();
+                renderNotes();
+                resetForm();
+            });
+
+            cancelButton.addEventListener('click', () => {
+                resetForm();
+                renderNotes(); // Renderiza novamente para limpar qualquer destaque de edição
+            });
+
+            // Lógica para mostrar/esconder opções de repetição personalizada
+            repeatOptions.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'custom') {
+                        customRepeatOptionsDiv.style.display = 'block';
+                    } else {
+                        customRepeatOptionsDiv.style.display = 'none';
+                    }
+                });
+            });
+
+            fillWeekButton.addEventListener('click', () => {
+                repeatDayCheckboxes.forEach(checkbox => {
+                    // 1=Seg, 2=Ter, 3=Qua, 4=Qui, 5=Sex
+                    if ([1, 2, 3, 4, 5].includes(parseInt(checkbox.value))) {
+                        checkbox.checked = true;
+                    } else {
+                        checkbox.checked = false;
+                    }
+                });
+            });
+
+            notesTableBody.addEventListener('click', (e) => {
+                const target = e.target;
+                const action = target.dataset.action;
+                const id = target.dataset.id;
+
+                if (!action || !id) return;
+
+                const note = notes.find(n => n.id === id);
+                if (!note) return;
+
+                if (action === 'view') {
+                    viewModalTitle.textContent = note.title;
+                    viewModalType.textContent = note.type || 'N/A';
+                    viewModalResponsible.textContent = note.responsible || 'N/A';
+                    viewModalDueDate.textContent = note.dueDate ? formatDate(note.dueDate) : 'N/A';
+                    viewModalDueTime.textContent = note.dueTime || 'N/A';
+                    viewModalStatus.textContent = note.status || 'Não Analisado';
+                    viewModalContent.textContent = note.content || 'N/A';
+
+                    let repeatText = 'Nunca';
+                    if (note.repeat === 'daily') repeatText = 'Diariamente';
+                    else if (note.repeat === 'weekly') repeatText = 'Semanalmente';
+                    else if (note.repeat === 'monthly') repeatText = 'Mensalmente';
+                    else if (note.repeat === 'yearly') repeatText = 'Anualmente';
+                    else if (note.repeat === 'custom' && note.repeatCustom && note.repeatCustom.days.length) {
+                        const daysMap = {0:'Dom',1:'Seg',2:'Ter',3:'Qua',4:'Qui',5:'Sex',6:'Sáb'};
+                        const selectedDays = note.repeatCustom.days.map(d => daysMap[d]).join(', ');
+                        repeatText = `Personalizado: ${selectedDays}`;
+                        if (note.repeatCustom.until) repeatText += ` até ${formatDate(note.repeatCustom.until)}`;
+                    }
+                    viewModalRepeat.textContent = repeatText;
+
+                    viewModal.style.display = 'flex';
+                } else if (action === 'edit') {
+                    loadNoteIntoForm(note);
+                } else if (action === 'duplicate') {
+                    const duplicatedNote = { ...note, id: generateUniqueId() }; // Cria uma cópia com novo ID
+                    // Se a anotação original tinha repetição, a duplicada herda
+                    if (duplicatedNote.repeat !== 'never' && duplicatedNote.dueDate) {
+                        // Não geramos futuras aqui, apenas carregamos no form para edição
+                        // A geração ocorrerá ao salvar o formulário
+                    }
+                    loadNoteIntoForm(duplicatedNote); // Carrega a cópia no formulário para edição
+                    saveButton.textContent = 'Salvar Cópia'; // Altera o texto do botão para indicar que é uma cópia
+                    alert('Anotação duplicada e carregada para edição. Altere e salve.');
+                } else if (action === 'delete') {
+                    if (confirm('Tem certeza que deseja remover esta anotação?')) {
+                        notes = notes.filter(n => n.id !== id);
+                        saveNotes();
+                        renderNotes();
+                        alert('Anotação removida com sucesso!');
+                    }
+                }
+            });
+
+            filterButton.addEventListener('click', () => {
+                renderNotes(filterTextInput.value, currentFilter);
+            });
+
+            clearFilterButton.addEventListener('click', () => {
+                filterTextInput.value = '';
+                renderNotes('', currentFilter);
+            });
+
+            filterTextInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    renderNotes(filterTextInput.value, currentFilter);
+                }
+            });
+
+            metricCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    metricCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    currentFilter = card.dataset.filter;
+                    renderNotes(filterTextInput.value, currentFilter);
+                });
+            });
+
+            // --- Funções de Importação/Exportação ---
+            exportDataButton.addEventListener('click', () => {
+                const dataStr = JSON.stringify({ notes, customTypes, customStatus }, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'anotacoes_certhil.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                alert('Dados exportados com sucesso!');
+            });
+
+            importDataButton.addEventListener('click', () => {
+                importModal.style.display = 'flex';
+            });
+
+            importModalCloseButton.addEventListener('click', () => {
+                importModal.style.display = 'none';
+                importFileInput.value = ''; // Limpa o input de arquivo
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === importModal) {
+                    importModal.style.display = 'none';
+                    importFileInput.value = '';
+                }
+            });
+
+            function handleImport(mode) {
+                const file = importFileInput.files[0];
+                if (!file) {
+                    alert('Por favor, selecione um arquivo JSON para importar.');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        const importedNotes = importedData.notes || [];
+                        const importedTypes = importedData.customTypes || [];
+                        const importedStatus = importedData.customStatus || [];
+
+                        if (mode === 'replace') {
+                            notes = importedNotes;
+                            customTypes = importedTypes;
+                            customStatus = importedStatus;
+                            alert('Dados substituídos com sucesso!');
+                        } else if (mode === 'add') {
+                            // Adiciona apenas notas com IDs que não existem
+                            const existingNoteIds = new Set(notes.map(n => n.id));
+                            const newNotesToAdd = importedNotes.filter(n => !existingNoteIds.has(n.id));
+                            notes.push(...newNotesToAdd);
+
+                            // Adiciona novos tipos/status se não existirem
+                            importedTypes.forEach(type => {
+                                if (!customTypes.includes(type)) customTypes.push(type);
+                            });
+                            importedStatus.forEach(status => {
+                                if (!customStatus.includes(status)) customStatus.push(status);
+                            });
+                            alert('Novas anotações e opções adicionadas com sucesso!');
+                        } else if (mode === 'update') {
+                            // Cria um mapa de notas existentes por ID para fácil acesso
+                            const existingNotesMap = new Map(notes.map(note => [note.id, note]));
+
+                            importedNotes.forEach(importedNote => {
+                                if (existingNotesMap.has(importedNote.id)) {
+                                    // Atualiza a anotação existente
+                                    Object.assign(existingNotesMap.get(importedNote.id), importedNote);
+                                } else {
+                                    // Adiciona a nova anotação se não existir
+                                    notes.push(importedNote);
+                                }
+                            });
+
+                            // Adiciona novos tipos/status se não existirem
+                            importedTypes.forEach(type => {
+                                if (!customTypes.includes(type)) customTypes.push(type);
+                            });
+                            importedStatus.forEach(status => {
+                                if (!customStatus.includes(status)) customStatus.push(status);
+                            });
+                            alert('Anotações atualizadas e novas adicionadas com sucesso!');
+                        }
+
+                        saveNotes();
+                        saveCustomOptions();
+                        renderCustomOptions(customTypes, typeChipsContainer, newTypeInput, 'type');
+                        renderCustomOptions(customStatus, statusChipsContainer, newStatusInput, 'status');
+                        renderNotes();
+                        updateMetricCards();
+                        importModal.style.display = 'none';
+                        importFileInput.value = '';
+                    } catch (error) {
+                        alert('Erro ao processar o arquivo JSON: ' + error.message);
+                        console.error('Erro de importação:', error);
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+            importReplaceButton.addEventListener('click', () => handleImport('replace'));
+            importAddButton.addEventListener('click', () => handleImport('add'));
+            importUpdateButton.addEventListener('click', () => handleImport('update'));
+
+            // --- Funções para Exportar Agenda (ICS) ---
+            function pad2(number) {
+                return number < 10 ? '0' + number : number;
+            }
+
+            function toIcsDateTime(dateString, timeString) {
+                if (!dateString) return '';
+                const [year, month, day] = dateString.split('-');
+                const [hour, minute] = timeString ? timeString.split(':') : ['00', '00'];
+                // Cria um objeto Date em UTC para evitar problemas de fuso horário
+                const d = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
+                return `${d.getUTCFullYear()}${pad2(d.getUTCMonth() + 1)}${pad2(d.getUTCDate())}T${pad2(d.getUTCHours())}${pad2(d.getUTCMinutes())}00Z`;
+            }
+
+            exportCalendarButton.addEventListener('click', () => {
+                let ics = 'BEGIN:VCALENDAR\r\n';
+                ics += 'VERSION:2.0\r\n';
+                ics += 'PRODID:-//CERTHIL//Anotacoes v1.0//EN\r\n';
+
+                const now = new Date();
+                const dtStamp = `${now.getUTCFullYear()}${pad2(now.getUTCMonth() + 1)}${pad2(now.getUTCDate())}T${pad2(now.getUTCHours())}${pad2(now.getUTCMinutes())}00Z`;
+
+                notes.forEach(note => {
+                    if (!note.dueDate) return;
+
+                    const dtStart = toIcsDateTime(note.dueDate, note.dueTime);
+                    if (!dtStart) return;
+
+                    // Para o DTEND, vamos considerar 1 hora após o DTSTART se houver hora, ou o fim do dia se for só data
+                    let endDate;
+                    if (note.dueTime) {
+                        endDate = new Date(note.dueDate + 'T' + note.dueTime);
+                        endDate.setHours(endDate.getHours() + 1); // Duração padrão de 1 hora
+                    } else {
+                        endDate = new Date(note.dueDate + 'T23:59:59'); // Fim do dia
+                    }
+                    // Converte a data de término para o formato ICS UTC
+                    const dtEnd = toIcsDateTime(endDate.toISOString().split('T')[0], endDate.toTimeString().split(' ')[0].substring(0, 5));
+
+
+                    const uid = `certhil-${note.id}@anotacoes`;
+                    const title = (note.title || 'Compromisso').replace(/\r?\n/g,' ');
+                    const descParts = [];
+                    if (note.type)        descParts.push(`Tipo: ${note.type}`);
+                    if (note.responsible) descParts.push(`Responsável: ${note.responsible}`);
+                    if (note.content) {
+                        descParts.push('');
+                        descParts.push(note.content);
+                    }
+                    let desc = descParts.join('\\n').replace(/\r?\n/g,'\\n');
+
+                    let rrule = '';
+                    if (note.repeat === 'daily') rrule = 'FREQ=DAILY';
+                    else if (note.repeat === 'weekly') rrule = 'FREQ=WEEKLY';
+                    else if (note.repeat === 'monthly') rrule = 'FREQ=MONTHLY';
+                    else if (note.repeat === 'yearly') rrule = 'FREQ=YEARLY';
+                    else if (note.repeat === 'custom' && note.repeatCustom && note.repeatCustom.days && note.repeatCustom.days.length) {
+                        const daysMap = {0:'SU',1:'MO',2:'TU',3:'WE',4:'TH',5:'FR',6:'SA'};
+                        const byday = note.repeatCustom.days.map(d => daysMap[d]).join(',');
+                        rrule = 'FREQ=WEEKLY;BYDAY=' + byday;
+                        if (note.repeatCustom.until) {
+                            const u = new Date(note.repeatCustom.until + 'T23:59:59');
+                            rrule += `;UNTIL=${u.getUTCFullYear()}${pad2(u.getUTCMonth()+1)}${pad2(u.getUTCDate())}T235959Z`;
+                        }
+                    }
+
+                    ics += 'BEGIN:VEVENT\r\n';
+                    ics += `UID:${uid}\r\n`;
+                    ics += `DTSTAMP:${dtStamp}\r\n`;
+                    ics += `DTSTART:${dtStart}\r\n`;
+                    ics += `DTEND:${dtEnd}\r\n`;
+                    if (rrule) ics += `RRULE:${rrule}\r\n`;
+                    ics += `SUMMARY:${title}\r\n`;
+                    if (desc) ics += `DESCRIPTION:${desc}\r\n`;
+                    ics += 'END:VEVENT\r\n';
+                });
+
+                ics += 'END:VCALENDAR\r\n';
+
+                const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'anotacoes_certhil.ics';
+                document.body.appendChild(a);
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                alert('Arquivo ICS gerado. Importe em sua Agenda.');
+            });
+
+            // --- Gerar Anotações Futuras (Repetição) ---
+            function generateFutureNotes(originalNote) {
+                if (originalNote.repeat === 'never' || !originalNote.dueDate) return;
+
+                const startDate = new Date(originalNote.dueDate + 'T' + (originalNote.dueTime || '00:00:00'));
+                const untilDate = originalNote.repeatCustom && originalNote.repeatCustom.until ? new Date(originalNote.repeatCustom.until + 'T23:59:59') : null;
+                const generatedNotes = [];
+
+                let currentDate = new Date(startDate);
+                currentDate.setDate(currentDate.getDate() + 1); // Começa a partir do dia seguinte ao original
+
+                while (true) {
+                    if (untilDate && currentDate > untilDate) break; // Para se exceder a data limite
+
+                    let shouldAdd = false;
+                    if (originalNote.repeat === 'daily') {
+                        shouldAdd = true;
+                    } else if (originalNote.repeat === 'weekly') {
+                        // Verifica se o dia da semana atual corresponde a algum dia da semana da nota original
+                        // O dia da semana da nota original é o dia da semana de startDate
+                        if (currentDate.getDay() === startDate.getDay()) {
+                            shouldAdd = true;
+                        }
+                    } else if (originalNote.repeat === 'monthly') {
+                        // Verifica se o dia do mês atual corresponde ao dia do mês da nota original
+                        if (currentDate.getDate() === startDate.getDate()) {
+                            shouldAdd = true;
+                        }
+                    } else if (originalNote.repeat === 'yearly') {
+                        // Verifica se o dia e o mês atuais correspondem ao dia e mês da nota original
+                        if (currentDate.getDate() === startDate.getDate() && currentDate.getMonth() === startDate.getMonth()) {
+                            shouldAdd = true;
+                        }
+                    } else if (originalNote.repeat === 'custom' && originalNote.repeatCustom && originalNote.repeatCustom.days.length) {
+                        if (originalNote.repeatCustom.days.includes(currentDate.getDay())) {
+                            shouldAdd = true;
+                        }
+                    }
+
+                    if (shouldAdd) {
+                        const newNote = { ...originalNote };
+                        newNote.id = generateUniqueId(); // Novo ID para cada instância
+                        newNote.dueDate = currentDate.toISOString().split('T')[0]; // Nova data
+                        // O status de uma anotação futura pode ser 'Pendente' por padrão, a menos que seja concluída
+                        if (newNote.status === 'Concluído') {
+                            newNote.status = 'Pendente'; // Resetar status para futuras
+                        }
+                        generatedNotes.push(newNote);
+                    }
+
+                    // Avança para o próximo dia para verificar a próxima repetição
+                    currentDate.setDate(currentDate.getDate() + 1);
+
+                    // Limite para evitar loops infinitos em caso de erro na lógica
+                    if (generatedNotes.length > 365 * 5) { // Limite de 5 anos de repetições
+                        console.warn("Limite de anotações futuras atingido para evitar loop infinito.");
+                        break;
+                    }
+                }
+                notes.push(...generatedNotes);
+                saveNotes();
+            }
+
+
+            // --- Resizer do Painel Esquerdo ---
+            let isResizing = false;
+            resizer.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                document.body.style.cursor = 'ew-resize';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+                let newWidth = e.clientX;
+                const minWidth = parseInt(panelLeft.style.minWidth) || 280;
+                const maxWidth = parseInt(panelLeft.style.maxWidth) || 500;
+
+                if (newWidth >= minWidth && newWidth <= maxWidth) {
+                    panelLeft.style.width = `${newWidth}px`;
+                } else if (newWidth < minWidth) {
+                    panelLeft.style.width = `${minWidth}px`;
+                } else if (newWidth > maxWidth) {
+                    panelLeft.style.width = `${maxWidth}px`;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isResizing = false;
+                document.body.style.cursor = 'default';
+            });
+
+            // --- Inicialização ---
+            loadCustomOptions(); // Carrega as opções personalizadas (tipos e status)
+            loadNotes(); // Carrega as anotações do localStorage
+
+            // Renderiza os chips de tipo e status com as opções padrão
+            renderCustomOptions(customTypes, typeChipsContainer, newTypeInput, 'type');
+            renderCustomOptions(customStatus, statusChipsContainer, newStatusInput, 'status');
+
+            // Ativa o card "Total" por padrão na inicialização
+            document.querySelector('.metric-card.total').classList.add('active');
+
+            resetForm(); // Garante que o formulário esteja limpo e com chips padrão ativos
+
+            renderNotes(); // Renderiza as anotações na tabela
+            updateMetricCards(); // Garante que os cards de métricas sejam atualizados na inicialização
+
+            // Atualiza destaque de atrasadas a cada 60s
+            setInterval(() => {
+                renderNotes(filterTextInput.value, currentFilter); // Passa o filtro atual
+                updateMetricCards(); // Atualiza as métricas também
+            }, 60000);
+
+            // Event listeners para o modal de visualização
+            modalCloseButton.addEventListener('click', () => {
+                viewModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === viewModal) {
+                    viewModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
