@@ -26,11 +26,9 @@ supabase
     (payload) => {
       console.log('Alteração detectada no Supabase:', payload)
 
-      // Se no seu index.html você tem algo como:
-      // loadNotes()
-      // renderNotes()
-      // você pode chamar aqui via evento customizado
+      // Notifica o HTML principal
       window.dispatchEvent(new Event('supabase-update'))
     }
   )
   .subscribe()
+``
