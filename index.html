@@ -157,51 +157,44 @@
 
         .form-group {
             margin-bottom: 15px;
-            position: relative; /* Para posicionar o ícone do calendário */
+            position: relative; /* Para posicionar ícones dentro */
         }
 
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: var(--text-main);
             font-size: 0.9em;
+            color: var(--text-main);
         }
 
         .form-group input[type="text"],
         .form-group input[type="date"],
         .form-group input[type="time"],
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px;
             border: 1px solid var(--border-soft);
-            border-radius: 8px;
+            border-radius: 5px;
             font-size: 0.9em;
             color: var(--text-main);
             background-color: var(--bg-page);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: border-color 0.2s ease;
         }
 
         .form-group input[type="text"]:focus,
         .form-group input[type="date"]:focus,
         .form-group input[type="time"]:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             border-color: var(--primary-green);
-            box-shadow: 0 0 0 3px rgba(93, 139, 109, 0.2);
             outline: none;
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 80px;
-        }
-
-        .form-group .input-icon {
-            position: absolute;
-            right: 10px;
-            top: 35px; /* Ajuste conforme necessário para alinhar com o input */
-            color: var(--text-muted);
-            pointer-events: none; /* Garante que o ícone não bloqueie cliques no input */
+            min-height: 60px;
         }
 
         .chip-container {
@@ -210,86 +203,48 @@
             gap: 8px;
             margin-top: 10px;
             margin-bottom: 15px;
-            border: 1px solid var(--border-soft);
-            border-radius: 8px;
-            padding: 10px;
-            background-color: var(--bg-page);
         }
 
         .chip {
-            display: inline-flex;
-            align-items: center;
+            background-color: var(--primary-green);
+            color: white;
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.85em;
             cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            white-space: nowrap; /* Evita que o texto do chip quebre */
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            white-space: nowrap; /* Evita quebra de linha */
         }
 
-        .chip.type {
-            background-color: #e0f7fa; /* Azul claro */
-            color: #006064; /* Azul escuro */
-            border: 1px solid #b2ebf2;
+        .chip.active {
+            background-color: var(--accent-orange);
         }
 
-        .chip.type.active {
-            background-color: var(--primary-green);
-            color: white;
-            border-color: var(--primary-green-dark);
-        }
-
-        .chip.status {
-            background-color: var(--status-nao-analisado-bg);
-            color: var(--status-nao-analisado-text);
-            border: 1px solid #c0c0c0;
-        }
-
-        .chip.status.active {
-            background-color: var(--primary-green);
-            color: white;
-            border-color: var(--primary-green-dark);
-        }
-
-        /* Cores específicas para status ativos */
-        .chip.status.active[data-value="Não Analisado"] { background-color: var(--status-nao-analisado-text); color: white; border-color: var(--status-nao-analisado-text); }
-        .chip.status.active[data-value="Pendente"] { background-color: var(--status-pendente-text); color: white; border-color: var(--status-pendente-text); }
-        .chip.status.active[data-value="Em Processamento"] { background-color: var(--status-em-processamento-text); color: white; border-color: var(--status-em-processamento-text); }
-        .chip.status.active[data-value="Programado"] { background-color: var(--status-programado-text); color: white; border-color: var(--status-programado-text); }
-        .chip.status.active[data-value="Cancelado"] { background-color: var(--status-cancelado-text); color: white; border-color: var(--status-cancelado-text); }
-        .chip.status.active[data-value="Concluído"] { background-color: var(--status-concluido-text); color: white; border-color: var(--status-concluido-text); }
-
-
-        .chip .remove-chip {
-            margin-left: 8px;
-            font-weight: bold;
-            color: inherit; /* Herda a cor do texto do chip */
+        .chip i {
+            margin-left: 5px;
+            font-size: 0.8em;
             cursor: pointer;
         }
 
         .add-custom-option {
             display: flex;
-            gap: 10px;
+            gap: 5px;
             margin-top: 10px;
-            margin-bottom: 15px;
         }
 
         .add-custom-option input {
             flex-grow: 1;
-            padding: 8px 12px;
-            border: 1px solid var(--border-soft);
-            border-radius: 8px;
-            font-size: 0.9em;
         }
 
         .add-custom-option button {
-            padding: 8px 15px;
             background-color: var(--primary-green);
             color: white;
             border: none;
-            border-radius: 8px;
+            padding: 8px 12px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9em;
             transition: background-color 0.2s ease;
         }
 
@@ -297,68 +252,30 @@
             background-color: var(--primary-green-dark);
         }
 
-        .recurrence-options {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-soft);
-        }
-
-        .recurrence-options label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            font-weight: normal;
-            font-size: 0.9em;
-        }
-
-        .recurrence-options input[type="radio"] {
-            margin-right: 8px;
-            accent-color: var(--primary-green);
-        }
-
-        .recurrence-options button {
-            width: 100%;
-            padding: 10px 15px;
-            background-color: var(--accent-orange);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.95em;
-            margin-top: 10px;
-            transition: background-color 0.2s ease;
-        }
-
-        .recurrence-options button:hover {
-            background-color: #a85a24;
-        }
-
         .form-actions {
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
             margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-soft);
+            gap: 10px;
         }
 
         .form-actions button {
-            flex-grow: 1;
-            padding: 12px 15px;
+            padding: 10px 15px;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 1em;
-            font-weight: bold;
             transition: background-color 0.2s ease;
+            flex-grow: 1;
         }
 
         .form-actions .cancel-button {
-            background-color: #ccc;
-            color: var(--text-main);
+            background-color: var(--text-muted);
+            color: white;
         }
 
         .form-actions .cancel-button:hover {
-            background-color: #bbb;
+            background-color: #555;
         }
 
         .form-actions .save-button {
@@ -375,22 +292,24 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-            overflow: hidden; /* Para controlar o scroll da tabela */
+            overflow: hidden; /* Controla o overflow do painel direito */
         }
 
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        .metric-cards {
+            display: flex;
             gap: 15px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .metric-card {
+            flex: 1;
+            min-width: 180px; /* Garante que os cards não fiquem muito pequenos */
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 15px 20px;
-            text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
             border: 1px solid var(--border-soft);
             cursor: pointer;
             transition: all 0.2s ease;
@@ -400,32 +319,25 @@
             border-color: var(--card-total-border);
             color: var(--card-total-text);
         }
-        .metric-card.total.active {
-            background-color: var(--card-total-bg);
-        }
 
         .metric-card.pendentes {
             border-color: var(--card-pendentes-border);
             color: var(--card-pendentes-text);
-        }
-        .metric-card.pendentes.active {
-            background-color: var(--card-pendentes-bg);
         }
 
         .metric-card.atrasadas {
             border-color: var(--card-atrasadas-border);
             color: var(--card-atrasadas-text);
         }
-        .metric-card.atrasadas.active {
-            background-color: var(--card-atrasadas-bg);
-        }
 
         .metric-card.concluidas {
             border-color: var(--card-concluidas-border);
             color: var(--card-concluidas-text);
         }
-        .metric-card.concluidas.active {
-            background-color: var(--card-concluidas-bg);
+
+        .metric-card.active {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .metric-card h3 {
@@ -435,71 +347,32 @@
         }
 
         .metric-card p {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: bold;
             margin: 0;
         }
 
-        .metric-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .filter-bar {
+        .toolbar {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
             align-items: center;
         }
 
-        .filter-bar input {
+        .toolbar input[type="text"] {
             flex-grow: 1;
-            padding: 10px 12px;
+            padding: 8px 12px;
             border: 1px solid var(--border-soft);
-            border-radius: 8px;
+            border-radius: 5px;
             font-size: 0.9em;
             background-color: var(--card-bg);
-            color: var(--text-main);
         }
 
-        .filter-bar button {
-            padding: 10px 15px;
+        .toolbar button {
+            padding: 8px 12px;
             border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: background-color 0.2s ease;
-        }
-
-        .filter-bar .filter-button {
-            background-color: var(--primary-green);
-            color: white;
-        }
-
-        .filter-bar .filter-button:hover {
-            background-color: var(--primary-green-dark);
-        }
-
-        .filter-bar .clear-filter-button {
-            background-color: #ccc;
-            color: var(--text-main);
-        }
-
-        .filter-bar .clear-filter-button:hover {
-            background-color: #bbb;
-        }
-
-        .table-actions {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
-        }
-
-        .table-actions button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
             transition: background-color 0.2s ease;
@@ -508,57 +381,44 @@
             gap: 5px;
         }
 
-        .table-actions .delete-selected-button {
-            background-color: var(--danger);
+        .toolbar .filter-button {
+            background-color: var(--primary-green);
             color: white;
         }
 
-        .table-actions .delete-selected-button:hover {
-            background-color: #c0392b;
+        .toolbar .filter-button:hover {
+            background-color: var(--primary-green-dark);
         }
 
-        .table-actions .export-button {
-            background-color: var(--warning);
+        .toolbar .clear-filter-button {
+            background-color: var(--text-muted);
             color: white;
         }
 
-        .table-actions .export-button:hover {
-            background-color: #e67e22;
+        .toolbar .clear-filter-button:hover {
+            background-color: #555;
         }
 
-        .table-actions .import-button {
-            background-color: var(--info);
+        .toolbar .action-button {
+            background-color: var(--accent-orange);
             color: white;
         }
 
-        .table-actions .import-button:hover {
-            background-color: #2980b9;
+        .toolbar .action-button:hover {
+            background-color: #a85a22;
         }
 
-        .table-actions .export-calendar-button {
-            background-color: #9b59b6; /* Roxo */
-            color: white;
-        }
-
-        .table-actions .export-calendar-button:hover {
-            background-color: #8e44ad;
-        }
-
-        .table-actions .save-columns-button {
-            background-color: #34495e; /* Azul escuro */
-            color: white;
-        }
-
-        .table-actions .save-columns-button:hover {
-            background-color: #2c3e50;
+        .toolbar .action-button.disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
         }
 
         .table-container {
             flex-grow: 1;
-            overflow-x: auto; /* Permite scroll horizontal na tabela */
-            overflow-y: auto; /* Permite scroll vertical na tabela */
+            overflow-x: auto; /* Permite rolagem horizontal para a tabela */
+            overflow-y: auto; /* Permite rolagem vertical para a tabela */
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-soft);
         }
@@ -566,7 +426,7 @@
         .notes-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 800px; /* Garante que a tabela não fique muito pequena */
+            min-width: 800px; /* Garante que a tabela não fique muito estreita */
         }
 
         .notes-table th,
@@ -574,62 +434,44 @@
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid var(--border-soft);
-            white-space: nowrap; /* Evita que o conteúdo da célula quebre linha */
+            white-space: nowrap; /* Evita quebra de linha no conteúdo da célula */
         }
 
         .notes-table th {
             background-color: var(--bg-page);
-            color: var(--text-main);
             font-weight: bold;
+            color: var(--text-main);
             position: sticky;
             top: 0;
-            z-index: 2; /* Garante que o cabeçalho fique acima do conteúdo ao rolar */
-            cursor: grab; /* Indica que a coluna pode ser arrastada */
-            user-select: none; /* Impede seleção de texto ao arrastar */
+            z-index: 2;
+            cursor: grab; /* Cursor para indicar que a coluna pode ser arrastada */
         }
 
         .notes-table th.dragging {
             opacity: 0.7;
         }
 
-        .notes-table th .resizer-col {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 5px;
-            height: 100%;
-            background: transparent; /* Invisível, mas clicável */
+        .notes-table th.resizing {
             cursor: col-resize;
-            z-index: 3; /* Acima do th */
         }
 
         .notes-table tbody tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .notes-table tbody tr.completed {
-            text-decoration: line-through;
-            color: var(--text-muted);
-            opacity: 0.7;
-        }
-
-        .notes-table tbody tr.overdue {
-            background-color: #ffebee; /* Vermelho claro para atrasadas */
+            background-color: #f5f8fc;
         }
 
         .notes-table .actions-cell {
             display: flex;
-            gap: 5px;
-            justify-content: flex-end;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
         }
 
         .notes-table .actions-cell button {
             background: none;
             border: none;
-            color: var(--text-muted);
+            font-size: 1.1em;
             cursor: pointer;
-            font-size: 1em;
-            padding: 5px;
+            color: var(--text-muted);
             transition: color 0.2s ease;
         }
 
@@ -637,36 +479,73 @@
             color: var(--primary-green-dark);
         }
 
+        .notes-table .actions-cell .edit-button:hover {
+            color: var(--info);
+        }
+
+        .notes-table .actions-cell .delete-button:hover {
+            color: var(--danger);
+        }
+
         .notes-table .status-badge {
-            display: inline-block;
             padding: 5px 10px;
             border-radius: 15px;
             font-size: 0.8em;
             font-weight: bold;
-            text-transform: uppercase;
-            white-space: nowrap;
+            display: inline-block;
+            text-align: center;
         }
 
         /* Estilos para os badges de status */
-        .status-badge.nao-analisado { background-color: var(--status-nao-analisado-bg); color: var(--status-nao-analisado-text); }
-        .status-badge.pendente { background-color: var(--status-pendente-bg); color: var(--status-pendente-text); }
-        .status-badge.em-processamento { background-color: var(--status-em-processamento-bg); color: var(--status-em-processamento-text); }
-        .status-badge.programado { background-color: var(--status-programado-bg); color: var(--status-programado-text); }
-        .status-badge.cancelado { background-color: var(--status-cancelado-bg); color: var(--status-cancelado-text); }
-        .status-badge.concluido { background-color: var(--status-concluido-bg); color: var(--status-concluido-text); }
+        .status-nao-analisado {
+            background-color: var(--status-nao-analisado-bg);
+            color: var(--status-nao-analisado-text);
+        }
 
+        .status-pendente {
+            background-color: var(--status-pendente-bg);
+            color: var(--status-pendente-text);
+        }
 
-        /* Modais */
+        .status-em-processamento {
+            background-color: var(--status-em-processamento-bg);
+            color: var(--status-em-processamento-text);
+        }
+
+        .status-programado {
+            background-color: var(--status-programado-bg);
+            color: var(--status-programado-text);
+        }
+
+        .status-cancelado {
+            background-color: var(--status-cancelado-bg);
+            color: var(--status-cancelado-text);
+        }
+
+        .status-concluido {
+            background-color: var(--status-concluido-bg);
+            color: var(--status-concluido-text);
+        }
+
+        .note-row.atrasada {
+            background-color: #ffebee; /* Vermelho claro para atrasadas */
+        }
+
+        .note-row.atrasada .status-badge {
+            border: 1px solid var(--danger);
+        }
+
+        /* Modal de Visualização */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
-            z-index: 100; /* Sit on top */
+            z-index: 1000; /* Sit on top */
             left: 0;
             top: 0;
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
             justify-content: center;
             align-items: center;
         }
@@ -674,12 +553,13 @@
         .modal-content {
             background-color: var(--card-bg);
             margin: auto;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 600px;
             position: relative;
+            animation: fadeIn 0.3s;
         }
 
         .modal-header {
@@ -687,34 +567,33 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-soft);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .modal-header h2 {
             margin: 0;
-            font-size: 1.5em;
             color: var(--primary-green-dark);
+            font-size: 1.5em;
         }
 
         .modal-close {
             color: var(--text-muted);
-            font-size: 1.8em;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.2s ease;
         }
 
         .modal-close:hover,
         .modal-close:focus {
-            color: var(--danger);
+            color: #000;
             text-decoration: none;
         }
 
         .modal-body p {
             margin-bottom: 10px;
             line-height: 1.6;
-            font-size: 0.95em;
+            color: var(--text-main);
         }
 
         .modal-body strong {
@@ -724,29 +603,28 @@
         .modal-footer {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
             border-top: 1px solid var(--border-soft);
             padding-top: 15px;
             margin-top: 20px;
+            gap: 10px;
         }
 
         .modal-footer button {
-            padding: 10px 20px;
+            padding: 10px 15px;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
-            font-weight: bold;
             transition: background-color 0.2s ease;
         }
 
         .modal-footer .close-button {
-            background-color: #ccc;
-            color: var(--text-main);
+            background-color: var(--text-muted);
+            color: white;
         }
 
         .modal-footer .close-button:hover {
-            background-color: #bbb;
+            background-color: #555;
         }
 
         .modal-footer .edit-button {
@@ -755,94 +633,150 @@
         }
 
         .modal-footer .edit-button:hover {
-            background-color: #2980b9;
+            background-color: #2196f3;
         }
 
-        /* Estilos específicos para o modal de recorrência */
-        #customRecurrenceModal .modal-body {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        /* Modal de Importação */
+        .import-modal-content {
+            max-width: 500px;
         }
 
-        #customRecurrenceModal .form-group {
-            margin-bottom: 0; /* Ajuste para o layout do modal */
+        .import-modal-content .form-group {
+            margin-bottom: 15px;
         }
 
-        #customRecurrenceModal .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        #customRecurrenceModal .radio-group label {
-            display: flex;
-            align-items: center;
-            font-weight: normal;
-        }
-
-        #customRecurrenceModal .radio-group input[type="radio"] {
-            margin-right: 8px;
-        }
-
-        #customRecurrenceModal .recurrence-days-of-week {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
+        .import-modal-content .form-group input[type="file"] {
             padding: 10px;
             border: 1px solid var(--border-soft);
-            border-radius: 8px;
+            border-radius: 5px;
             background-color: var(--bg-page);
+            width: 100%;
         }
 
-        #customRecurrenceModal .recurrence-days-of-week .day-chip {
-            padding: 8px 12px;
-            border-radius: 20px;
-            background-color: #e0e0e0;
-            color: #424242;
-            cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
+        .import-modal-content .modal-footer {
+            justify-content: space-between;
         }
 
-        #customRecurrenceModal .recurrence-days-of-week .day-chip.active {
+        .import-modal-content .modal-footer .import-button {
             background-color: var(--primary-green);
             color: white;
         }
 
-        #customRecurrenceModal .recurrence-ends-options {
+        .import-modal-content .modal-footer .import-button:hover {
+            background-color: var(--primary-green-dark);
+        }
+
+        /* Modal de Recorrência Personalizada */
+        .custom-recurrence-modal-content {
+            max-width: 500px;
+        }
+
+        .custom-recurrence-modal-content .form-group {
+            margin-bottom: 15px;
+        }
+
+        .custom-recurrence-modal-content .form-group.inline-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .custom-recurrence-modal-content .form-group.inline-group label {
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+
+        .custom-recurrence-modal-content .form-group.inline-group input[type="number"],
+        .custom-recurrence-modal-content .form-group.inline-group select {
+            width: auto;
+            flex-grow: 1;
+        }
+
+        .custom-recurrence-modal-content .day-chips-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .custom-recurrence-modal-content .day-chip {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border: 1px solid var(--border-soft);
+        }
+
+        .custom-recurrence-modal-content .day-chip.active {
+            background-color: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+
+        .custom-recurrence-modal-content .recurrence-ends-options {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-top: 15px;
         }
 
-        #customRecurrenceModal .recurrence-ends-options label {
+        .custom-recurrence-modal-content .recurrence-ends-options label {
             display: flex;
             align-items: center;
+            gap: 8px;
             font-weight: normal;
         }
 
-        #customRecurrenceModal .recurrence-ends-options input[type="radio"] {
-            margin-right: 8px;
+        .custom-recurrence-modal-content .recurrence-ends-options input[type="radio"] {
+            margin: 0;
         }
 
-        #customRecurrenceModal .recurrence-ends-options input[type="date"],
-        #customRecurrenceModal .recurrence-ends-options input[type="number"] {
-            margin-left: 10px;
-            padding: 8px 12px;
-            border: 1px solid var(--border-soft);
-            border-radius: 8px;
-            font-size: 0.9em;
-            width: auto; /* Ajusta a largura para o conteúdo */
+        .custom-recurrence-modal-content .recurrence-ends-options input[type="date"],
+        .custom-recurrence-modal-content .recurrence-ends-options input[type="number"] {
+            width: auto;
+            flex-grow: 1;
+            margin-left: 5px;
         }
 
-        #customRecurrenceModal .recurrence-ends-options input:disabled {
-            background-color: #f0f0f0;
-            cursor: not-allowed;
+        .custom-recurrence-modal-content .modal-footer {
+            justify-content: space-between;
         }
 
-        /* Responsividade básica */
+        .custom-recurrence-modal-content .modal-footer .cancel-button {
+            background-color: var(--text-muted);
+            color: white;
+        }
+
+        .custom-recurrence-modal-content .modal-footer .cancel-button:hover {
+            background-color: #555;
+        }
+
+        .custom-recurrence-modal-content .modal-footer .save-button {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .custom-recurrence-modal-content .modal-footer .save-button:hover {
+            background-color: var(--primary-green-dark);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -854,7 +788,8 @@
                 max-width: none;
                 border-right: none;
                 border-bottom: 1px solid var(--border-soft);
-                padding-bottom: 0;
+                position: static;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             }
 
             .resizer {
@@ -862,26 +797,39 @@
             }
 
             .panel-right {
+                width: 100%;
                 padding-top: 0;
             }
 
-            .metrics-grid {
-                grid-template-columns: 1fr 1fr;
+            .metric-cards {
+                flex-direction: column;
             }
 
-            .table-actions {
-                justify-content: center;
+            .metric-card {
+                min-width: unset;
+                width: 100%;
             }
 
-            .notes-table {
-                min-width: 600px; /* Mantém um mínimo para a tabela */
+            .toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toolbar input[type="text"],
+            .toolbar button {
+                width: 100%;
+            }
+
+            .notes-table th,
+            .notes-table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
     <div class="panel-left">
-        <div class="resizer"></div>
         <div class="panel-left-header">
             <i class="fas fa-clipboard-list"></i>
             <div>
@@ -910,12 +858,10 @@
             <div class="form-group">
                 <label for="noteDate">Prazo:</label>
                 <input type="date" id="noteDate">
-                <i class="fas fa-calendar-alt input-icon"></i>
             </div>
             <div class="form-group">
                 <label for="noteTime">Horário:</label>
                 <input type="time" id="noteTime">
-                <i class="fas fa-clock input-icon"></i>
             </div>
 
             <div class="form-group">
@@ -940,53 +886,55 @@
                 </div>
             </div>
 
-            <div class="recurrence-options">
+            <div class="form-group">
                 <label>Repetir:</label>
-                <label>
-                    <input type="radio" name="recurrence" value="never" id="recurrenceNeverRadio" checked> Nunca
-                </label>
-                <button type="button" id="openCustomRecurrenceModalButton">Configurar recorrência</button>
+                <div class="recurrence-options">
+                    <label><input type="radio" name="recurrence" value="never" checked> Nunca</label>
+                    <label><input type="radio" name="recurrence" value="daily"> Diariamente</label>
+                    <label><input type="radio" name="recurrence" value="weekly"> Semanalmente</label>
+                    <label><input type="radio" name="recurrence" value="monthly"> Mensalmente</label>
+                    <label><input type="radio" name="recurrence" value="yearly"> Anualmente</label>
+                    <label><input type="radio" name="recurrence" value="custom" id="customRecurrenceRadio"> Personalizado</label>
+                </div>
+                <button type="button" id="configureRecurrenceButton" class="action-button" style="margin-top: 10px; display: none;">Configurar recorrência</button>
             </div>
 
             <div class="form-actions">
                 <button type="button" class="cancel-button" id="cancelButton">Cancelar</button>
-                <button type="submit" class="save-button">Salvar Anotação</button>
+                <button type="submit" class="save-button" id="saveNoteButton">Salvar Anotação</button>
             </div>
         </form>
     </div>
 
     <div class="panel-right">
-        <div class="metrics-grid">
+        <div class="metric-cards">
             <div class="metric-card total" data-filter="total">
                 <h3>Total de Anotações</h3>
                 <p id="totalNotesCount">0</p>
             </div>
-            <div class="metric-card pendentes" data-filter="Pendente">
+            <div class="metric-card pendentes" data-filter="pendente">
                 <h3>Pendentes</h3>
                 <p id="pendingNotesCount">0</p>
             </div>
-            <div class="metric-card atrasadas" data-filter="Atrasada">
+            <div class="metric-card atrasadas" data-filter="atrasada">
                 <h3>Atrasadas</h3>
                 <p id="overdueNotesCount">0</p>
             </div>
-            <div class="metric-card concluidas" data-filter="Concluído">
+            <div class="metric-card concluidas" data-filter="concluido">
                 <h3>Concluídas</h3>
                 <p id="completedNotesCount">0</p>
             </div>
         </div>
 
-        <div class="filter-bar">
+        <div class="toolbar">
             <input type="text" id="filterTextInput" placeholder="Filtrar por título, responsável, conteúdo...">
             <button type="button" class="filter-button" id="filterButton"><i class="fas fa-search"></i> Filtrar</button>
             <button type="button" class="clear-filter-button" id="clearFilterButton"><i class="fas fa-times"></i> Limpar</button>
-        </div>
-
-        <div class="table-actions">
-            <button type="button" class="delete-selected-button" id="deleteSelectedButton" style="display: none;"><i class="fas fa-trash-alt"></i> Excluir Selecionados</button>
-            <button type="button" class="export-button" id="exportDataButton"><i class="fas fa-file-export"></i> Exportar Dados</button>
-            <button type="button" class="import-button" id="importDataButton"><i class="fas fa-file-import"></i> Importar Dados</button>
-            <button type="button" class="export-calendar-button" id="exportCalendarButton"><i class="fas fa-calendar-alt"></i> Exportar Agenda</button>
-            <button type="button" class="save-columns-button" id="saveColumnSettingsButton"><i class="fas fa-save"></i> Salvar Colunas</button>
+            <button type="button" class="action-button" id="deleteSelectedButton" disabled><i class="fas fa-trash"></i> Excluir Selecionados</button>
+            <button type="button" class="action-button" id="exportDataButton"><i class="fas fa-file-export"></i> Exportar Dados</button>
+            <button type="button" class="action-button" id="importDataButton"><i class="fas fa-file-import"></i> Importar Dados</button>
+            <button type="button" class="action-button" id="exportCalendarButton"><i class="fas fa-calendar-alt"></i> Exportar Agenda</button>
+            <button type="button" class="action-button" id="saveColumnSettingsButton"><i class="fas fa-save"></i> Salvar Colunas</button>
         </div>
 
         <div class="table-container">
@@ -994,13 +942,14 @@
                 <thead>
                     <tr id="tableHeaderRow">
                         <th data-column="select" style="width: 40px;"><input type="checkbox" id="selectAllNotesCheckbox"></th>
-                        <th data-column="tipo" style="width: 100px;">Tipo<div class="resizer-col"></div></th>
-                        <th data-column="titulo" style="width: 200px;">Título<div class="resizer-col"></div></th>
-                        <th data-column="responsavel" style="width: 150px;">Responsável<div class="resizer-col"></div></th>
-                        <th data-column="conteudo" style="width: 300px;">Conteúdo<div class="resizer-col"></div></th>
-                        <th data-column="prazo" style="width: 150px;">Prazo<div class="resizer-col"></div></th>
-                        <th data-column="status" style="width: 120px;">Status<div class="resizer-col"></div></th>
-                        <th data-column="actions" style="width: 120px;">Ações<div class="resizer-col"></div></th>
+                        <th data-column="tipo" style="width: 100px;">Tipo</th>
+                        <th data-column="titulo" style="width: 200px;">Título</th>
+                        <th data-column="responsavel" style="width: 150px;">Responsável</th>
+                        <th data-column="conteudo" style="width: 250px;">Conteúdo</th>
+                        <th data-column="prazo" style="width: 120px;">Prazo</th>
+                        <th data-column="horario" style="width: 80px;">Horário</th>
+                        <th data-column="status" style="width: 120px;">Status</th>
+                        <th data-column="acoes" style="width: 100px;">Ações</th>
                     </tr>
                 </thead>
                 <tbody id="notesTableBody">
@@ -1010,7 +959,7 @@
         </div>
     </div>
 
-    <!-- Modal de Visualização -->
+    <!-- Modal de Visualização de Anotação -->
     <div id="viewModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1034,34 +983,33 @@
 
     <!-- Modal de Importação -->
     <div id="importModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content import-modal-content">
             <div class="modal-header">
-                <h2>Opções de Importação</h2>
+                <h2>Importar Anotações</h2>
                 <span class="modal-close" id="importModalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
-                <p>Como você gostaria de importar os dados?</p>
-                <label><input type="radio" name="importOption" value="replace" checked> Substituir tudo</label>
-                <label><input type="radio" name="importOption" value="add"> Adicionar aos existentes</label>
-                <label><input type="radio" name="importOption" value="update"> Atualizar existentes (manter novos)</label>
-                <input type="file" id="importFileInput" accept=".json">
+                <div class="form-group">
+                    <label for="importFileInput">Selecione o arquivo CSV ou JSON:</label>
+                    <input type="file" id="importFileInput" accept=".csv, .json">
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="close-button">Cancelar</button>
-                <button type="button" class="save-button" id="confirmImportButton">Importar</button>
+                <button type="button" class="import-button">Importar</button>
             </div>
         </div>
     </div>
 
     <!-- Modal de Recorrência Personalizada -->
     <div id="customRecurrenceModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content custom-recurrence-modal-content">
             <div class="modal-header">
-                <h2>Configurar Recorrência</h2>
+                <h2>Configurar Recorrência Personalizada</h2>
                 <span class="modal-close" id="customRecurrenceModalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
-                <div class="form-group">
+                <div class="form-group inline-group">
                     <label for="recurrenceInterval">Repetir a cada:</label>
                     <input type="number" id="recurrenceInterval" value="1" min="1">
                     <select id="recurrenceIntervalUnitSelect">
@@ -1072,45 +1020,43 @@
                     </select>
                 </div>
 
-                <div class="form-group recurrence-days-of-week" id="recurrenceDaysOfWeekGroup" style="display: none;">
-                    <label>Repetir em:</label>
+                <div class="form-group day-chips-group" id="recurrenceDaysOfWeekGroup" style="display: none;">
+                    <label>Em:</label>
                     <div id="customRecurrenceDays">
-                        <span class="day-chip" data-day="0">Dom</span>
-                        <span class="day-chip" data-day="1">Seg</span>
-                        <span class="day-chip" data-day="2">Ter</span>
-                        <span class="day-chip" data-day="3">Qua</span>
-                        <span class="day-chip" data-day="4">Qui</span>
-                        <span class="day-chip" data-day="5">Sex</span>
-                        <span class="day-chip" data-day="6">Sáb</span>
+                        <span class="day-chip" data-day="SU">Dom</span>
+                        <span class="day-chip" data-day="MO">Seg</span>
+                        <span class="day-chip" data-day="TU">Ter</span>
+                        <span class="day-chip" data-day="WE">Qua</span>
+                        <span class="day-chip" data-day="TH">Qui</span>
+                        <span class="day-chip" data-day="FR">Sex</span>
+                        <span class="day-chip" data-day="SA">Sáb</span>
                     </div>
                 </div>
 
-                <div class="recurrence-ends-options">
+                <div class="form-group">
                     <label>Termina:</label>
-                    <label>
-                        <input type="radio" name="recurrenceEnds" value="never" id="recurrenceEndsNeverRadio" checked> Nunca
-                    </label>
-                    <label>
-                        <input type="radio" name="recurrenceEnds" value="onDate" id="recurrenceEndsOnDateRadio"> Em
-                        <input type="date" id="recurrenceEndDateInput" disabled>
-                    </label>
-                    <label>
-                        <input type="radio" name="recurrenceEnds" value="afterOccurrences" id="recurrenceEndsAfterOccurrencesRadio"> Após
-                        <input type="number" id="recurrenceEndOccurrencesInput" value="1" min="1" disabled> ocorrência(s)
-                    </label>
+                    <div class="recurrence-ends-options">
+                        <label><input type="radio" name="recurrenceEnds" value="never" checked> Nunca</label>
+                        <label>
+                            <input type="radio" name="recurrenceEnds" value="onDate" id="recurrenceEndsOnDateRadio"> Em:
+                            <input type="date" id="recurrenceEndDateInput" disabled>
+                        </label>
+                        <label>
+                            <input type="radio" name="recurrenceEnds" value="afterOccurrences" id="recurrenceEndsAfterOccurrencesRadio"> Após:
+                            <input type="number" id="recurrenceEndOccurrencesInput" min="1" disabled> ocorrências
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close-button" id="cancelCustomRecurrenceButton">Cancelar</button>
+                <button type="button" class="cancel-button" id="cancelCustomRecurrenceButton">Cancelar</button>
                 <button type="button" class="save-button" id="saveCustomRecurrenceButton">Salvar</button>
             </div>
         </div>
     </div>
 
-    <!-- Script do Supabase -->
-    <script type="module" src="./certhilsupabase.js"></script>
-
     <script type="module">
+        // Importa o cliente Supabase
         import { supabase } from './certhilsupabase.js';
 
         // --- Elementos do DOM ---
@@ -1119,41 +1065,40 @@
         const noteResponsibleInput = document.getElementById('noteResponsible');
         const noteContentInput = document.getElementById('noteContent');
         const noteDateInput = document.getElementById('noteDate');
-        const noteTimeInput = document.getElementById('noteTime'); // Adicionado novamente
+        const noteTimeInput = document.getElementById('noteTime');
         const typeChipsContainer = document.getElementById('typeChipsContainer');
         const newTypeInput = document.getElementById('newTypeInput');
         const addTypeButton = document.getElementById('addTypeButton');
         const statusChipsContainer = document.getElementById('statusChipsContainer');
         const newStatusInput = document.getElementById('newStatusInput');
         const addStatusButton = document.getElementById('addStatusButton');
-        const recurrenceNeverRadio = document.getElementById('recurrenceNeverRadio');
-        const openCustomRecurrenceModalButton = document.getElementById('openCustomRecurrenceModalButton');
         const cancelButton = document.getElementById('cancelButton');
-        const notesTableBody = document.getElementById('notesTableBody');
+        const saveNoteButton = document.getElementById('saveNoteButton');
+
         const totalNotesCount = document.getElementById('totalNotesCount');
         const pendingNotesCount = document.getElementById('pendingNotesCount');
         const overdueNotesCount = document.getElementById('overdueNotesCount');
         const completedNotesCount = document.getElementById('completedNotesCount');
         const metricCards = document.querySelectorAll('.metric-card');
+
         const filterTextInput = document.getElementById('filterTextInput');
         const filterButton = document.getElementById('filterButton');
         const clearFilterButton = document.getElementById('clearFilterButton');
-        const selectAllNotesCheckbox = document.getElementById('selectAllNotesCheckbox');
         const deleteSelectedButton = document.getElementById('deleteSelectedButton');
         const exportDataButton = document.getElementById('exportDataButton');
         const importDataButton = document.getElementById('importDataButton');
-        const importModal = document.getElementById('importModal');
-        const importModalCloseButton = document.getElementById('importModalCloseButton');
-        const importFileInput = document.getElementById('importFileInput');
-        const confirmImportButton = document.getElementById('confirmImportButton');
         const exportCalendarButton = document.getElementById('exportCalendarButton');
-        const saveColumnSettingsButton = document.getElementById('saveColumnSettingsButton');
+        const saveColumnSettingsButton = document.getElementById('saveColumnSettingsButton'); // Novo botão
+
+        const notesTableBody = document.getElementById('notesTableBody');
+        const selectAllNotesCheckbox = document.getElementById('selectAllNotesCheckbox');
         const tableHeaderRow = document.getElementById('tableHeaderRow');
 
         // Modal de Visualização
         const viewModal = document.getElementById('viewModal');
         const modalCloseButton = document.getElementById('modalCloseButton');
         const viewModalCloseButton = document.getElementById('viewModalCloseButton');
+        const viewModalEditButton = document.getElementById('viewModalEditButton');
         const viewModalTitle = document.getElementById('viewModalTitle');
         const viewModalResponsible = document.getElementById('viewModalResponsible');
         const viewModalContent = document.getElementById('viewModalContent');
@@ -1162,16 +1107,21 @@
         const viewModalType = document.getElementById('viewModalType');
         const viewModalStatus = document.getElementById('viewModalStatus');
         const viewModalRecurrence = document.getElementById('viewModalRecurrence');
-        const viewModalEditButton = document.getElementById('viewModalEditButton');
+
+        // Modal de Importação
+        const importModal = document.getElementById('importModal');
+        const importModalCloseButton = document.getElementById('importModalCloseButton');
+        const importFileInput = document.getElementById('importFileInput');
 
         // Modal de Recorrência Personalizada
         const customRecurrenceModal = document.getElementById('customRecurrenceModal');
         const customRecurrenceModalCloseButton = document.getElementById('customRecurrenceModalCloseButton');
+        const configureRecurrenceButton = document.getElementById('configureRecurrenceButton');
+        const customRecurrenceRadio = document.getElementById('customRecurrenceRadio');
         const recurrenceInterval = document.getElementById('recurrenceInterval');
         const recurrenceIntervalUnitSelect = document.getElementById('recurrenceIntervalUnitSelect');
         const recurrenceDaysOfWeekGroup = document.getElementById('recurrenceDaysOfWeekGroup');
         const customRecurrenceDays = document.getElementById('customRecurrenceDays');
-        const recurrenceEndsNeverRadio = document.getElementById('recurrenceEndsNeverRadio');
         const recurrenceEndsOnDateRadio = document.getElementById('recurrenceEndsOnDateRadio');
         const recurrenceEndDateInput = document.getElementById('recurrenceEndDateInput');
         const recurrenceEndsAfterOccurrencesRadio = document.getElementById('recurrenceEndsAfterOccurrencesRadio');
@@ -1179,80 +1129,139 @@
         const cancelCustomRecurrenceButton = document.getElementById('cancelCustomRecurrenceButton');
         const saveCustomRecurrenceButton = document.getElementById('saveCustomRecurrenceButton');
 
-
         // --- Variáveis de Estado ---
         let notes = [];
-        let customTypes = JSON.parse(localStorage.getItem('customTypes')) || ['Lembrete', 'Reunião', 'Tarefa', 'EAT\'s', 'Operadores', 'Conversar', 'Conferir', 'RH'];
+        let customTypes = JSON.parse(localStorage.getItem('customTypes')) || ['Tarefa', 'Lembrete', 'Evento'];
         let customStatus = JSON.parse(localStorage.getItem('customStatus')) || ['Não Analisado', 'Pendente', 'Em Processamento', 'Programado', 'Cancelado', 'Concluído'];
         let selectedNotes = new Set();
-        let currentFilter = 'total'; // 'total', 'Pendente', 'Atrasada', 'Concluído'
-        let currentRecurrence = { type: 'never' }; // Objeto para armazenar a configuração de recorrência
+        let currentFilter = 'total'; // Filtro inicial
         let columnSettings = JSON.parse(localStorage.getItem('columnSettings')) || {
-            order: ['select', 'tipo', 'titulo', 'responsavel', 'conteudo', 'prazo', 'status', 'actions'],
+            order: ['select', 'tipo', 'titulo', 'responsavel', 'conteudo', 'prazo', 'horario', 'status', 'acoes'],
             widths: {
-                'select': 40, 'tipo': 100, 'titulo': 200, 'responsavel': 150, 'conteudo': 300, 'prazo': 150, 'status': 120, 'actions': 120
+                'select': '40px',
+                'tipo': '100px',
+                'titulo': '200px',
+                'responsavel': '150px',
+                'conteudo': '250px',
+                'prazo': '120px',
+                'horario': '80px',
+                'status': '120px',
+                'acoes': '100px'
             }
         };
+        let currentRecurrence = null; // Objeto para armazenar a recorrência personalizada
 
         // --- Funções de Utilitário ---
         const formatDate = (dateString) => {
-            if (!dateString) return 'N/A';
-            const date = new Date(dateString + 'T00:00:00'); // Adiciona T00:00:00 para garantir que seja interpretado como UTC e não haja problemas de fuso horário
-            if (isNaN(date.getTime())) return 'N/A';
+            if (!dateString) return '';
+            const date = new Date(dateString + 'T00:00:00'); // Adiciona T00:00:00 para evitar problemas de fuso horário
             return date.toLocaleDateString('pt-BR');
         };
 
         const formatTime = (timeString) => {
-            if (!timeString) return 'N/A';
-            // O tipo timetz do Supabase retorna a hora no formato HH:MM:SS.f+TZ
-            // Precisamos extrair apenas HH:MM
-            const parts = timeString.split(':');
-            if (parts.length >= 2) {
-                return `${parts[0]}:${parts[1]}`;
-            }
-            return timeString; // Retorna o original se não conseguir formatar
+            if (!timeString) return '';
+            // Para timetz, o formato já deve ser 'HH:MM' ou 'HH:MM:SS'
+            // Se precisar de formatação específica, ajuste aqui.
+            return timeString.substring(0, 5); // Pega apenas HH:MM
         };
 
         const getStatusClass = (status) => {
             switch (status) {
-                case 'Não Analisado': return 'nao-analisado';
-                case 'Pendente': return 'pendente';
-                case 'Em Processamento': return 'em-processamento';
-                case 'Programado': return 'programado';
-                case 'Cancelado': return 'cancelado';
-                case 'Concluído': return 'concluido';
+                case 'Não Analisado': return 'status-nao-analisado';
+                case 'Pendente': return 'status-pendente';
+                case 'Em Processamento': return 'status-em-processamento';
+                case 'Programado': return 'status-programado';
+                case 'Cancelado': return 'status-cancelado';
+                case 'Concluído': return 'status-concluido';
                 default: return '';
             }
         };
 
         const isOverdue = (prazo, horario, status) => {
-            if (!prazo || status === 'Concluído' || status === 'Cancelado') return false;
+            if (status === 'Concluído' || !prazo) return false;
 
             const now = new Date();
-            const noteDateTime = new Date(prazo); // Prazo é Date, então já é YYYY-MM-DD
+            const noteDate = new Date(prazo);
 
+            // Se houver horário, combine data e hora
             if (horario) {
                 const [hours, minutes] = horario.split(':').map(Number);
-                noteDateTime.setHours(hours, minutes, 0, 0);
+                noteDate.setHours(hours, minutes, 0, 0);
             } else {
-                // Se não há horário, consideramos o final do dia do prazo
-                noteDateTime.setHours(23, 59, 59, 999);
+                // Se não houver horário, compare apenas a data (fim do dia)
+                noteDate.setHours(23, 59, 59, 999);
             }
 
-            return noteDateTime < now;
+            return noteDate < now;
         };
 
-        // --- Funções de CRUD (Supabase) ---
+        // --- Funções de CRUD e Renderização ---
+
+        const loadCustomOptions = () => {
+            // As opções padrão já estão definidas acima, o localStorage as sobrescreve se existirem
+            // Não é necessário carregar do Supabase para estas opções, pois são do cliente
+        };
+
+        const saveCustomOptions = () => {
+            localStorage.setItem('customTypes', JSON.stringify(customTypes));
+            localStorage.setItem('customStatus', JSON.stringify(customStatus));
+        };
+
+        const renderCustomOptions = (options, container, inputElement, type) => {
+            container.innerHTML = '';
+            options.forEach(option => {
+                const chip = document.createElement('span');
+                chip.className = 'chip';
+                chip.textContent = option;
+                chip.addEventListener('click', () => {
+                    // Lógica para ativar/desativar chip
+                    container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                });
+
+                const closeIcon = document.createElement('i');
+                closeIcon.className = 'fas fa-times';
+                closeIcon.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evita que o clique no 'x' ative o chip
+                    if (confirm(`Tem certeza que deseja remover "${option}"?`)) {
+                        if (type === 'type') {
+                            customTypes = customTypes.filter(t => t !== option);
+                            renderCustomOptions(customTypes, typeChipsContainer, newTypeInput, 'type');
+                        } else {
+                            customStatus = customStatus.filter(s => s !== option);
+                            renderCustomOptions(customStatus, statusChipsContainer, newStatusInput, 'status');
+                        }
+                        saveCustomOptions();
+                    }
+                });
+                chip.appendChild(closeIcon);
+                container.appendChild(chip);
+            });
+
+            // Ativa o primeiro chip por padrão se nenhum estiver ativo
+            if (!container.querySelector('.chip.active') && options.length > 0) {
+                container.querySelector('.chip').classList.add('active');
+            }
+        };
+
+        const addCustomOption = (inputElement, optionsArray, container, type) => {
+            const value = inputElement.value.trim();
+            if (value && !optionsArray.includes(value)) {
+                optionsArray.push(value);
+                inputElement.value = '';
+                renderCustomOptions(optionsArray, container, inputElement, type);
+                saveCustomOptions();
+            }
+        };
+
         const loadNotes = async () => {
             try {
                 const { data, error } = await supabase
                     .from('anotacoes')
                     .select('*'); // Seleciona todas as colunas
 
-                if (error) {
-                    throw error;
-                }
-                notes = data || [];
+                if (error) throw error;
+                notes = data;
                 renderNotes(filterTextInput.value, currentFilter);
                 updateMetricCards();
             } catch (error) {
@@ -1266,16 +1275,19 @@
 
             const id = noteForm.dataset.editingId ? parseInt(noteForm.dataset.editingId, 10) : null;
             const titulo = noteTitleInput.value.trim();
-            const responsavel = noteResponsibleInput.value.trim() || null; // Envia null se vazio
-            const conteudo = noteContentInput.value.trim() || null; // Envia null se vazio
+            const responsavel = noteResponsibleInput.value.trim();
+            const conteudo = noteContentInput.value.trim();
             const prazo = noteDateInput.value || null; // Envia null se vazio
             const horario = noteTimeInput.value || null; // Envia null se vazio
             const tipo = typeChipsContainer.querySelector('.chip.active')?.textContent.replace(' ×', '').trim() || customTypes[0];
             const status = statusChipsContainer.querySelector('.chip.active')?.textContent.replace(' ×', '').trim() || customStatus[0];
 
-            // Se o título for vazio, mas outros campos foram preenchidos, ainda permite salvar.
-            // Se você quiser que o título seja obrigatório, adicione:
-            // if (!titulo) { alert('O título da anotação é obrigatório!'); return; }
+            // O título não é mais obrigatório, mas se for vazio, pode ser bom ter um placeholder ou aviso
+            if (!titulo && confirm('O título da anotação está vazio. Deseja continuar?')) {
+                // Continua com o título vazio
+            } else if (!titulo) {
+                return; // Impede o salvamento se o usuário cancelar
+            }
 
             const newNote = {
                 titulo,
@@ -1315,107 +1327,63 @@
             }
         };
 
-        const deleteNote = async (id) => {
-            if (!confirm('Tem certeza que deseja excluir esta anotação?')) return;
-
-            try {
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .delete()
-                    .eq('id', id);
-
-                if (error) throw error;
-                alert('Anotação excluída com sucesso!');
-                await loadNotes();
-            } catch (error) {
-                console.error('Erro ao excluir anotação:', error.message);
-                alert('Erro ao excluir anotação: ' + error.message);
-            }
-        };
-
-        const deleteSelectedNotes = async () => {
-            if (selectedNotes.size === 0) {
-                alert('Nenhuma anotação selecionada para exclusão.');
-                return;
-            }
-            if (!confirm(`Tem certeza que deseja excluir ${selectedNotes.size} anotação(ões) selecionada(s)?`)) return;
-
-            try {
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .delete()
-                    .in('id', Array.from(selectedNotes));
-
-                if (error) throw error;
-                alert(`${selectedNotes.size} anotação(ões) excluída(s) com sucesso!`);
-                selectedNotes.clear();
-                selectAllNotesCheckbox.checked = false;
-                toggleDeleteSelectedButton();
-                await loadNotes();
-            } catch (error) {
-                console.error('Erro ao excluir anotações selecionadas:', error.message);
-                alert('Erro ao excluir anotações selecionadas: ' + error.message);
-            }
-        };
-
-        const toggleNoteCompletion = async (id, currentStatus) => {
-            const newStatus = currentStatus === 'Concluído' ? 'Não Analisado' : 'Concluído';
-            try {
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .update({ status: newStatus })
-                    .eq('id', id);
-
-                if (error) throw error;
-                await loadNotes();
-            } catch (error) {
-                console.error('Erro ao alternar status da anotação:', error.message);
-                alert('Erro ao alternar status da anotação: ' + error.message);
-            }
-        };
-
-        // --- Funções de Renderização e UI ---
         const renderNotes = (filterText = '', filterType = 'total') => {
             notesTableBody.innerHTML = '';
             let filteredNotes = notes;
 
+            // Aplica filtro de texto
             if (filterText) {
                 const lowerCaseFilter = filterText.toLowerCase();
                 filteredNotes = filteredNotes.filter(note =>
-                    (note.titulo && note.titulo.toLowerCase().includes(lowerCaseFilter)) ||
-                    (note.responsavel && note.responsavel.toLowerCase().includes(lowerCaseFilter)) ||
-                    (note.conteudo && note.conteudo.toLowerCase().includes(lowerCaseFilter)) ||
-                    (note.tipo && note.tipo.toLowerCase().includes(lowerCaseFilter)) ||
-                    (note.status && note.status.toLowerCase().includes(lowerCaseFilter))
+                    note.titulo?.toLowerCase().includes(lowerCaseFilter) ||
+                    note.responsavel?.toLowerCase().includes(lowerCaseFilter) ||
+                    note.conteudo?.toLowerCase().includes(lowerCaseFilter) ||
+                    note.tipo?.toLowerCase().includes(lowerCaseFilter) ||
+                    note.status?.toLowerCase().includes(lowerCaseFilter)
                 );
             }
 
+            // Aplica filtro de tipo (Total, Pendentes, Atrasadas, Concluídas)
             if (filterType !== 'total') {
-                if (filterType === 'Atrasada') {
-                    filteredNotes = filteredNotes.filter(note => isOverdue(note.prazo, note.horario, note.status));
-                } else {
-                    filteredNotes = filteredNotes.filter(note => note.status === filterType);
-                }
+                filteredNotes = filteredNotes.filter(note => {
+                    if (filterType === 'atrasada') {
+                        return isOverdue(note.prazo, note.horario, note.status);
+                    }
+                    return note.status === filterType;
+                });
             }
 
-            // Aplica a ordem das colunas salvas
-            const orderedColumns = columnSettings.order;
+            // Ordena as anotações para que as atrasadas fiquem no topo
+            filteredNotes.sort((a, b) => {
+                const aOverdue = isOverdue(a.prazo, a.horario, a.status);
+                const bOverdue = isOverdue(b.prazo, b.horario, b.status);
+
+                if (aOverdue && !bOverdue) return -1;
+                if (!aOverdue && bOverdue) return 1;
+
+                // Se ambos são atrasados ou nenhum é, ordena por prazo
+                if (a.prazo && b.prazo) {
+                    const dateA = new Date(a.prazo + (a.horario ? 'T' + a.horario : ''));
+                    const dateB = new Date(b.prazo + (b.horario ? 'T' + b.horario : ''));
+                    return dateA - dateB;
+                }
+                return 0;
+            });
+
 
             filteredNotes.forEach(note => {
                 const row = document.createElement('tr');
                 row.dataset.id = note.id;
-                row.classList.toggle('completed', note.status === 'Concluído');
-                row.classList.toggle('overdue', isOverdue(note.prazo, note.horario, note.status));
+                row.className = `note-row ${isOverdue(note.prazo, note.horario, note.status) ? 'atrasada' : ''}`;
 
-                orderedColumns.forEach(columnKey => {
+                // Cria as células na ordem definida em columnSettings.order
+                columnSettings.order.forEach(columnKey => {
                     const cell = document.createElement('td');
-                    cell.style.width = `${columnSettings.widths[columnKey]}px`; // Aplica a largura salva
-
                     switch (columnKey) {
                         case 'select':
                             const checkbox = document.createElement('input');
                             checkbox.type = 'checkbox';
-                            checkbox.classList.add('note-select-checkbox');
+                            checkbox.className = 'note-select-checkbox';
                             checkbox.checked = selectedNotes.has(note.id);
                             checkbox.addEventListener('change', () => {
                                 if (checkbox.checked) {
@@ -1428,73 +1396,207 @@
                             cell.appendChild(checkbox);
                             break;
                         case 'tipo':
-                            cell.textContent = note.tipo || 'N/A';
+                            cell.textContent = note.tipo || '';
                             break;
                         case 'titulo':
-                            cell.textContent = note.titulo || 'N/A';
+                            cell.textContent = note.titulo || '';
                             break;
                         case 'responsavel':
-                            cell.textContent = note.responsavel || 'N/A';
+                            cell.textContent = note.responsavel || '';
                             break;
                         case 'conteudo':
-                            cell.textContent = note.conteudo || 'N/A';
+                            cell.textContent = note.conteudo || '';
                             break;
                         case 'prazo':
-                            const formattedDate = formatDate(note.prazo);
-                            const formattedTime = formatTime(note.horario);
-                            if (formattedDate !== 'N/A' && formattedTime !== 'N/A') {
-                                cell.innerHTML = `${formattedDate} às ${formattedTime}`;
-                            } else if (formattedDate !== 'N/A') {
-                                cell.innerHTML = formattedDate;
-                            } else {
-                                cell.innerHTML = 'N/A';
-                            }
+                            cell.textContent = formatDate(note.prazo);
+                            break;
+                        case 'horario':
+                            cell.textContent = formatTime(note.horario);
                             break;
                         case 'status':
                             const statusBadge = document.createElement('span');
-                            statusBadge.classList.add('status-badge', getStatusClass(note.status));
-                            statusBadge.textContent = note.status || 'N/A';
+                            statusBadge.className = `status-badge ${getStatusClass(note.status)}`;
+                            statusBadge.textContent = note.status || '';
                             cell.appendChild(statusBadge);
                             break;
-                        case 'actions':
-                            cell.classList.add('actions-cell');
+                        case 'acoes':
+                            const actionsDiv = document.createElement('div');
+                            actionsDiv.className = 'actions-cell';
+
                             const viewButton = document.createElement('button');
+                            viewButton.className = 'view-button';
                             viewButton.innerHTML = '<i class="fas fa-eye"></i>';
                             viewButton.title = 'Visualizar';
                             viewButton.addEventListener('click', () => viewNote(note.id));
 
                             const editButton = document.createElement('button');
+                            editButton.className = 'edit-button';
                             editButton.innerHTML = '<i class="fas fa-edit"></i>';
                             editButton.title = 'Editar';
                             editButton.addEventListener('click', () => editNote(note.id));
 
                             const deleteButton = document.createElement('button');
+                            deleteButton.className = 'delete-button';
                             deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
                             deleteButton.title = 'Excluir';
                             deleteButton.addEventListener('click', () => deleteNote(note.id));
 
-                            const toggleCompleteButton = document.createElement('button');
-                            toggleCompleteButton.innerHTML = note.status === 'Concluído' ? '<i class="fas fa-undo"></i>' : '<i class="fas fa-check"></i>';
-                            toggleCompleteButton.title = note.status === 'Concluído' ? 'Marcar como Não Analisado' : 'Marcar como Concluído';
-                            toggleCompleteButton.addEventListener('click', () => toggleNoteCompletion(note.id, note.status));
+                            const completeButton = document.createElement('button');
+                            completeButton.className = 'complete-button';
+                            completeButton.innerHTML = note.status === 'Concluído' ? '<i class="fas fa-undo"></i>' : '<i class="fas fa-check-circle"></i>';
+                            completeButton.title = note.status === 'Concluído' ? 'Marcar como Pendente' : 'Marcar como Concluído';
+                            completeButton.addEventListener('click', () => toggleNoteCompletion(note.id, note.status));
 
-                            cell.appendChild(viewButton);
-                            cell.appendChild(editButton);
-                            cell.appendChild(deleteButton);
-                            cell.appendChild(toggleCompleteButton);
+                            actionsDiv.appendChild(viewButton);
+                            actionsDiv.appendChild(editButton);
+                            actionsDiv.appendChild(completeButton);
+                            actionsDiv.appendChild(deleteButton);
+                            cell.appendChild(actionsDiv);
                             break;
                     }
                     row.appendChild(cell);
                 });
                 notesTableBody.appendChild(row);
             });
+            selectAllNotesCheckbox.checked = selectedNotes.size > 0 && selectedNotes.size === filteredNotes.length;
+            toggleDeleteSelectedButton();
+        };
+
+        const resetForm = () => {
+            noteForm.reset();
+            noteForm.dataset.editingId = '';
+            saveNoteButton.textContent = 'Salvar Anotação';
+            noteTitleInput.value = '';
+            noteResponsibleInput.value = '';
+            noteContentInput.value = '';
+            noteDateInput.value = '';
+            noteTimeInput.value = '';
+
+            // Reseta os chips de tipo e status para o primeiro padrão
+            typeChipsContainer.querySelectorAll('.chip').forEach((chip, index) => {
+                chip.classList.remove('active');
+                if (index === 0) chip.classList.add('active');
+            });
+            statusChipsContainer.querySelectorAll('.chip').forEach((chip, index) => {
+                chip.classList.remove('active');
+                if (index === 0) chip.classList.add('active');
+            });
+
+            // Reseta a recorrência
+            document.querySelector('input[name="recurrence"][value="never"]').checked = true;
+            currentRecurrence = null;
+            updateCustomRecurrenceButtonText();
+            closeCustomRecurrenceModal();
+        };
+
+        const editNote = (id) => {
+            const note = notes.find(n => n.id === id);
+            if (note) {
+                noteForm.dataset.editingId = note.id;
+                noteTitleInput.value = note.titulo || '';
+                noteResponsibleInput.value = note.responsavel || '';
+                noteContentInput.value = note.conteudo || '';
+                noteDateInput.value = note.prazo || '';
+                noteTimeInput.value = note.horario || '';
+
+                // Ativa o chip de tipo correto
+                typeChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                    chip.classList.remove('active');
+                    if (chip.textContent.replace(' ×', '').trim() === note.tipo) {
+                        chip.classList.add('active');
+                    }
+                });
+
+                // Ativa o chip de status correto
+                statusChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                    chip.classList.remove('active');
+                    if (chip.textContent.replace(' ×', '').trim() === note.status) {
+                        chip.classList.add('active');
+                    }
+                });
+
+                // Carrega a recorrência
+                if (note.recurrence) {
+                    currentRecurrence = note.recurrence;
+                    document.querySelector(`input[name="recurrence"][value="${note.recurrence.type}"]`).checked = true;
+                    updateCustomRecurrenceButtonText();
+                } else {
+                    document.querySelector('input[name="recurrence"][value="never"]').checked = true;
+                    currentRecurrence = null;
+                    updateCustomRecurrenceButtonText();
+                }
+
+                saveNoteButton.textContent = 'Atualizar Anotação';
+                viewModal.style.display = 'none'; // Fecha o modal de visualização se estiver aberto
+            }
+        };
+
+        const deleteNote = async (id) => {
+            if (confirm('Tem certeza que deseja excluir esta anotação?')) {
+                try {
+                    const { error } = await supabase
+                        .from('anotacoes')
+                        .delete()
+                        .eq('id', id);
+
+                    if (error) throw error;
+                    alert('Anotação excluída com sucesso!');
+                    selectedNotes.delete(id); // Remove do set de selecionados
+                    await loadNotes();
+                } catch (error) {
+                    console.error('Erro ao excluir anotação:', error.message);
+                    alert('Erro ao excluir anotação: ' + error.message);
+                }
+            }
+        };
+
+        const deleteSelectedNotes = async () => {
+            if (selectedNotes.size === 0) {
+                alert('Nenhuma anotação selecionada para exclusão.');
+                return;
+            }
+
+            if (confirm(`Tem certeza que deseja excluir ${selectedNotes.size} anotação(ões) selecionada(s)?`)) {
+                try {
+                    const { error } = await supabase
+                        .from('anotacoes')
+                        .delete()
+                        .in('id', Array.from(selectedNotes));
+
+                    if (error) throw error;
+                    alert(`${selectedNotes.size} anotação(ões) excluída(s) com sucesso!`);
+                    selectedNotes.clear(); // Limpa o set
+                    selectAllNotesCheckbox.checked = false; // Desmarca o checkbox "selecionar todos"
+                    await loadNotes();
+                } catch (error) {
+                    console.error('Erro ao excluir anotações selecionadas:', error.message);
+                    alert('Erro ao excluir anotações selecionadas: ' + error.message);
+                }
+            }
+        };
+
+        const toggleNoteCompletion = async (id, currentStatus) => {
+            const newStatus = currentStatus === 'Concluído' ? 'Pendente' : 'Concluído';
+            try {
+                const { error } = await supabase
+                    .from('anotacoes')
+                    .update({ status: newStatus })
+                    .eq('id', id);
+
+                if (error) throw error;
+                alert(`Anotação marcada como "${newStatus}"!`);
+                await loadNotes();
+            } catch (error) {
+                console.error('Erro ao atualizar status da anotação:', error.message);
+                alert('Erro ao atualizar status da anotação: ' + error.message);
+            }
         };
 
         const updateMetricCards = () => {
             const total = notes.length;
             const pending = notes.filter(note => note.status === 'Pendente').length;
-            const overdue = notes.filter(note => isOverdue(note.prazo, note.horario, note.status)).length;
             const completed = notes.filter(note => note.status === 'Concluído').length;
+            const overdue = notes.filter(note => isOverdue(note.prazo, note.horario, note.status)).length;
 
             totalNotesCount.textContent = total;
             pendingNotesCount.textContent = pending;
@@ -1502,272 +1604,64 @@
             completedNotesCount.textContent = completed;
         };
 
-        const resetForm = () => {
-            noteForm.reset();
-            noteForm.dataset.editingId = '';
-            noteTitleInput.value = '';
-            noteResponsibleInput.value = '';
-            noteContentInput.value = '';
-            noteDateInput.value = '';
-            noteTimeInput.value = '';
-
-            // Limpa a seleção de chips de tipo
-            typeChipsContainer.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
-            // Ativa o primeiro chip de tipo como padrão (se houver)
-            if (customTypes.length > 0) {
-                const defaultTypeChip = typeChipsContainer.querySelector(`.chip[data-value="${customTypes[0]}"]`);
-                if (defaultTypeChip) defaultTypeChip.classList.add('active');
-            }
-
-            // Limpa a seleção de chips de status
-            statusChipsContainer.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
-            // Ativa o primeiro chip de status como padrão (se houver)
-            if (customStatus.length > 0) {
-                const defaultStatusChip = statusChipsContainer.querySelector(`.chip[data-value="${customStatus[0]}"]`);
-                if (defaultStatusChip) defaultStatusChip.classList.add('active');
-            }
-
-            recurrenceNeverRadio.checked = true;
-            currentRecurrence = { type: 'never' };
-            updateCustomRecurrenceButtonText();
-        };
-
-        const editNote = (id) => {
-            const note = notes.find(n => n.id === id);
-            if (!note) return;
-
-            noteForm.dataset.editingId = note.id;
-            noteTitleInput.value = note.titulo || '';
-            noteResponsibleInput.value = note.responsavel || '';
-            noteContentInput.value = note.conteudo || '';
-            noteDateInput.value = note.prazo || '';
-            noteTimeInput.value = note.horario ? formatTime(note.horario) : ''; // Formata para HH:MM
-
-            // Ativa o chip de tipo correto
-            typeChipsContainer.querySelectorAll('.chip').forEach(chip => {
-                chip.classList.toggle('active', chip.dataset.value === note.tipo);
-            });
-
-            // Ativa o chip de status correto
-            statusChipsContainer.querySelectorAll('.chip').forEach(chip => {
-                chip.classList.toggle('active', chip.dataset.value === note.status);
-            });
-
-            // Carrega a recorrência
-            currentRecurrence = note.recurrence || { type: 'never' };
-            if (currentRecurrence.type === 'never') {
-                recurrenceNeverRadio.checked = true;
-            } else {
-                // Se for uma recorrência personalizada, abre o modal e preenche
-                recurrenceNeverRadio.checked = false; // Desmarca "Nunca"
-                openCustomRecurrenceModal();
-                loadCustomRecurrence(currentRecurrence);
-            }
-            updateCustomRecurrenceButtonText();
-
-            // Rola para o topo do painel esquerdo para ver o formulário
-            document.querySelector('.panel-left').scrollTop = 0;
+        const toggleDeleteSelectedButton = () => {
+            deleteSelectedButton.disabled = selectedNotes.size === 0;
         };
 
         const viewNote = (id) => {
             const note = notes.find(n => n.id === id);
-            if (!note) return;
+            if (note) {
+                viewModalTitle.textContent = note.titulo || 'Sem Título';
+                viewModalResponsible.textContent = note.responsavel || 'Não informado';
+                viewModalContent.textContent = note.conteudo || 'Nenhum conteúdo';
+                viewModalDate.textContent = formatDate(note.prazo) || 'Não informado';
+                viewModalTime.textContent = formatTime(note.horario) || 'Não informado';
+                viewModalType.textContent = note.tipo || 'Não informado';
+                viewModalStatus.textContent = note.status || 'Não informado';
 
-            viewModal.dataset.noteId = note.id;
-            viewModalTitle.textContent = note.titulo || 'Anotação Sem Título';
-            viewModalResponsible.textContent = note.responsavel || 'Não informado';
-            viewModalContent.textContent = note.conteudo || 'Nenhum conteúdo';
-
-            const formattedDate = formatDate(note.prazo);
-            const formattedTime = formatTime(note.horario);
-            viewModalDate.textContent = formattedDate !== 'N/A' ? formattedDate : 'Não informado';
-            viewModalTime.textContent = formattedTime !== 'N/A' ? formattedTime : 'Não informado';
-
-            viewModalType.textContent = note.tipo || 'Não informado';
-            viewModalStatus.textContent = note.status || 'Não informado';
-            viewModalRecurrence.textContent = formatRecurrenceText(note.recurrence);
-
-            viewModal.style.display = 'flex';
-        };
-
-        const toggleDeleteSelectedButton = () => {
-            deleteSelectedButton.style.display = selectedNotes.size > 0 ? 'flex' : 'none';
-        };
-
-        // --- Funções de Opções Personalizadas (Tipo/Status) ---
-        const saveCustomOptions = () => {
-            localStorage.setItem('customTypes', JSON.stringify(customTypes));
-            localStorage.setItem('customStatus', JSON.stringify(customStatus));
-        };
-
-        const renderCustomOptions = (optionsArray, container, inputElement, type) => {
-            container.innerHTML = '';
-            optionsArray.forEach(option => {
-                const chip = document.createElement('span');
-                chip.classList.add('chip', type);
-                chip.dataset.value = option;
-                chip.innerHTML = `${option} <span class="remove-chip">&times;</span>`;
-                chip.addEventListener('click', (event) => {
-                    if (event.target.classList.contains('remove-chip')) {
-                        removeCustomOption(option, optionsArray, container, inputElement, type);
-                    } else {
-                        // Permite selecionar apenas um chip por vez para tipo e status
-                        container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-                        chip.classList.add('active');
+                let recurrenceText = 'Nunca';
+                if (note.recurrence) {
+                    switch (note.recurrence.type) {
+                        case 'daily': recurrenceText = 'Diariamente'; break;
+                        case 'weekly': recurrenceText = `Semanalmente (a cada ${note.recurrence.interval} semana(s) em ${note.recurrence.daysOfWeek?.join(', ') || 'dias selecionados'})`; break;
+                        case 'monthly': recurrenceText = `Mensalmente (a cada ${note.recurrence.interval} mês(es))`; break;
+                        case 'yearly': recurrenceText = `Anualmente (a cada ${note.recurrence.interval} ano(s))`; break;
+                        case 'custom':
+                            recurrenceText = `Personalizado: a cada ${note.recurrence.interval} ${note.recurrence.unit}(s)`;
+                            if (note.recurrence.unit === 'week' && note.recurrence.daysOfWeek?.length) {
+                                recurrenceText += ` em ${note.recurrence.daysOfWeek.join(', ')}`;
+                            }
+                            if (note.recurrence.ends === 'onDate') {
+                                recurrenceText += ` até ${formatDate(note.recurrence.endDate)}`;
+                            } else if (note.recurrence.ends === 'afterOccurrences') {
+                                recurrenceText += ` por ${note.recurrence.endOccurrences} ocorrências`;
+                            }
+                            break;
                     }
-                });
-                container.appendChild(chip);
-            });
-            // Garante que o primeiro chip esteja ativo por padrão se nenhum estiver selecionado
-            if (!container.querySelector('.chip.active') && optionsArray.length > 0) {
-                container.querySelector('.chip').classList.add('active');
-            }
-        };
-
-        const addCustomOption = (optionsArray, container, inputElement, type) => {
-            const value = inputElement.value.trim();
-            if (value && !optionsArray.includes(value)) {
-                optionsArray.push(value);
-                saveCustomOptions();
-                renderCustomOptions(optionsArray, container, inputElement, type);
-                inputElement.value = '';
-            }
-        };
-
-        const removeCustomOption = (option, optionsArray, container, inputElement, type) => {
-            if (optionsArray.length <= 1) {
-                alert(`Não é possível remover o último ${type}.`);
-                return;
-            }
-            if (!confirm(`Tem certeza que deseja remover "${option}"?`)) return;
-
-            const index = optionsArray.indexOf(option);
-            if (index > -1) {
-                optionsArray.splice(index, 1);
-                saveCustomOptions();
-                renderCustomOptions(optionsArray, container, inputElement, type);
-                // Se o chip removido estava ativo, ativa o primeiro da lista
-                if (!container.querySelector('.chip.active') && optionsArray.length > 0) {
-                    container.querySelector('.chip').classList.add('active');
                 }
-            }
-        };
+                viewModalRecurrence.textContent = recurrenceText;
 
-        // --- Funções de Recorrência ---
-        const openCustomRecurrenceModal = () => {
-            // Preenche o modal com a configuração atual de currentRecurrence
-            loadCustomRecurrence(currentRecurrence);
-            customRecurrenceModal.style.display = 'flex';
-        };
-
-        const closeCustomRecurrenceModal = () => {
-            customRecurrenceModal.style.display = 'none';
-        };
-
-        const loadCustomRecurrence = (recurrence) => {
-            recurrenceInterval.value = recurrence.interval || 1;
-            recurrenceIntervalUnitSelect.value = recurrence.intervalUnit || 'day';
-
-            // Reseta seleção de dias da semana
-            customRecurrenceDays.querySelectorAll('.day-chip').forEach(chip => chip.classList.remove('active'));
-            if (recurrence.daysOfWeek && recurrence.intervalUnit === 'week') {
-                recurrenceDaysOfWeekGroup.style.display = 'flex';
-                recurrence.daysOfWeek.forEach(day => {
-                    const chip = customRecurrenceDays.querySelector(`.day-chip[data-day="${day}"]`);
-                    if (chip) chip.classList.add('active');
-                });
-            } else {
-                recurrenceDaysOfWeekGroup.style.display = 'none';
-            }
-
-            // Configura o término da recorrência
-            recurrenceEndsNeverRadio.checked = (recurrence.ends === 'never' || !recurrence.ends);
-            recurrenceEndsOnDateRadio.checked = (recurrence.ends === 'onDate');
-            recurrenceEndsAfterOccurrencesRadio.checked = (recurrence.ends === 'afterOccurrences');
-
-            recurrenceEndDateInput.value = recurrence.endDate || '';
-            recurrenceEndOccurrencesInput.value = recurrence.endOccurrences || 1;
-
-            // Habilita/desabilita campos de término
-            recurrenceEndDateInput.disabled = !recurrenceEndsOnDateRadio.checked;
-            recurrenceEndOccurrencesInput.disabled = !recurrenceEndsAfterOccurrencesRadio.checked;
-        };
-
-        const saveCustomRecurrence = () => {
-            const interval = parseInt(recurrenceInterval.value, 10);
-            const intervalUnit = recurrenceIntervalUnitSelect.value;
-            const ends = document.querySelector('input[name="recurrenceEnds"]:checked').value;
-
-            let newRecurrence = {
-                type: 'custom',
-                interval: interval,
-                intervalUnit: intervalUnit,
-                ends: ends
-            };
-
-            if (intervalUnit === 'week') {
-                newRecurrence.daysOfWeek = Array.from(customRecurrenceDays.querySelectorAll('.day-chip.active'))
-                                            .map(chip => parseInt(chip.dataset.day, 10));
-                if (newRecurrence.daysOfWeek.length === 0) {
-                    alert('Selecione pelo menos um dia da semana para recorrência semanal.');
-                    return;
-                }
-            }
-
-            if (ends === 'onDate') {
-                if (!recurrenceEndDateInput.value) {
-                    alert('Selecione uma data para o término da recorrência.');
-                    return;
-                }
-                newRecurrence.endDate = recurrenceEndDateInput.value;
-            } else if (ends === 'afterOccurrences') {
-                const occurrences = parseInt(recurrenceEndOccurrencesInput.value, 10);
-                if (isNaN(occurrences) || occurrences < 1) {
-                    alert('O número de ocorrências deve ser um valor positivo.');
-                    return;
-                }
-                newRecurrence.endOccurrences = occurrences;
-            }
-
-            currentRecurrence = newRecurrence;
-            updateCustomRecurrenceButtonText();
-            closeCustomRecurrenceModal();
-        };
-
-        const formatRecurrenceText = (recurrence) => {
-            if (!recurrence || recurrence.type === 'never') {
-                return 'Nunca';
-            }
-
-            let text = `A cada ${recurrence.interval} ${recurrence.intervalUnit}(s)`;
-
-            if (recurrence.intervalUnit === 'week' && recurrence.daysOfWeek && recurrence.daysOfWeek.length > 0) {
-                const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-                const selectedDayNames = recurrence.daysOfWeek.map(day => dayNames[day]).join(', ');
-                text += ` em ${selectedDayNames}`;
-            }
-
-            if (recurrence.ends === 'onDate' && recurrence.endDate) {
-                text += ` até ${formatDate(recurrence.endDate)}`;
-            } else if (recurrence.ends === 'afterOccurrences' && recurrence.endOccurrences) {
-                text += ` por ${recurrence.endOccurrences} ocorrência(s)`;
-            }
-
-            return text;
-        };
-
-        const updateCustomRecurrenceButtonText = () => {
-            if (currentRecurrence.type === 'never') {
-                openCustomRecurrenceModalButton.textContent = 'Configurar recorrência';
-            } else {
-                openCustomRecurrenceModalButton.textContent = `Recorrência: ${formatRecurrenceText(currentRecurrence)}`;
+                viewModalEditButton.onclick = () => editNote(note.id);
+                viewModal.style.display = 'flex';
             }
         };
 
         // --- Funções de Exportação/Importação ---
         const exportData = () => {
-            const dataStr = JSON.stringify(notes, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
+            const dataToExport = notes.map(note => ({
+                id: note.id,
+                titulo: note.titulo,
+                responsavel: note.responsavel,
+                conteudo: note.conteudo,
+                prazo: note.prazo,
+                horario: note.horario,
+                tipo: note.tipo,
+                status: note.status,
+                recurrence: JSON.stringify(note.recurrence) // Exporta como string JSON
+            }));
+
+            const jsonString = JSON.stringify(dataToExport, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1776,496 +1670,469 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+            alert('Dados exportados para anotacoes.json!');
         };
-
-        const importData = () => {
-            importModal.style.display = 'flex';
-        };
-
-        confirmImportButton.addEventListener('click', async () => {
-            const file = importFileInput.files[0];
-            if (!file) {
-                alert('Por favor, selecione um arquivo JSON para importar.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                try {
-                    const importedNotes = JSON.parse(e.target.result);
-                    if (!Array.isArray(importedNotes)) {
-                        throw new Error('O arquivo JSON não contém um array de anotações.');
-                    }
-
-                    const importOption = document.querySelector('input[name="importOption"]:checked').value;
-
-                    if (importOption === 'replace') {
-                        if (!confirm('Esta ação substituirá TODAS as anotações existentes. Deseja continuar?')) return;
-                        // Excluir todas as anotações existentes
-                        const { error: deleteError } = await supabase.from('anotacoes').delete().neq('id', 0); // Deleta tudo
-                        if (deleteError) throw deleteError;
-
-                        // Inserir as novas anotações
-                        const { error: insertError } = await supabase.from('anotacoes').insert(importedNotes.map(note => {
-                            // Remove o ID para que o Supabase gere um novo
-                            const { id, ...rest } = note;
-                            return rest;
-                        }));
-                        if (insertError) throw insertError;
-                        alert('Dados importados e substituídos com sucesso!');
-
-                    } else if (importOption === 'add') {
-                        // Inserir novas anotações, ignorando IDs existentes
-                        const { error: insertError } = await supabase.from('anotacoes').insert(importedNotes.map(note => {
-                            const { id, ...rest } = note; // Remove o ID para que o Supabase gere um novo
-                            return rest;
-                        }));
-                        if (insertError) throw insertError;
-                        alert('Dados adicionados com sucesso!');
-
-                    } else if (importOption === 'update') {
-                        // Atualizar existentes e adicionar novos
-                        const existingNoteIds = new Set(notes.map(n => n.id));
-                        const notesToUpdate = importedNotes.filter(note => existingNoteIds.has(note.id));
-                        const notesToAdd = importedNotes.filter(note => !existingNoteIds.has(note.id));
-
-                        // Atualizar
-                        for (const note of notesToUpdate) {
-                            const { id, ...rest } = note;
-                            const { error } = await supabase.from('anotacoes').update(rest).eq('id', id);
-                            if (error) console.error(`Erro ao atualizar anotação ${id}:`, error.message);
-                        }
-
-                        // Adicionar novos
-                        if (notesToAdd.length > 0) {
-                            const { error: insertError } = await supabase.from('anotacoes').insert(notesToAdd.map(note => {
-                                const { id, ...rest } = note; // Remove o ID para que o Supabase gere um novo
-                                return rest;
-                            }));
-                            if (insertError) throw insertError;
-                        }
-                        alert('Dados atualizados e novos adicionados com sucesso!');
-                    }
-
-                    importModal.style.display = 'none';
-                    importFileInput.value = ''; // Limpa o input do arquivo
-                    await loadNotes(); // Recarrega os dados após a importação
-                } catch (error) {
-                    console.error('Erro ao importar dados:', error.message);
-                    alert('Erro ao importar dados: ' + error.message);
-                }
-            };
-            reader.readAsText(file);
-        });
 
         const exportCalendar = () => {
-            let icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//CERTHIL Anotações//NONSGML v1.0//EN\n`;
+            let icsContent = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//CERTHIL Anotacoes//NONSGML v1.0//EN\n';
 
             notes.forEach(note => {
-                if (note.prazo) { // Apenas anotações com prazo
+                if (note.prazo) {
                     const startDate = new Date(note.prazo);
-                    let startTime = '000000'; // Default to midnight if no time
                     if (note.horario) {
-                        const [hours, minutes] = note.horario.split(':');
-                        startTime = `${hours.padStart(2, '0')}${minutes.padStart(2, '0')}00`;
+                        const [hours, minutes] = note.horario.split(':').map(Number);
+                        startDate.setHours(hours, minutes);
+                    } else {
+                        startDate.setHours(9, 0); // Horário padrão se não houver
                     }
 
                     const endDate = new Date(startDate);
-                    endDate.setDate(startDate.getDate() + 1); // Evento de 1 dia, ou ajustar se tiver duração
+                    endDate.setHours(startDate.getHours() + 1); // Duração de 1 hora
 
-                    const uid = `${note.id}-${new Date().getTime()}@certhil.com`; // Unique ID
-                    const summary = note.titulo || 'Anotação';
-                    const description = `Responsável: ${note.responsavel || 'N/A'}\nConteúdo: ${note.conteudo || 'N/A'}\nStatus: ${note.status || 'N/A'}\nTipo: ${note.tipo || 'N/A'}`;
+                    const formatDateTime = (date) => {
+                        return date.toISOString().replace(/[-:]|\.\d{3}/g, '').slice(0, -4) + 'Z';
+                    };
 
-                    icsContent += `BEGIN:VEVENT\n`;
-                    icsContent += `UID:${uid}\n`;
-                    icsContent += `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d{3}/g, '').slice(0, -1)}Z\n`; // Current timestamp
-                    icsContent += `DTSTART:${startDate.toISOString().split('T')[0].replace(/-/g, '')}T${startTime}\n`;
-                    icsContent += `DTEND:${endDate.toISOString().split('T')[0].replace(/-/g, '')}T${startTime}\n`; // End time same as start for all-day or simple event
-                    icsContent += `SUMMARY:${summary}\n`;
-                    icsContent += `DESCRIPTION:${description}\n`;
-                    icsContent += `END:VEVENT\n`;
+                    icsContent += 'BEGIN:VEVENT\n';
+                    icsContent += `UID:${note.id}@certhil.com\n`;
+                    icsContent += `DTSTAMP:${formatDateTime(new Date())}\n`;
+                    icsContent += `DTSTART:${formatDateTime(startDate)}\n`;
+                    icsContent += `DTEND:${formatDateTime(endDate)}\n`;
+                    icsContent += `SUMMARY:${note.titulo || 'Anotação'}\n`;
+                    icsContent += `DESCRIPTION:${note.conteudo || ''}\n`;
+                    icsContent += `LOCATION:${note.responsavel || ''}\n`;
+                    icsContent += 'END:VEVENT\n';
                 }
             });
 
-            icsContent += `END:VCALENDAR`;
+            icsContent += 'END:VCALENDAR\n';
 
             const blob = new Blob([icsContent], { type: 'text/calendar' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'certhil_agenda.ics';
+            a.download = 'certhil_anotacoes.ics';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            alert('Agenda exportada com sucesso!');
+            alert('Agenda exportada para certhil_anotacoes.ics!');
         };
 
+        // --- Funções de Recorrência Personalizada ---
+        const openCustomRecurrenceModal = () => {
+            // Preenche o modal com os valores de currentRecurrence ou padrões
+            if (currentRecurrence && currentRecurrence.type === 'custom') {
+                recurrenceInterval.value = currentRecurrence.interval;
+                recurrenceIntervalUnitSelect.value = currentRecurrence.unit;
+                if (currentRecurrence.unit === 'week') {
+                    recurrenceDaysOfWeekGroup.style.display = 'flex';
+                    customRecurrenceDays.querySelectorAll('.day-chip').forEach(chip => {
+                        if (currentRecurrence.daysOfWeek?.includes(chip.dataset.day)) {
+                            chip.classList.add('active');
+                        } else {
+                            chip.classList.remove('active');
+                        }
+                    });
+                } else {
+                    recurrenceDaysOfWeekGroup.style.display = 'none';
+                }
+
+                document.querySelectorAll('input[name="recurrenceEnds"]').forEach(radio => {
+                    radio.checked = (radio.value === currentRecurrence.ends);
+                });
+                recurrenceEndDateInput.value = currentRecurrence.endDate || '';
+                recurrenceEndOccurrencesInput.value = currentRecurrence.endOccurrences || '';
+                recurrenceEndDateInput.disabled = !recurrenceEndsOnDateRadio.checked;
+                recurrenceEndOccurrencesInput.disabled = !recurrenceEndsAfterOccurrencesRadio.checked;
+
+            } else {
+                // Valores padrão
+                recurrenceInterval.value = 1;
+                recurrenceIntervalUnitSelect.value = 'day';
+                recurrenceDaysOfWeekGroup.style.display = 'none';
+                customRecurrenceDays.querySelectorAll('.day-chip').forEach(chip => chip.classList.remove('active'));
+                document.querySelector('input[name="recurrenceEnds"][value="never"]').checked = true;
+                recurrenceEndDateInput.value = '';
+                recurrenceEndDateInput.disabled = true;
+                recurrenceEndOccurrencesInput.value = '';
+                recurrenceEndOccurrencesInput.disabled = true;
+            }
+            customRecurrenceModal.style.display = 'flex';
+        };
+
+        const closeCustomRecurrenceModal = () => {
+            customRecurrenceModal.style.display = 'none';
+        };
+
+        const saveCustomRecurrence = () => {
+            const type = document.querySelector('input[name="recurrence"]:checked').value;
+            const interval = parseInt(recurrenceInterval.value, 10);
+            const unit = recurrenceIntervalUnitSelect.value;
+            const daysOfWeek = Array.from(customRecurrenceDays.querySelectorAll('.day-chip.active')).map(chip => chip.dataset.day);
+            const ends = document.querySelector('input[name="recurrenceEnds"]:checked').value;
+            const endDate = recurrenceEndDateInput.value || null;
+            const endOccurrences = parseInt(recurrenceEndOccurrencesInput.value, 10) || null;
+
+            if (unit === 'week' && daysOfWeek.length === 0) {
+                alert('Selecione pelo menos um dia da semana para recorrência semanal.');
+                return;
+            }
+
+            currentRecurrence = {
+                type: 'custom', // Sempre 'custom' quando salvo pelo modal
+                interval,
+                unit,
+                daysOfWeek: unit === 'week' ? daysOfWeek : null,
+                ends,
+                endDate: ends === 'onDate' ? endDate : null,
+                endOccurrences: ends === 'afterOccurrences' ? endOccurrences : null
+            };
+
+            // Atualiza o rádio button para 'Personalizado'
+            customRecurrenceRadio.checked = true;
+            updateCustomRecurrenceButtonText();
+            closeCustomRecurrenceModal();
+        };
+
+        const updateCustomRecurrenceButtonText = () => {
+            const selectedRecurrenceType = document.querySelector('input[name="recurrence"]:checked').value;
+            if (selectedRecurrenceType === 'custom') {
+                configureRecurrenceButton.style.display = 'block';
+                configureRecurrenceButton.textContent = currentRecurrence ? 'Editar recorrência' : 'Configurar recorrência';
+            } else {
+                configureRecurrenceButton.style.display = 'none';
+                currentRecurrence = { type: selectedRecurrenceType }; // Define a recorrência simples
+            }
+        };
 
         // --- Funções de Redimensionamento e Reordenação de Colunas ---
-        let currentResizer = null;
+        let thBeingResized = null;
         let startX = 0;
         let startWidth = 0;
-        let draggingColumn = null;
+        let thBeingDragged = null;
         let dragStartIndex = -1;
+        let dragPlaceholder = null;
 
-        const enableColumnResizing = () => {
-            const resizers = document.querySelectorAll('.resizer-col');
-            resizers.forEach(resizer => {
-                resizer.addEventListener('mousedown', (e) => {
-                    currentResizer = resizer;
-                    startX = e.clientX;
-                    const th = resizer.parentElement;
-                    startWidth = th.offsetWidth;
-                    document.addEventListener('mousemove', resizeColumn);
-                    document.addEventListener('mouseup', stopResize);
-                });
+        const saveColumnSettings = () => {
+            const headers = Array.from(tableHeaderRow.querySelectorAll('th[data-column]'));
+            columnSettings.order = headers.map(th => th.dataset.column);
+            headers.forEach(th => {
+                columnSettings.widths[th.dataset.column] = th.style.width;
             });
+            localStorage.setItem('columnSettings', JSON.stringify(columnSettings));
+            alert('Configurações de coluna salvas!');
         };
 
-        const resizeColumn = (e) => {
-            if (currentResizer) {
-                const th = currentResizer.parentElement;
-                const columnKey = th.dataset.column;
-                const newWidth = startWidth + (e.clientX - startX);
-                if (newWidth > 50) { // Largura mínima
-                    th.style.width = `${newWidth}px`;
-                    columnSettings.widths[columnKey] = newWidth;
+        const loadColumnSettings = () => {
+            const savedSettings = JSON.parse(localStorage.getItem('columnSettings'));
+            if (savedSettings) {
+                columnSettings = savedSettings;
+            }
+
+            // Aplica a ordem das colunas
+            const currentHeaders = Array.from(tableHeaderRow.children);
+            const orderedHeaders = columnSettings.order.map(columnKey => {
+                return currentHeaders.find(th => th.dataset.column === columnKey);
+            }).filter(Boolean); // Remove nulos se alguma coluna não for encontrada
+
+            // Limpa e adiciona os cabeçalhos na nova ordem
+            tableHeaderRow.innerHTML = '';
+            orderedHeaders.forEach(th => tableHeaderRow.appendChild(th));
+
+            // Aplica as larguras das colunas
+            for (const columnKey in columnSettings.widths) {
+                const th = tableHeaderRow.querySelector(`th[data-column="${columnKey}"]`);
+                if (th) {
+                    th.style.width = columnSettings.widths[columnKey];
                 }
             }
         };
 
-        const stopResize = () => {
-            currentResizer = null;
-            document.removeEventListener('mousemove', resizeColumn);
-            document.removeEventListener('mouseup', stopResize);
-            saveColumnSettings();
+        const enableColumnResizing = () => {
+            tableHeaderRow.querySelectorAll('th').forEach(th => {
+                if (th.dataset.column === 'select' || th.dataset.column === 'acoes') return; // Não redimensiona estas colunas
+
+                const resizer = document.createElement('div');
+                resizer.className = 'resizer-handle';
+                th.appendChild(resizer);
+
+                resizer.addEventListener('mousedown', (e) => {
+                    thBeingResized = th;
+                    startX = e.clientX;
+                    startWidth = th.offsetWidth;
+                    th.classList.add('resizing');
+                    document.addEventListener('mousemove', resizeMouseMove);
+                    document.addEventListener('mouseup', resizeMouseUp);
+                });
+            });
+        };
+
+        const resizeMouseMove = (e) => {
+            if (thBeingResized) {
+                const width = startWidth + (e.clientX - startX);
+                thBeingResized.style.width = `${width}px`;
+                thBeingResized.style.minWidth = `${width}px`; // Garante que a largura mínima seja respeitada
+            }
+        };
+
+        const resizeMouseUp = () => {
+            if (thBeingResized) {
+                thBeingResized.classList.remove('resizing');
+                columnSettings.widths[thBeingResized.dataset.column] = thBeingResized.style.width;
+                localStorage.setItem('columnSettings', JSON.stringify(columnSettings));
+                thBeingResized = null;
+                document.removeEventListener('mousemove', resizeMouseMove);
+                document.removeEventListener('mouseup', resizeMouseUp);
+            }
         };
 
         const enableColumnReordering = () => {
-            const headers = tableHeaderRow.querySelectorAll('th:not([data-column="select"]):not([data-column="actions"])'); // Exclui select e actions
-            headers.forEach((header, index) => {
-                header.setAttribute('draggable', true);
-                header.addEventListener('dragstart', (e) => {
-                    draggingColumn = header;
-                    dragStartIndex = Array.from(headers).indexOf(header);
+            tableHeaderRow.querySelectorAll('th').forEach(th => {
+                if (th.dataset.column === 'select' || th.dataset.column === 'acoes') return; // Não reordena estas colunas
+
+                th.setAttribute('draggable', 'true');
+
+                th.addEventListener('dragstart', (e) => {
+                    thBeingDragged = th;
+                    dragStartIndex = Array.from(tableHeaderRow.children).indexOf(th);
                     e.dataTransfer.effectAllowed = 'move';
-                    header.classList.add('dragging');
+                    e.dataTransfer.setData('text/plain', th.dataset.column); // Define o dado a ser transferido
+                    th.classList.add('dragging');
+
+                    // Cria um placeholder visual
+                    dragPlaceholder = document.createElement('th');
+                    dragPlaceholder.className = 'drag-placeholder';
+                    dragPlaceholder.style.width = th.offsetWidth + 'px';
+                    dragPlaceholder.style.height = th.offsetHeight + 'px';
+                    dragPlaceholder.style.border = '2px dashed var(--primary-green)';
+                    dragPlaceholder.style.backgroundColor = 'rgba(var(--primary-green-dark), 0.1)';
+                    dragPlaceholder.style.boxSizing = 'border-box';
+                    dragPlaceholder.style.visibility = 'hidden'; // Esconde inicialmente
+
+                    // Insere o placeholder no lugar do elemento arrastado
+                    tableHeaderRow.insertBefore(dragPlaceholder, th.nextSibling);
                 });
 
-                header.addEventListener('dragover', (e) => {
-                    e.preventDefault();
+                th.addEventListener('dragover', (e) => {
+                    e.preventDefault(); // Permite o drop
                     e.dataTransfer.dropEffect = 'move';
-                    const targetHeader = e.target.closest('th');
-                    if (targetHeader && targetHeader !== draggingColumn) {
-                        const targetIndex = Array.from(headers).indexOf(targetHeader);
-                        const bounding = targetHeader.getBoundingClientRect();
-                        const offset = bounding.left + (bounding.width / 2);
+
+                    if (thBeingDragged && thBeingDragged !== th) {
+                        const bounding = th.getBoundingClientRect();
+                        const offset = bounding.x + (bounding.width / 2);
+                        const currentHeaders = Array.from(tableHeaderRow.children);
+                        const targetIndex = currentHeaders.indexOf(th);
+                        const draggedIndex = currentHeaders.indexOf(thBeingDragged);
+
+                        // Mostra o placeholder
+                        if (dragPlaceholder) {
+                            dragPlaceholder.style.visibility = 'visible';
+                        }
+
                         if (e.clientX > offset) {
-                            targetHeader.style.borderRight = '2px solid var(--primary-green)';
-                            targetHeader.style.borderLeft = 'none';
+                            // Arrastando para a direita
+                            if (targetIndex < draggedIndex) {
+                                tableHeaderRow.insertBefore(thBeingDragged, th.nextSibling);
+                                tableHeaderRow.insertBefore(dragPlaceholder, thBeingDragged);
+                            } else {
+                                tableHeaderRow.insertBefore(dragPlaceholder, th.nextSibling);
+                            }
                         } else {
-                            targetHeader.style.borderLeft = '2px solid var(--primary-green)';
-                            targetHeader.style.borderRight = 'none';
+                            // Arrastando para a esquerda
+                            if (targetIndex > draggedIndex) {
+                                tableHeaderRow.insertBefore(thBeingDragged, th);
+                                tableHeaderRow.insertBefore(dragPlaceholder, thBeingDragged);
+                            } else {
+                                tableHeaderRow.insertBefore(dragPlaceholder, th);
+                            }
                         }
                     }
                 });
 
-                header.addEventListener('dragleave', (e) => {
-                    const targetHeader = e.target.closest('th');
-                    if (targetHeader) {
-                        targetHeader.style.borderLeft = 'none';
-                        targetHeader.style.borderRight = 'none';
+                th.addEventListener('dragleave', () => {
+                    // Oculta o placeholder quando o item sai da área
+                    if (dragPlaceholder) {
+                        dragPlaceholder.style.visibility = 'hidden';
                     }
                 });
 
-                header.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    const targetHeader = e.target.closest('th');
-                    if (targetHeader && targetHeader !== draggingColumn) {
-                        const targetIndex = Array.from(headers).indexOf(targetHeader);
-                        const draggedColumnKey = draggingColumn.dataset.column;
-                        const targetColumnKey = targetHeader.dataset.column;
-
-                        // Remove as bordas de feedback
-                        targetHeader.style.borderLeft = 'none';
-                        targetHeader.style.borderRight = 'none';
-
-                        // Atualiza a ordem no array de configurações
-                        const currentOrder = columnSettings.order.filter(col => col !== 'select' && col !== 'actions');
-                        const selectCol = columnSettings.order.find(col => col === 'select');
-                        const actionsCol = columnSettings.order.find(col => col === 'actions');
-
-                        const oldIndexInOrder = currentOrder.indexOf(draggedColumnKey);
-                        const newIndexInOrder = currentOrder.indexOf(targetColumnKey);
-
-                        if (oldIndexInOrder > -1 && newIndexInOrder > -1) {
-                            currentOrder.splice(oldIndexInOrder, 1);
-                            currentOrder.splice(newIndexInOrder, 0, draggedColumnKey);
-                        }
-
-                        columnSettings.order = [selectCol, ...currentOrder, actionsCol];
-                        saveColumnSettings();
-                        renderTableHeader(); // Renderiza o cabeçalho com a nova ordem
-                        renderNotes(filterTextInput.value, currentFilter); // Renderiza as notas com a nova ordem
+                th.addEventListener('dragend', () => {
+                    thBeingDragged.classList.remove('dragging');
+                    if (dragPlaceholder && dragPlaceholder.parentNode) {
+                        dragPlaceholder.parentNode.removeChild(dragPlaceholder);
                     }
-                });
-
-                header.addEventListener('dragend', () => {
-                    draggingColumn.classList.remove('dragging');
-                    draggingColumn = null;
+                    thBeingDragged = null;
                     dragStartIndex = -1;
-                    headers.forEach(h => {
-                        h.style.borderLeft = 'none';
-                        h.style.borderRight = 'none';
-                    });
+                    dragPlaceholder = null;
+                    saveColumnSettings(); // Salva a nova ordem das colunas
+                    renderNotes(filterTextInput.value, currentFilter); // Re-renderiza para aplicar a nova ordem nas linhas
                 });
             });
-        };
-
-        const renderTableHeader = () => {
-            tableHeaderRow.innerHTML = ''; // Limpa o cabeçalho existente
-
-            const selectHeader = document.createElement('th');
-            selectHeader.dataset.column = 'select';
-            selectHeader.style.width = `${columnSettings.widths['select']}px`;
-            selectHeader.innerHTML = '<input type="checkbox" id="selectAllNotesCheckbox">';
-            tableHeaderRow.appendChild(selectHeader);
-
-            const orderedColumns = columnSettings.order.filter(col => col !== 'select' && col !== 'actions');
-            const columnLabels = {
-                'tipo': 'Tipo',
-                'titulo': 'Título',
-                'responsavel': 'Responsável',
-                'conteudo': 'Conteúdo',
-                'prazo': 'Prazo',
-                'status': 'Status'
-            };
-
-            orderedColumns.forEach(columnKey => {
-                const th = document.createElement('th');
-                th.dataset.column = columnKey;
-                th.style.width = `${columnSettings.widths[columnKey]}px`;
-                th.textContent = columnLabels[columnKey];
-                th.innerHTML += '<div class="resizer-col"></div>'; // Adiciona o resizer
-                tableHeaderRow.appendChild(th);
-            });
-
-            const actionsHeader = document.createElement('th');
-            actionsHeader.dataset.column = 'actions';
-            actionsHeader.style.width = `${columnSettings.widths['actions']}px`;
-            actionsHeader.textContent = 'Ações';
-            tableHeaderRow.appendChild(actionsHeader);
-
-            // Re-adiciona o event listener para o checkbox de selecionar todos
-            document.getElementById('selectAllNotesCheckbox').addEventListener('change', () => {
-                const allCheckboxes = document.querySelectorAll('.note-select-checkbox');
-                allCheckboxes.forEach(cb => {
-                    cb.checked = document.getElementById('selectAllNotesCheckbox').checked;
-                    const noteId = parseInt(cb.closest('tr').dataset.id, 10);
-                    if (cb.checked) {
-                        selectedNotes.add(noteId);
-                    } else {
-                        selectedNotes.delete(noteId);
-                    }
-                });
-                toggleDeleteSelectedButton();
-            });
-
-            enableColumnResizing(); // Re-habilita o redimensionamento
-            enableColumnReordering(); // Re-habilita a reordenação
-        };
-
-
-        const saveColumnSettings = () => {
-            localStorage.setItem('columnSettings', JSON.stringify(columnSettings));
-            alert('Configurações de colunas salvas!');
-        };
-
-        const loadColumnSettings = () => {
-            const savedSettings = localStorage.getItem('columnSettings');
-            if (savedSettings) {
-                columnSettings = JSON.parse(savedSettings);
-            }
-            renderTableHeader(); // Renderiza o cabeçalho com as configurações carregadas
         };
 
 
         // --- Event Listeners ---
-        document.addEventListener('DOMContentLoaded', () => {
-            addTypeButton.addEventListener('click', () => addCustomOption(customTypes, typeChipsContainer, newTypeInput, 'type'));
-            newTypeInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') addCustomOption(customTypes, typeChipsContainer, newTypeInput, 'type');
-            });
-
-            addStatusButton.addEventListener('click', () => addCustomOption(customStatus, statusChipsContainer, newStatusInput, 'status'));
-            newStatusInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') addCustomOption(customStatus, statusChipsContainer, newStatusInput, 'status');
-            });
-
-            recurrenceNeverRadio.addEventListener('change', () => {
-                if (recurrenceNeverRadio.checked) {
-                    currentRecurrence = { type: 'never' };
-                    updateCustomRecurrenceButtonText();
-                }
-            });
-
-            openCustomRecurrenceModalButton.addEventListener('click', openCustomRecurrenceModal);
-
-            viewModalEditButton.addEventListener('click', () => {
-                const noteId = parseInt(viewModal.dataset.noteId, 10);
-                if (noteId) {
-                    editNote(noteId);
-                    viewModal.style.display = 'none';
-                }
-            });
-
-            cancelButton.addEventListener('click', resetForm);
-            noteForm.addEventListener('submit', addOrUpdateNote); // Alterado para 'submit' no formulário
-
-            metricCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    metricCards.forEach(c => c.classList.remove('active'));
-                    card.classList.add('active');
-                    currentFilter = card.dataset.filter;
-                    renderNotes(filterTextInput.value, currentFilter);
-                });
-            });
-
-            filterButton.addEventListener('click', () => renderNotes(filterTextInput.value, currentFilter));
-            filterTextInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') renderNotes(filterTextInput.value, currentFilter);
-            });
-            clearFilterButton.addEventListener('click', () => {
-                filterTextInput.value = '';
-                renderNotes('', currentFilter);
-            });
-
-            exportDataButton.addEventListener('click', exportData);
-            exportCalendarButton.addEventListener('click', exportCalendar);
-
-            // Seleção de múltiplas anotações
-            selectAllNotesCheckbox.addEventListener('change', () => {
-                const allCheckboxes = document.querySelectorAll('.note-select-checkbox');
-                allCheckboxes.forEach(cb => {
-                    cb.checked = selectAllNotesCheckbox.checked;
-                    const noteId = parseInt(cb.closest('tr').dataset.id, 10); // Garante que o ID é número
-                    if (cb.checked) {
-                        selectedNotes.add(noteId);
-                    } else {
-                        selectedNotes.delete(noteId);
-                    }
-                });
-                toggleDeleteSelectedButton();
-            });
-
-            deleteSelectedButton.addEventListener('click', deleteSelectedNotes);
-            saveColumnSettingsButton.addEventListener('click', saveColumnSettings); // Event listener para o novo botão
-
-
-            // Event listeners para o modal de visualização
-            // Botão 'x' no cabeçalho do modal de visualização
-            modalCloseButton.addEventListener('click', () => {
-                viewModal.style.display = 'none';
-            });
-            // Botão 'Fechar' no rodapé do modal de visualização
-            viewModalCloseButton.addEventListener('click', () => {
-                viewModal.style.display = 'none';
-            });
-
-            window.addEventListener('click', (event) => {
-                if (event.target === viewModal) {
-                    viewModal.style.display = 'none';
-                }
-            });
-
-            // Event listeners para o modal de importação
-            importModalCloseButton.addEventListener('click', () => {
-                importModal.style.display = 'none';
-            });
-
-            window.addEventListener('click', (event) => {
-                if (event.target === importModal) {
-                    importModal.style.display = 'none';
-                }
-            });
-
-            // Event listeners para o NOVO modal de recorrência personalizada
-            customRecurrenceModalCloseButton.addEventListener('click', closeCustomRecurrenceModal);
-            cancelCustomRecurrenceButton.addEventListener('click', closeCustomRecurrenceModal);
-            saveCustomRecurrenceButton.addEventListener('click', saveCustomRecurrence);
-
-            window.addEventListener('click', (event) => {
-                if (event.target === customRecurrenceModal) {
-                    closeCustomRecurrenceModal();
-                }
-            });
-
-            // Lógica para seleção de dias no modal de recorrência
-            customRecurrenceDays.querySelectorAll('.day-chip').forEach(dayChip => {
-                dayChip.addEventListener('click', () => {
-                    dayChip.classList.toggle('active');
-                });
-            });
-
-            // Lógica para habilitar/desabilitar campos de término de recorrência
-            document.querySelectorAll('input[name="recurrenceEnds"]').forEach(radio => {
-                radio.addEventListener('change', () => {
-                    recurrenceEndDateInput.disabled = !recurrenceEndsOnDateRadio.checked;
-                    recurrenceEndOccurrencesInput.disabled = !recurrenceEndsAfterOccurrencesRadio.checked;
-                });
-            });
-
-            // Lógica para mostrar/esconder seleção de dias da semana com base na unidade de intervalo
-            recurrenceIntervalUnitSelect.addEventListener('change', () => {
-                if (recurrenceIntervalUnitSelect.value === 'week') {
-                    recurrenceDaysOfWeekGroup.style.display = 'flex'; // Usa flex para os chips
-                } else {
-                    recurrenceDaysOfWeekGroup.style.display = 'none';
-                    customRecurrenceDays.querySelectorAll('.day-chip').forEach(chip => chip.classList.remove('active')); // Limpa seleção de dias
-                }
-            });
-
-
-            // --- Inicialização ---
-            loadCustomOptions(); // Carrega as opções personalizadas (tipos e status)
-            loadColumnSettings(); // Carrega a ordem e largura das colunas
-
-            // Renderiza os chips de tipo e status com as opções padrão
-            renderCustomOptions(customTypes, typeChipsContainer, newTypeInput, 'type');
-            renderCustomOptions(customStatus, statusChipsContainer, newStatusInput, 'status');
-
-            // Ativa o card "Total" por padrão na inicialização
-            document.querySelector('.metric-card.total').classList.add('active');
-
-            resetForm(); // Garante que o formulário esteja limpo e com chips padrão ativos
-            updateCustomRecurrenceButtonText(); // Garante que o botão de recorrência esteja no estado inicial correto
-
-            // Habilita o redimensionamento e reordenação de colunas após a renderização inicial da tabela
-            enableColumnResizing();
-            enableColumnReordering(); // Habilita a reordenação de colunas
-
-            // Atualiza destaque de atrasadas a cada 60s
-            setInterval(() => {
-                renderNotes(filterTextInput.value, currentFilter); // Passa o filtro atual
-                updateMetricCards(); // Atualiza as métricas também
-            }, 60000);
-
-            // Carrega as anotações do Supabase quando a página é carregada
-            document.addEventListener('DOMContentLoaded', async () => {
-                await loadNotes();
-            });
-
-            // Opcional: Recarregar anotações em tempo real se o Supabase detectar mudanças
-            supabase.channel('realtime-anotacoes') // Use o nome da sua tabela
-                .on('postgres_changes', { event: '*', schema: 'public', table: 'anotacoes' }, payload => {
-                    console.log('Alteração detectada em tempo real:', payload);
-                    loadNotes(); // Recarrega a lista de anotações quando uma mudança é detectada
-                })
-                .subscribe();
-
+        addTypeButton.addEventListener('click', () => addCustomOption(newTypeInput, customTypes, typeChipsContainer, 'type'));
+        newTypeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addCustomOption(newTypeInput, customTypes, typeChipsContainer, 'type');
         });
+
+        addStatusButton.addEventListener('click', () => addCustomOption(newStatusInput, customStatus, statusChipsContainer, 'status'));
+        newStatusInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addCustomOption(newStatusInput, customStatus, statusChipsContainer, 'status');
+        });
+
+        cancelButton.addEventListener('click', resetForm);
+        noteForm.addEventListener('submit', addOrUpdateNote);
+
+        metricCards.forEach(card => {
+            card.addEventListener('click', () => {
+                metricCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                currentFilter = card.dataset.filter;
+                renderNotes(filterTextInput.value, currentFilter);
+            });
+        });
+
+        filterButton.addEventListener('click', () => renderNotes(filterTextInput.value, currentFilter));
+        filterTextInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') renderNotes(filterTextInput.value, currentFilter);
+        });
+        clearFilterButton.addEventListener('click', () => {
+            filterTextInput.value = '';
+            renderNotes('', currentFilter);
+        });
+
+        exportDataButton.addEventListener('click', exportData);
+        importDataButton.addEventListener('click', () => importModal.style.display = 'flex');
+        exportCalendarButton.addEventListener('click', exportCalendar);
+
+        // Seleção de múltiplas anotações
+        selectAllNotesCheckbox.addEventListener('change', () => {
+            const allCheckboxes = document.querySelectorAll('.note-select-checkbox');
+            allCheckboxes.forEach(cb => {
+                cb.checked = selectAllNotesCheckbox.checked;
+                const noteId = parseInt(cb.closest('tr').dataset.id, 10); // Garante que o ID é número
+                if (cb.checked) {
+                    selectedNotes.add(noteId);
+                } else {
+                    selectedNotes.delete(noteId);
+                }
+            });
+            toggleDeleteSelectedButton();
+        });
+
+        deleteSelectedButton.addEventListener('click', deleteSelectedNotes);
+        saveColumnSettingsButton.addEventListener('click', saveColumnSettings); // Event listener para o novo botão
+
+
+        // Event listeners para o modal de visualização
+        // Botão 'x' no cabeçalho do modal de visualização
+        modalCloseButton.addEventListener('click', () => {
+            viewModal.style.display = 'none';
+        });
+        // Botão 'Fechar' no rodapé do modal de visualização
+        viewModalCloseButton.addEventListener('click', () => {
+            viewModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === viewModal) {
+                viewModal.style.display = 'none';
+            }
+        });
+
+        // Event listeners para o modal de importação
+        importModalCloseButton.addEventListener('click', () => {
+            importModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === importModal) {
+                importModal.style.display = 'none';
+            }
+        });
+
+        // Event listeners para o NOVO modal de recorrência personalizada
+        document.querySelectorAll('input[name="recurrence"]').forEach(radio => {
+            radio.addEventListener('change', updateCustomRecurrenceButtonText);
+        });
+        configureRecurrenceButton.addEventListener('click', openCustomRecurrenceModal);
+
+        customRecurrenceModalCloseButton.addEventListener('click', closeCustomRecurrenceModal);
+        cancelCustomRecurrenceButton.addEventListener('click', closeCustomRecurrenceModal);
+        saveCustomRecurrenceButton.addEventListener('click', saveCustomRecurrence);
+
+        window.addEventListener('click', (event) => {
+            if (event.target === customRecurrenceModal) {
+                closeCustomRecurrenceModal();
+            }
+        });
+
+        // Lógica para seleção de dias no modal de recorrência
+        customRecurrenceDays.querySelectorAll('.day-chip').forEach(dayChip => {
+            dayChip.addEventListener('click', () => {
+                dayChip.classList.toggle('active');
+            });
+        });
+
+        // Lógica para habilitar/desabilitar campos de término de recorrência
+        document.querySelectorAll('input[name="recurrenceEnds"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                recurrenceEndDateInput.disabled = !recurrenceEndsOnDateRadio.checked;
+                recurrenceEndOccurrencesInput.disabled = !recurrenceEndsAfterOccurrencesRadio.checked;
+            });
+        });
+
+        // Lógica para mostrar/esconder seleção de dias da semana com base na unidade de intervalo
+        recurrenceIntervalUnitSelect.addEventListener('change', () => {
+            if (recurrenceIntervalUnitSelect.value === 'week') {
+                recurrenceDaysOfWeekGroup.style.display = 'flex'; // Usa flex para os chips
+            } else {
+                recurrenceDaysOfWeekGroup.style.display = 'none';
+                customRecurrenceDays.querySelectorAll('.day-chip').forEach(chip => chip.classList.remove('active')); // Limpa seleção de dias
+            }
+        });
+
+
+        // --- Inicialização ---
+        loadCustomOptions(); // Carrega as opções personalizadas (tipos e status)
+        loadColumnSettings(); // Carrega a ordem e largura das colunas
+
+        // Renderiza os chips de tipo e status com as opções padrão
+        renderCustomOptions(customTypes, typeChipsContainer, newTypeInput, 'type');
+        renderCustomOptions(customStatus, statusChipsContainer, newStatusInput, 'status');
+
+        // Ativa o card "Total" por padrão na inicialização
+        document.querySelector('.metric-card.total').classList.add('active');
+
+        resetForm(); // Garante que o formulário esteja limpo e com chips padrão ativos
+        updateCustomRecurrenceButtonText(); // Garante que o botão de recorrência esteja no estado inicial correto
+
+        // Habilita o redimensionamento e reordenação de colunas após a renderização inicial da tabela
+        enableColumnResizing();
+        enableColumnReordering(); // Habilita a reordenação de colunas
+
+        // Atualiza destaque de atrasadas a cada 60s
+        setInterval(() => {
+            renderNotes(filterTextInput.value, currentFilter); // Passa o filtro atual
+            updateMetricCards(); // Atualiza as métricas também
+        }, 60000);
+
+        // Carrega as anotações do Supabase quando a página é carregada
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadNotes();
+        });
+
+        // Opcional: Recarregar anotações em tempo real se o Supabase detectar mudanças
+        supabase.channel('realtime-anotacoes') // Use o nome da sua tabela
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'anotacoes' }, payload => {
+                console.log('Alteração detectada em tempo real:', payload);
+                loadNotes(); // Recarrega a lista de anotações quando uma mudança é detectada
+            })
+            .subscribe();
+
     </script>
 </body>
 </html>
