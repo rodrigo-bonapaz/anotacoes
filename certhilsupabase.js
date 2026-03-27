@@ -1,19 +1,9 @@
-// FILE NAME: certhilsupabase.js
+// certhilsupabase.js
+// Usa o client global carregado no index.html
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+const supabase = window.supabase;
 
-// ===============================
-// SUPABASE CONFIG
-// ===============================
-const SUPABASE_URL = 'https://koegynrtboafzpxtmglw.supabase.co'
-const SUPABASE_ANON_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtvZWd5bnJ0Ym9hZnpweHRtZ2x3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNzM0MjQsImV4cCI6MjA4OTg0OTQyNH0.OnBujMbRBQ2-kJIY3qQsbW4Q-B_1mkeFJp30up_gnDY'
-
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-
-// ===============================
-// REALTIME – TABELA ANOTACOES
-// ===============================
+// ✅ Realtime – escuta mudanças na tabela anotacoes
 supabase
   .channel('realtime-anotacoes')
   .on(
@@ -24,11 +14,8 @@ supabase
       table: 'anotacoes'
     },
     (payload) => {
-      console.log('Alteração detectada no Supabase:', payload)
-
-      // Notifica o HTML principal
-      window.dispatchEvent(new Event('supabase-update'))
+      console.log('Alteração detectada no Supabase:', payload);
+      window.dispatchEvent(new Event('supabase-update'));
     }
   )
-  .subscribe()
-``
+  .subscribe();
