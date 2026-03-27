@@ -1607,37 +1607,55 @@ case 'date':
             };
 
 
-            // Renderiza todas as anotações na tabela
-            const renderNotes = (filterText = '', filterType = 'total') => {
-                notesTableBody.innerHTML = '';
-                selectedNotes.clear();
-                selectAllNotesCheckbox.checked = false;
-                toggleDeleteSelectedButton();
+// Renderiza todas as anotações na tabela
+const renderNotes = (filterText = '', filterType = 'total') => {
+  notesTableBody.innerHTML = '';
+  selectedNotes.clear();
+  selectAllNotesCheckbox.checked = false;
+  toggleDeleteSelectedButton();
 
-                const now = new Date();
+  const now = new Date();
 
-                const filteredNotes = notes.filter(note => {
-                    const matchesFilterText = filterText ?
-                        (note.title.toLowerCase().includes(filterText.toLowerCase()) ||
-                         note.responsible.toLowerCase().includes(filterText.toLowerCase()) ||
-                         note.content.toLowerCase().includes(filterText.toLowerCase())) : true;
+  const filteredNotes = notes.filter(note => {
+    const matchesFilterText = filterText ?
+      (note.title.toLowerCase().includes(filterText.toLowerCase()) ||
+       note.responsible?.toLowerCase().includes(filterText.toLowerCase()) ||
+       note.content?.toLowerCase().includes(filterText.toLowerCase()))
+      : true;
 
-                    let matchesFilterType = true;
-                    if (filterType === 'pendente') {
-                        matchesFilterType = note.status !== 'Concluido';
-                    } else if (filterType === 'atrasada') {
-                        const noteDateTime = note.date ? new Date(note.date + (note.time ? `T${note.time}` : 'T00:00')) : null;
-                        matchesFilterType = note.status !== 'Concluido' && noteDateTime && noteDateTime < now && !isSameDay(noteDateTime, now);
-                    } else if (filterType === 'concluido') {
-                        matchesFilterType = note.status === 'Concluido';
-                    }
-                    // 'total' não precisa de filtro de tipo adicional
+    let matchesFilterType = true;
 
-                    return matchesFilterText && matchesFilterType;
-                });
+    if (filterType === 'pendente') {
+      matchesFilterType = note.status !== 'Concluído';
+    } else if (filterType === 'atrasada') {
+      const noteDateTime = note.date
+        ? new Date(note.date + (note.time ? `T${note.time}` : 'T00:00'))
+        : null;
 
-                filteredNotes.forEach(renderNoteRow);
-                updateMetricCards();
+      matchesFilterType =
+        note.status !== 'Concluído' &&
+        noteDateTime &&
+        noteDateTime < now &&
+        !isSameDay(noteDateTime, now);
+    } else if (filterType === 'concluido') {
+      matchesFilterType = note.status === 'Concluído';
+    }
+
+    return matchesFilterText && matchesFilterType;
+  });
+
+  // ✅ cria as linhas
+  filteredNotes.forEach(renderNoteRow);
+
+  // ✅ atualiza cards
+  updateMetricCards();
+
+  // ✅ REATIVA FUNCIONALIDADES VISUAIS DA TABELA
+  enableColumnReordering();
+  enableColumnResizing();
+};
+
+
             };
 
             // Atualiza os cards de métricas
@@ -1699,8 +1717,8 @@ const newNote = {
 
 
 
-// ✅ SALVA OU ATUALIZA PELO SUPABASE (independe se é novo ou edição)
 
+// ✅ SALVA OU ATUALIZA PELO SUPABASE
 const { error } = await window.supabase
   .from('anotacoes')
   .upsert(newNote);
@@ -1711,15 +1729,19 @@ if (error) {
   return;
 }
 
-
-// ✅ RECARREGA OS DADOS DO BANCO
+// ✅ RECARREGA OS DADOS
 await loadNotes();
 
-// ✅ ATUALIZA A TELA
-resetForm();
+// ✅ FORÇA ATUALIZAÇÃO VISUAL
 renderNotes(filterTextInput.value, currentFilter);
+updateMetricCards();
 
-            			};
+// ✅ REATIVA FUNCIONALIDADES DA TABELA
+enableColumnReordering();
+enableColumnResizing();
+
+resetForm();
+
 
             // Edita uma anotação
             const editNote = (id) => {
