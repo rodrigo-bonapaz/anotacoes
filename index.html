@@ -364,64 +364,44 @@
             border-radius: 8px;
             padding: 15px 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-soft);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--border-soft);
         }
 
         .metric-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .metric-card.active {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+            border-width: 2px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .metric-card.total {
             border-color: var(--card-total-border);
-            background-color: var(--card-total-bg);
             color: var(--card-total-text);
-        }
-
-        .metric-card.total.active {
-            background-color: var(--card-total-border);
-            color: white;
+            background-color: var(--card-total-bg);
         }
 
         .metric-card.pendentes {
             border-color: var(--card-pendentes-border);
-            background-color: var(--card-pendentes-bg);
             color: var(--card-pendentes-text);
-        }
-
-        .metric-card.pendentes.active {
-            background-color: var(--card-pendentes-border);
-            color: var(--text-main);
+            background-color: var(--card-pendentes-bg);
         }
 
         .metric-card.atrasadas {
             border-color: var(--card-atrasadas-border);
-            background-color: var(--card-atrasadas-bg);
             color: var(--card-atrasadas-text);
-        }
-
-        .metric-card.atrasadas.active {
-            background-color: var(--card-atrasadas-border);
-            color: white;
+            background-color: var(--card-atrasadas-bg);
         }
 
         .metric-card.concluidas {
             border-color: var(--card-concluidas-border);
-            background-color: var(--card-concluidas-bg);
             color: var(--card-concluidas-text);
-        }
-
-        .metric-card.concluidas.active {
-            background-color: var(--card-concluidas-border);
-            color: white;
+            background-color: var(--card-concluidas-bg);
         }
 
         .metric-card h3 {
@@ -440,55 +420,49 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-soft);
             align-items: center;
-            flex-wrap: wrap;
         }
 
-        .filter-bar input[type="text"] {
+        .filter-bar input {
             flex-grow: 1;
             padding: 10px;
             border: 1px solid var(--border-soft);
             border-radius: 5px;
             font-size: 0.9em;
-            min-width: 150px;
         }
 
         .filter-bar button {
             padding: 10px 15px;
+            background-color: var(--primary-green);
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
             transition: background-color 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
-        .filter-bar .filter-button {
-            background-color: var(--primary-green);
-            color: white;
-        }
-
-        .filter-bar .filter-button:hover {
+        .filter-bar button:hover {
             background-color: var(--primary-green-dark);
         }
 
-        .filter-bar .clear-button {
+        .filter-bar .clear-filter-button {
             background-color: #ccc;
             color: var(--text-main);
         }
 
-        .filter-bar .clear-button:hover {
+        .filter-bar .clear-filter-button:hover {
             background-color: #bbb;
         }
 
         .action-buttons {
             display: flex;
+            justify-content: flex-end;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
-            justify-content: flex-end; /* Alinha à direita */
         }
 
         .action-buttons button {
@@ -503,6 +477,10 @@
             gap: 5px;
         }
 
+        .action-buttons button i {
+            font-size: 1em;
+        }
+
         .action-buttons .delete-selected-button {
             background-color: var(--danger);
             color: white;
@@ -512,46 +490,42 @@
             background-color: #c0392b;
         }
 
-        .action-buttons .export-button {
+        .action-buttons .export-button,
+        .action-buttons .import-button,
+        .action-buttons .export-calendar-button,
+        .action-buttons .save-columns-button {
             background-color: var(--info);
             color: white;
         }
 
-        .action-buttons .export-button:hover {
+        .action-buttons .export-button:hover,
+        .action-buttons .import-button:hover,
+        .action-buttons .export-calendar-button:hover,
+        .action-buttons .save-columns-button:hover {
             background-color: #2980b9;
         }
 
         .action-buttons .import-button {
-            background-color: var(--warning);
-            color: white;
+            background-color: var(--primary-green);
         }
 
         .action-buttons .import-button:hover {
-            background-color: #e67e22;
-        }
-
-        .action-buttons .settings-button {
-            background-color: var(--text-muted);
-            color: white;
-        }
-
-        .action-buttons .settings-button:hover {
-            background-color: #555;
+            background-color: var(--primary-green-dark);
         }
 
         .table-wrapper {
             flex-grow: 1;
-            overflow: auto; /* Adiciona barra de rolagem se a tabela for muito grande */
+            overflow-x: auto; /* Permite rolagem horizontal na tabela */
+            overflow-y: auto; /* Permite rolagem vertical na tabela */
             background-color: var(--card-bg);
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-soft);
         }
 
         .notes-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9em;
             min-width: 800px; /* Garante que a tabela não fique muito pequena */
         }
 
@@ -563,29 +537,38 @@
             white-space: nowrap; /* Evita que o texto quebre */
             overflow: hidden;
             text-overflow: ellipsis;
-            position: relative; /* Para o resizer-handle */
+            position: relative; /* Para o redimensionador de coluna */
         }
 
         .notes-table th {
             background-color: var(--bg-page);
             color: var(--primary-green-dark);
             font-weight: bold;
+            font-size: 0.9em;
             cursor: grab; /* Indica que a coluna pode ser arrastada */
             user-select: none; /* Evita seleção de texto ao arrastar */
         }
 
         .notes-table th.drag-over {
-            border-left: 2px solid var(--accent-orange); /* Feedback visual ao arrastar */
+            background-color: rgba(var(--primary-green-dark), 0.1);
         }
 
         .notes-table tbody tr:hover {
             background-color: #f5f5f5;
         }
 
+        .notes-table .overdue {
+            background-color: #ffebee; /* Vermelho claro para atrasadas */
+        }
+
+        .notes-table .overdue td {
+            color: var(--danger);
+        }
+
         .notes-table .status-badge {
             display: inline-block;
-            padding: 5px 10px;
-            border-radius: 15px;
+            padding: 4px 8px;
+            border-radius: 12px;
             font-size: 0.75em;
             font-weight: bold;
             text-transform: uppercase;
@@ -623,77 +606,54 @@
             color: var(--status-concluido-text);
         }
 
-        .notes-table .actions-cell {
-            display: flex;
-            gap: 5px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .notes-table .actions-cell button {
+        .notes-table .actions button {
             background: none;
             border: none;
-            font-size: 1.1em;
-            cursor: pointer;
             color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-right: 8px;
             transition: color 0.2s ease;
-            padding: 5px;
         }
 
-        .notes-table .actions-cell button:hover {
+        .notes-table .actions button:hover {
             color: var(--primary-green);
         }
 
-        .notes-table .actions-cell .delete-button:hover {
+        .notes-table .actions .delete-button:hover {
             color: var(--danger);
         }
 
-        .notes-table .actions-cell .edit-button:hover {
-            color: var(--accent-orange);
-        }
-
-        .notes-table .actions-cell .view-button:hover {
+        .notes-table .actions .view-button:hover {
             color: var(--info);
         }
 
-        .notes-table .note-select-checkbox {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary-green);
-            cursor: pointer;
+        .notes-table .actions .edit-button:hover {
+            color: var(--warning);
         }
 
-        .notes-table .overdue {
-            background-color: #ffe0e0; /* Fundo vermelho claro para atrasadas */
-        }
-
-        /* Resizer para colunas da tabela */
-        .resizer-handle {
+        .notes-table .col-resizer {
+            width: 5px;
+            height: 100%;
+            background-color: transparent;
             position: absolute;
             right: 0;
             top: 0;
-            width: 5px;
-            height: 100%;
-            cursor: ew-resize;
-            background-color: transparent; /* Invisível por padrão */
-            transition: background-color 0.2s ease;
+            cursor: col-resize;
+            z-index: 1;
         }
 
-        .notes-table th:hover .resizer-handle {
-            background-color: var(--border-soft); /* Visível ao passar o mouse */
-        }
-
-        /* Modal (base) */
+        /* Modal */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
-            z-index: 100; /* Sit on top */
+            z-index: 1000; /* Sit on top */
             left: 0;
             top: 0;
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
             justify-content: center;
             align-items: center;
         }
@@ -701,30 +661,31 @@
         .modal-content {
             background-color: var(--card-bg);
             margin: auto;
-            padding: 25px;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            width: 90%;
-            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
             position: relative;
+            animation: fadeIn 0.3s ease-out;
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-soft);
-            padding-bottom: 15px;
             margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-soft);
         }
 
         .modal-header h2 {
             margin: 0;
-            font-size: 1.5em;
             color: var(--primary-green-dark);
+            font-size: 1.5em;
         }
 
-        .modal-close-button {
+        .modal-close {
             color: var(--text-muted);
             font-size: 2em;
             font-weight: bold;
@@ -732,30 +693,29 @@
             transition: color 0.2s ease;
         }
 
-        .modal-close-button:hover,
-        .modal-close-button:focus {
+        .modal-close:hover,
+        .modal-close:focus {
             color: var(--danger);
             text-decoration: none;
         }
 
         .modal-body p {
             margin-bottom: 10px;
-            font-size: 0.95em;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: var(--text-main);
         }
 
         .modal-body p strong {
             color: var(--primary-green-dark);
-            margin-right: 5px;
         }
 
         .modal-footer {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            border-top: 1px solid var(--border-soft);
-            padding-top: 15px;
             margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-soft);
         }
 
         .modal-footer button {
@@ -763,7 +723,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 1em;
             transition: background-color 0.2s ease;
         }
 
@@ -777,23 +737,67 @@
         }
 
         .modal-footer .edit-button {
-            background-color: var(--accent-orange);
+            background-color: var(--warning);
             color: white;
         }
 
         .modal-footer .edit-button:hover {
-            background-color: #a85a24;
+            background-color: #e67e22;
         }
 
-        /* Estilos específicos para o modal de recorrência personalizada */
+        /* Modal de Importação */
+        #importModal .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #importModal .import-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1em;
+            padding: 10px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            background-color: var(--bg-page);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #importModal .import-option:hover {
+            background-color: #e0e5ed;
+        }
+
+        #importModal .import-option input[type="radio"] {
+            accent-color: var(--primary-green);
+        }
+
+        #importModal .import-file-input {
+            padding: 10px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            background-color: var(--bg-page);
+        }
+
+        #importModal .modal-footer .confirm-import-button {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        #importModal .modal-footer .confirm-import-button:hover {
+            background-color: var(--primary-green-dark);
+        }
+
+        /* Modal de Recorrência Personalizada */
         #customRecurrenceModal .modal-body {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        #customRecurrenceModal .modal-body .form-group {
-            margin-bottom: 0; /* Ajusta o espaçamento dentro do modal */
+        #customRecurrenceModal .form-group {
+            margin-bottom: 0; /* Ajuste para o layout do modal */
         }
 
         #customRecurrenceModal .recurrence-interval-group {
@@ -802,37 +806,35 @@
             gap: 10px;
         }
 
-        #customRecurrenceModal .recurrence-interval-group input[type="number"] {
+        #customRecurrenceModal .recurrence-interval-group input {
             width: 80px;
             text-align: center;
         }
 
-        #customRecurrenceModal .recurrence-interval-group select {
-            flex-grow: 1;
-        }
-
-        #customRecurrenceModal .recurrence-days-of-week-group {
+        #customRecurrenceModal .recurrence-days-of-week {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 5px;
-            padding: 10px;
+            padding: 5px 0;
             border: 1px solid var(--border-soft);
             border-radius: 5px;
             background-color: var(--bg-page);
+            min-height: 40px;
+            align-items: center;
         }
 
-        #customRecurrenceModal .recurrence-days-of-week-group .day-chip {
-            padding: 8px 12px;
+        #customRecurrenceModal .recurrence-days-of-week .day-chip {
+            padding: 5px 10px;
             border-radius: 20px;
             background-color: #e0e0e0;
-            color: #333;
+            color: #424242;
+            font-size: 0.8em;
             cursor: pointer;
             transition: background-color 0.2s ease, color 0.2s ease;
-            font-size: 0.9em;
         }
 
-        #customRecurrenceModal .recurrence-days-of-week-group .day-chip.active {
+        #customRecurrenceModal .recurrence-days-of-week .day-chip.active {
             background-color: var(--primary-green);
             color: white;
         }
@@ -855,14 +857,7 @@
 
         #customRecurrenceModal .recurrence-ends-option input[type="radio"] {
             margin: 0;
-            width: 16px;
-            height: 16px;
             accent-color: var(--primary-green);
-        }
-
-        #customRecurrenceModal .recurrence-ends-option label {
-            margin: 0;
-            font-weight: normal;
         }
 
         #customRecurrenceModal .recurrence-ends-option input[type="date"],
@@ -872,24 +867,31 @@
             border: 1px solid var(--border-soft);
             border-radius: 5px;
             font-size: 0.9em;
-            background-color: white;
+            max-width: 150px;
         }
 
-        #customRecurrenceModal .recurrence-ends-option input:disabled {
-            background-color: #f0f0f0;
-            cursor: not-allowed;
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Media Queries para Responsividade */
+        /* Responsividade */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
-                overflow-y: auto; /* Permite rolagem na página inteira em telas menores */
+                overflow-y: auto;
             }
 
             .panel-left {
                 width: 100%;
-                max-width: none;
+                max-width: 100%;
                 border-right: none;
                 border-bottom: 1px solid var(--border-soft);
                 padding-bottom: 0;
@@ -897,7 +899,7 @@
             }
 
             .resizer {
-                display: none; /* Esconde o resizer em mobile */
+                display: none;
             }
 
             .panel-right {
@@ -905,35 +907,34 @@
             }
 
             .metrics-grid {
-                grid-template-columns: 1fr; /* Uma coluna em mobile */
+                grid-template-columns: 1fr 1fr;
             }
 
-            .filter-bar, .action-buttons {
+            .filter-bar,
+            .action-buttons {
                 flex-direction: column;
                 align-items: stretch;
             }
 
-            .filter-bar input, .filter-bar button,
+            .filter-bar input,
+            .filter-bar button,
             .action-buttons button {
                 width: 100%;
             }
 
             .notes-table {
-                min-width: unset; /* Remove largura mínima em mobile */
+                min-width: unset; /* Remove min-width para mobile */
             }
 
-            .notes-table th, .notes-table td {
+            .notes-table th,
+            .notes-table td {
                 padding: 8px 10px;
-                font-size: 0.8em;
+                font-size: 0.85em;
             }
 
-            .notes-table .actions-cell {
-                flex-direction: column;
-                gap: 2px;
-            }
-
-            .notes-table .actions-cell button {
-                font-size: 0.9em;
+            .notes-table .actions button {
+                font-size: 1em;
+                margin-right: 5px;
             }
 
             .modal-content {
@@ -945,8 +946,8 @@
                 font-size: 1.2em;
             }
 
-            .modal-close-button {
-                font-size: 1.5em;
+            .modal-close {
+                font-size: 1.8em;
             }
         }
     </style>
@@ -966,28 +967,23 @@
         </div>
 
         <h2>Nova Anotação</h2>
-
         <form id="noteForm">
             <div class="form-group">
                 <label for="noteTitle">Título:</label>
-                <input type="text" id="noteTitle" required>
+                <input type="text" id="noteTitle" placeholder="Título da anotação" required>
             </div>
-
             <div class="form-group">
                 <label for="noteResponsible">Responsável:</label>
-                <input type="text" id="noteResponsible">
+                <input type="text" id="noteResponsible" placeholder="Nome do responsável">
             </div>
-
             <div class="form-group">
                 <label for="noteContent">Conteúdo:</label>
-                <textarea id="noteContent" rows="3"></textarea>
+                <textarea id="noteContent" placeholder="Detalhes da anotação"></textarea>
             </div>
-
             <div class="form-group">
                 <label for="noteDate">Prazo:</label>
                 <input type="date" id="noteDate">
             </div>
-
             <div class="form-group">
                 <label for="noteTime">Horário:</label>
                 <input type="time" id="noteTime">
@@ -1022,13 +1018,17 @@
                         <input type="radio" id="recurrenceNever" name="recurrenceOption" value="never" checked>
                         <label for="recurrenceNever">Nunca</label>
                     </div>
-                    <button type="button" id="openCustomRecurrenceModalButton" class="recurrence-custom-button">Configurar recorrência</button>
+                    <div class="recurrence-option">
+                        <input type="radio" id="recurrenceCustom" name="recurrenceOption" value="custom">
+                        <label for="recurrenceCustom">Configurar recorrência</label>
+                    </div>
                 </div>
+                <button type="button" id="openCustomRecurrenceModalButton" class="recurrence-custom-button" style="display: none;">Configurar recorrência</button>
             </div>
 
             <div class="form-actions">
                 <button type="button" id="cancelButton" class="cancel-button">Cancelar</button>
-                <button type="submit" id="saveNoteButton" class="save-button">Salvar Anotação</button>
+                <button type="submit" id="saveButton" class="save-button">Salvar Anotação</button>
             </div>
         </form>
     </div>
@@ -1055,30 +1055,30 @@
 
         <div class="filter-bar">
             <input type="text" id="filterTextInput" placeholder="Filtrar por título, responsável, conteúdo...">
-            <button type="button" id="filterButton" class="filter-button"><i class="fas fa-filter"></i> Filtrar</button>
-            <button type="button" id="clearFilterButton" class="clear-button"><i class="fas fa-times"></i> Limpar</button>
+            <button id="filterButton"><i class="fas fa-search"></i> Filtrar</button>
+            <button id="clearFilterButton" class="clear-filter-button"><i class="fas fa-times"></i> Limpar</button>
         </div>
 
         <div class="action-buttons">
-            <button type="button" id="deleteSelectedButton" class="delete-selected-button" style="display: none;"><i class="fas fa-trash-alt"></i> Excluir Selecionados</button>
-            <button type="button" id="exportDataButton" class="export-button"><i class="fas fa-file-export"></i> Exportar Dados</button>
-            <button type="button" id="importDataButton" class="import-button"><i class="fas fa-file-import"></i> Importar Dados</button>
-            <button type="button" id="exportCalendarButton" class="export-button"><i class="fas fa-calendar-alt"></i> Exportar Agenda</button>
-            <button type="button" id="saveColumnSettingsButton" class="settings-button"><i class="fas fa-columns"></i> Salvar Colunas</button>
+            <button id="deleteSelectedButton" class="delete-selected-button" style="display: none;"><i class="fas fa-trash"></i> Excluir Selecionados</button>
+            <button id="exportDataButton" class="export-button"><i class="fas fa-file-export"></i> Exportar Dados</button>
+            <button id="importDataButton" class="import-button"><i class="fas fa-file-import"></i> Importar Dados</button>
+            <button id="exportCalendarButton" class="export-calendar-button"><i class="fas fa-calendar-alt"></i> Exportar Agenda</button>
+            <button id="saveColumnSettingsButton" class="save-columns-button"><i class="fas fa-save"></i> Salvar Colunas</button>
         </div>
 
         <div class="table-wrapper">
-            <table class="notes-table" id="notesTable">
+            <table class="notes-table">
                 <thead>
                     <tr id="tableHeaderRow">
-                        <th data-column-id="select" style="width: 50px;"><input type="checkbox" id="selectAllNotesCheckbox"></th>
-                        <th data-column-id="tipo" style="width: 100px;">Tipo</th>
-                        <th data-column-id="titulo" style="width: 150px;">Título</th>
-                        <th data-column-id="responsavel" style="width: 150px;">Responsável</th>
-                        <th data-column-id="conteudo" style="width: 250px;">Conteúdo</th>
-                        <th data-column-id="prazo" style="width: 120px;">Prazo</th>
-                        <th data-column-id="status" style="width: 120px;">Status</th>
-                        <th data-column-id="acoes" style="width: 100px;">Ações</th>
+                        <th style="width: 30px;"><input type="checkbox" id="selectAllNotesCheckbox"></th>
+                        <th data-column="tipo" style="width: 100px;">Tipo<div class="col-resizer"></div></th>
+                        <th data-column="titulo" style="width: 200px;">Título<div class="col-resizer"></div></th>
+                        <th data-column="responsavel" style="width: 150px;">Responsável<div class="col-resizer"></div></th>
+                        <th data-column="conteudo" style="width: 250px;">Conteúdo<div class="col-resizer"></div></th>
+                        <th data-column="prazo" style="width: 120px;">Prazo<div class="col-resizer"></div></th>
+                        <th data-column="status" style="width: 120px;">Status<div class="col-resizer"></div></th>
+                        <th style="width: 120px;">Ações<div class="col-resizer"></div></th>
                     </tr>
                 </thead>
                 <tbody id="notesTableBody">
@@ -1088,12 +1088,12 @@
         </div>
     </div>
 
-    <!-- Modal de Visualização de Anotação -->
+    <!-- Modal de Visualização -->
     <div id="viewModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="viewModalTitle"></h2>
-                <span class="modal-close-button" id="modalCloseButton">&times;</span>
+                <span class="modal-close" id="modalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
                 <p><strong>Responsável:</strong> <span id="viewModalResponsible"></span></p>
@@ -1104,8 +1104,8 @@
                 <p><strong>Repetição:</strong> <span id="viewModalRecurrence"></span></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close-button" id="viewModalCloseButton">Fechar</button>
-                <button type="button" class="edit-button" id="viewModalEditButton">Editar</button>
+                <button type="button" id="viewModalCloseButton" class="close-button">Fechar</button>
+                <button type="button" id="viewModalEditButton" class="edit-button">Editar</button>
             </div>
         </div>
     </div>
@@ -1115,43 +1115,54 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Opções de Importação</h2>
-                <span class="modal-close-button" id="importModalCloseButton">&times;</span>
+                <span class="modal-close" id="importModalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
-                <p>Como você gostaria de importar os dados?</p>
-                <input type="file" id="importFileInput" accept=".json">
+                <input type="file" id="importFileInput" accept=".json" class="import-file-input">
+                <div class="import-option">
+                    <input type="radio" id="importReplace" name="importOption" value="replace" checked>
+                    <label for="importReplace">Substituir tudo</label>
+                </div>
+                <div class="import-option">
+                    <input type="radio" id="importAdd" name="importOption" value="add">
+                    <label for="importAdd">Adicionar aos existentes</label>
+                </div>
+                <div class="import-option">
+                    <input type="radio" id="importUpdate" name="importOption" value="update">
+                    <label for="importUpdate">Atualizar existentes (manter novos)</label>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close-button" id="importCancelButton">Cancelar</button>
-                <button type="button" class="import-button" id="importReplaceButton">Substituir tudo</button>
-                <button type="button" class="import-button" id="importAddButton">Adicionar aos existentes</button>
-                <button type="button" class="import-button" id="importUpdateButton">Atualizar existentes (manter novos)</button>
+                <button type="button" id="cancelImportButton" class="close-button">Cancelar</button>
+                <button type="button" id="confirmImportButton" class="confirm-import-button">Importar Dados</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Configuração de Recorrência Personalizada -->
+    <!-- Modal de Recorrência Personalizada -->
     <div id="customRecurrenceModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Configurar Recorrência</h2>
-                <span class="modal-close-button" id="customRecurrenceModalCloseButton">&times;</span>
+                <span class="modal-close" id="customRecurrenceModalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
-                <div class="form-group recurrence-interval-group">
-                    <label for="recurrenceIntervalInput">Repetir a cada:</label>
-                    <input type="number" id="recurrenceIntervalInput" min="1" value="1">
-                    <select id="recurrenceIntervalUnitSelect">
-                        <option value="day">Dia(s)</option>
-                        <option value="week">Semana(s)</option>
-                        <option value="month">Mês(es)</option>
-                        <option value="year">Ano(s)</option>
-                    </select>
+                <div class="form-group">
+                    <label>Repetir a cada:</label>
+                    <div class="recurrence-interval-group">
+                        <input type="number" id="recurrenceInterval" value="1" min="1">
+                        <select id="recurrenceIntervalUnit">
+                            <option value="day">Dia(s)</option>
+                            <option value="week">Semana(s)</option>
+                            <option value="month">Mês(es)</option>
+                            <option value="year">Ano(s)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="recurrenceDaysOfWeekGroup" style="display: none;">
                     <label>Repetir em:</label>
-                    <div id="recurrenceDaysOfWeekGroup" class="recurrence-days-of-week-group" style="display: none;">
+                    <div id="customRecurrenceDays" class="recurrence-days-of-week">
                         <span class="day-chip" data-day="0">Dom</span>
                         <span class="day-chip" data-day="1">Seg</span>
                         <span class="day-chip" data-day="2">Ter</span>
@@ -1162,39 +1173,42 @@
                     </div>
                 </div>
 
-                <div class="form-group recurrence-ends-group">
+                <div class="form-group">
                     <label>Termina:</label>
-                    <div class="recurrence-ends-option">
-                        <input type="radio" id="recurrenceEndsNeverRadio" name="recurrenceEnds" value="never" checked>
-                        <label for="recurrenceEndsNeverRadio">Nunca</label>
-                    </div>
-                    <div class="recurrence-ends-option">
-                        <input type="radio" id="recurrenceEndsOnDateRadio" name="recurrenceEnds" value="onDate">
-                        <label for="recurrenceEndsOnDateRadio">Em</label>
-                        <input type="date" id="recurrenceEndDateInput" disabled>
-                    </div>
-                    <div class="recurrence-ends-option">
-                        <input type="radio" id="recurrenceEndsAfterOccurrencesRadio" name="recurrenceEnds" value="afterOccurrences">
-                        <label for="recurrenceEndsAfterOccurrencesRadio">Após</label>
-                        <input type="number" id="recurrenceEndOccurrencesInput" min="1" disabled> ocorrência(s)
+                    <div class="recurrence-ends-group">
+                        <div class="recurrence-ends-option">
+                            <input type="radio" id="recurrenceEndsNever" name="recurrenceEnds" value="never" checked>
+                            <label for="recurrenceEndsNever">Nunca</label>
+                        </div>
+                        <div class="recurrence-ends-option">
+                            <input type="radio" id="recurrenceEndsOnDate" name="recurrenceEnds" value="onDate">
+                            <label for="recurrenceEndsOnDate">Em</label>
+                            <input type="date" id="recurrenceEndDateInput" disabled>
+                        </div>
+                        <div class="recurrence-ends-option">
+                            <input type="radio" id="recurrenceEndsAfterOccurrences" name="recurrenceEnds" value="afterOccurrences">
+                            <label for="recurrenceEndsAfterOccurrences">Após</label>
+                            <input type="number" id="recurrenceEndOccurrencesInput" value="1" min="1" disabled>
+                            <span>ocorrência(s)</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="cancel-button" id="cancelCustomRecurrenceButton">Cancelar</button>
-                <button type="button" class="save-button" id="saveCustomRecurrenceButton">Salvar</button>
+                <button type="button" id="cancelCustomRecurrenceButton" class="close-button">Cancelar</button>
+                <button type="button" id="saveCustomRecurrenceButton" class="save-button">Salvar</button>
             </div>
         </div>
     </div>
 
-    <!-- Script do Supabase (como módulo) -->
+    <!-- Script do Supabase -->
     <script type="module" src="./certhilsupabase.js"></script>
 
-    <!-- Script principal da aplicação -->
     <script type="module">
+        // Importa a instância do Supabase
         import { supabase } from './certhilsupabase.js';
 
-        // --- Variáveis Globais e Elementos do DOM ---
+        // --- Elementos do DOM ---
         const panelLeft = document.querySelector('.panel-left');
         const panelResizer = document.querySelector('.resizer');
         const noteForm = document.getElementById('noteForm');
@@ -1210,9 +1224,10 @@
         const newStatusInput = document.getElementById('newStatusInput');
         const addStatusButton = document.getElementById('addStatusButton');
         const recurrenceNeverRadio = document.getElementById('recurrenceNever');
+        const recurrenceCustomRadio = document.getElementById('recurrenceCustom');
         const openCustomRecurrenceModalButton = document.getElementById('openCustomRecurrenceModalButton');
         const cancelButton = document.getElementById('cancelButton');
-        const saveNoteButton = document.getElementById('saveNoteButton');
+        const saveButton = document.getElementById('saveButton');
 
         const totalNotesCount = document.getElementById('totalNotesCount');
         const pendingNotesCount = document.getElementById('pendingNotesCount');
@@ -1230,10 +1245,9 @@
         const exportCalendarButton = document.getElementById('exportCalendarButton');
         const saveColumnSettingsButton = document.getElementById('saveColumnSettingsButton');
 
-        const notesTable = document.getElementById('notesTable');
-        const tableHeaderRow = document.getElementById('tableHeaderRow');
-        const notesTableBody = document.getElementById('notesTableBody');
         const selectAllNotesCheckbox = document.getElementById('selectAllNotesCheckbox');
+        const notesTableBody = document.getElementById('notesTableBody');
+        const tableHeaderRow = document.getElementById('tableHeaderRow');
 
         const viewModal = document.getElementById('viewModal');
         const modalCloseButton = document.getElementById('modalCloseButton');
@@ -1251,41 +1265,57 @@
         const importModal = document.getElementById('importModal');
         const importModalCloseButton = document.getElementById('importModalCloseButton');
         const importFileInput = document.getElementById('importFileInput');
-        const importCancelButton = document.getElementById('importCancelButton');
-        const importReplaceButton = document.getElementById('importReplaceButton');
-        const importAddButton = document.getElementById('importAddButton');
-        const importUpdateButton = document.getElementById('importUpdateButton');
-        let __pendingImportFile = null; // Variável para armazenar o arquivo de importação
+        const importReplaceRadio = document.getElementById('importReplace');
+        const importAddRadio = document.getElementById('importAdd');
+        const importUpdateRadio = document.getElementById('importUpdate');
+        const confirmImportButton = document.getElementById('confirmImportButton');
+        const cancelImportButton = document.getElementById('cancelImportButton');
 
         const customRecurrenceModal = document.getElementById('customRecurrenceModal');
         const customRecurrenceModalCloseButton = document.getElementById('customRecurrenceModalCloseButton');
-        const recurrenceIntervalInput = document.getElementById('recurrenceIntervalInput');
-        const recurrenceIntervalUnitSelect = document.getElementById('recurrenceIntervalUnitSelect');
+        const recurrenceIntervalInput = document.getElementById('recurrenceInterval');
+        const recurrenceIntervalUnitSelect = document.getElementById('recurrenceIntervalUnit');
         const recurrenceDaysOfWeekGroup = document.getElementById('recurrenceDaysOfWeekGroup');
-        const customRecurrenceDays = document.getElementById('recurrenceDaysOfWeekGroup'); // Reutiliza o mesmo ID
-        const recurrenceEndsNeverRadio = document.getElementById('recurrenceEndsNeverRadio');
-        const recurrenceEndsOnDateRadio = document.getElementById('recurrenceEndsOnDateRadio');
+        const customRecurrenceDays = document.getElementById('customRecurrenceDays');
+        const recurrenceEndsNeverRadio = document.getElementById('recurrenceEndsNever');
+        const recurrenceEndsOnDateRadio = document.getElementById('recurrenceEndsOnDate');
         const recurrenceEndDateInput = document.getElementById('recurrenceEndDateInput');
-        const recurrenceEndsAfterOccurrencesRadio = document.getElementById('recurrenceEndsAfterOccurrencesRadio');
+        const recurrenceEndsAfterOccurrencesRadio = document.getElementById('recurrenceEndsAfterOccurrences');
         const recurrenceEndOccurrencesInput = document.getElementById('recurrenceEndOccurrencesInput');
         const cancelCustomRecurrenceButton = document.getElementById('cancelCustomRecurrenceButton');
         const saveCustomRecurrenceButton = document.getElementById('saveCustomRecurrenceButton');
 
-
-        // --- Estado da Aplicação ---
+        // --- Variáveis de Estado ---
         let notes = [];
         let customTypes = JSON.parse(localStorage.getItem('customTypes')) || ['Geral', 'Trabalho', 'Pessoal', 'Estudo'];
         let customStatus = JSON.parse(localStorage.getItem('customStatus')) || ['Não Analisado', 'Pendente', 'Em Processamento', 'Programado', 'Cancelado', 'Concluído'];
-        let currentFilter = 'total'; // 'total', 'pendente', 'atrasada', 'concluido'
-        let selectedNotes = new Set(); // Para seleção múltipla
-        let currentRecurrence = { type: 'never' }; // Objeto para armazenar a recorrência atual
+        let currentFilter = 'total'; // Filtro ativo para os cards de métricas
+        let selectedNotes = new Set(); // Para seleção de múltiplas anotações
+        let currentRecurrence = { type: 'never' }; // Objeto para armazenar a recorrência da anotação atual
+        let columnSettings = JSON.parse(localStorage.getItem('columnSettings')) || {}; // { order: [], widths: {} }
+
         let thBeingResized = null;
         let startX, startWidth;
         let thBeingDragged = null;
         let dragPlaceholder = null;
 
+        // --- Funções de Utilitário ---
 
-        // --- Funções de Persistência (Supabase) ---
+        const formatDate = (dateString) => {
+            if (!dateString) return '';
+            const [year, month, day] = dateString.split('-');
+            return `${day}/${month}/${year}`;
+        };
+
+        const isOverdue = (prazoString, horarioString, status) => {
+            if (status === 'Concluído' || !prazoString) return false;
+
+            const now = new Date();
+            const noteDateTime = new Date(`${prazoString}T${horarioString || '23:59'}:00`);
+            return noteDateTime < now;
+        };
+
+        // --- Funções de CRUD com Supabase ---
 
         const saveCustomOptions = () => {
             localStorage.setItem('customTypes', JSON.stringify(customTypes));
@@ -1300,7 +1330,7 @@
         const loadNotes = async () => {
             try {
                 const { data, error } = await supabase
-                    .from('anotacoes')
+                    .from('anotacoes') // Nome da sua tabela no Supabase
                     .select('*'); // Seleciona todas as colunas
 
                 if (error) {
@@ -1324,11 +1354,11 @@
             const conteudo = noteContentInput.value.trim();
             const prazo = noteDateInput.value;
             const horario = noteTimeInput.value;
-            const tipo = Array.from(typeChipsContainer.querySelectorAll('.chip.active')).map(chip => chip.textContent.replace(' ×', '').trim());
-            const status = Array.from(statusChipsContainer.querySelectorAll('.chip.active')).map(chip => chip.textContent.replace(' ×', '').trim());
+            const tipo = typeChipsContainer.querySelector('.chip.active')?.textContent.replace(' ×', '').trim() || customTypes[0];
+            const status = statusChipsContainer.querySelector('.chip.active')?.textContent.replace(' ×', '').trim() || customStatus[0];
 
             if (!titulo) {
-                alert('O título da anotação é obrigatório.');
+                alert('O título da anotação é obrigatório!');
                 return;
             }
 
@@ -1338,35 +1368,35 @@
                 conteudo,
                 prazo,
                 horario,
-                tipo: tipo.length > 0 ? tipo[0] : 'Não Analisado', // Pega o primeiro tipo ou padrão
-                status: status.length > 0 ? status[0] : 'Não Analisado', // Pega o primeiro status ou padrão
-                recurrence: currentRecurrence,
+                tipo,
+                status,
+                recurrence: currentRecurrence // Salva o objeto de recorrência
             };
 
             try {
-                let result;
                 if (id) {
                     // Atualizar anotação existente
-                    result = await supabase
+                    const { error } = await supabase
                         .from('anotacoes')
                         .update(newNote)
                         .eq('id', id);
+
+                    if (error) throw error;
+                    alert('Anotação atualizada com sucesso!');
                 } else {
                     // Adicionar nova anotação
-                    result = await supabase
+                    const { error } = await supabase
                         .from('anotacoes')
                         .insert([newNote]);
-                }
 
-                if (result.error) {
-                    throw result.error;
+                    if (error) throw error;
+                    alert('Anotação adicionada com sucesso!');
                 }
-
-                await loadNotes(); // Recarrega as anotações após a operação
                 resetForm();
+                await loadNotes(); // Recarrega as anotações após a operação
             } catch (error) {
-                console.error('Erro ao adicionar/atualizar anotação:', error.message);
-                alert('Erro ao adicionar/atualizar anotação: ' + error.message);
+                console.error('Erro ao salvar anotação:', error.message);
+                alert('Erro ao salvar anotação: ' + error.message);
             }
         };
 
@@ -1379,12 +1409,9 @@
                     .delete()
                     .eq('id', id);
 
-                if (error) {
-                    throw error;
-                }
-
+                if (error) throw error;
+                alert('Anotação excluída com sucesso!');
                 await loadNotes(); // Recarrega as anotações
-                toggleDeleteSelectedButton();
             } catch (error) {
                 console.error('Erro ao excluir anotação:', error.message);
                 alert('Erro ao excluir anotação: ' + error.message);
@@ -1396,40 +1423,37 @@
                 alert('Nenhuma anotação selecionada para exclusão.');
                 return;
             }
-            if (!confirm(`Tem certeza que deseja excluir as ${selectedNotes.size} anotação(ões) selecionada(s)?`)) return;
+
+            if (!confirm(`Tem certeza que deseja excluir as ${selectedNotes.size} anotações selecionadas?`)) return;
 
             try {
                 const { error } = await supabase
                     .from('anotacoes')
                     .delete()
-                    .in('id', Array.from(selectedNotes));
+                    .in('id', Array.from(selectedNotes)); // Exclui todos os IDs selecionados
 
-                if (error) {
-                    throw error;
-                }
-
-                selectedNotes.clear();
+                if (error) throw error;
+                alert('Anotações selecionadas excluídas com sucesso!');
+                selectedNotes.clear(); // Limpa a seleção
+                selectAllNotesCheckbox.checked = false; // Desmarca o checkbox "selecionar todos"
+                toggleDeleteSelectedButton(); // Esconde o botão de exclusão
                 await loadNotes(); // Recarrega as anotações
-                toggleDeleteSelectedButton();
-                selectAllNotesCheckbox.checked = false;
             } catch (error) {
                 console.error('Erro ao excluir anotações selecionadas:', error.message);
                 alert('Erro ao excluir anotações selecionadas: ' + error.message);
             }
         };
 
-        const toggleNoteCompletion = async (id, isCompleted) => {
-            const newStatus = isCompleted ? 'Concluído' : 'Pendente'; // Ou outro status padrão
+        const toggleNoteCompletion = async (id, currentStatus) => {
+            const newStatus = currentStatus === 'Concluído' ? 'Pendente' : 'Concluído';
             try {
                 const { error } = await supabase
                     .from('anotacoes')
                     .update({ status: newStatus })
                     .eq('id', id);
 
-                if (error) {
-                    throw error;
-                }
-                await loadNotes();
+                if (error) throw error;
+                await loadNotes(); // Recarrega as anotações
             } catch (error) {
                 console.error('Erro ao atualizar status da anotação:', error.message);
                 alert('Erro ao atualizar status da anotação: ' + error.message);
@@ -1440,46 +1464,106 @@
 
         const renderCustomOptions = (options, container, inputElement, type) => {
             container.innerHTML = '';
-            options.forEach(option => {
+            options.forEach((option, index) => {
                 const chip = document.createElement('span');
                 chip.classList.add('chip');
                 chip.textContent = option;
                 chip.addEventListener('click', () => {
-                    chip.classList.toggle('active');
+                    // Desativa todos os outros chips do mesmo tipo
+                    container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
                 });
 
-                const closeIcon = document.createElement('i');
-                closeIcon.classList.add('fas', 'fa-times');
-                closeIcon.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Evita que o clique no 'x' ative/desative o chip
+                const removeIcon = document.createElement('i');
+                removeIcon.classList.add('fas', 'fa-times');
+                removeIcon.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evita que o clique no ícone ative o chip
                     if (confirm(`Tem certeza que deseja remover "${option}"?`)) {
-                        if (type === 'type') {
-                            customTypes = customTypes.filter(t => t !== option);
-                        } else {
-                            customStatus = customStatus.filter(s => s !== option);
-                        }
+                        options.splice(index, 1);
                         saveCustomOptions();
-                        renderCustomOptions(type === 'type' ? customTypes : customStatus, container, inputElement, type);
+                        renderCustomOptions(options, container, inputElement, type);
                     }
                 });
-                chip.appendChild(closeIcon);
+                chip.appendChild(removeIcon);
                 container.appendChild(chip);
             });
+            // Ativa o primeiro chip por padrão se não houver nenhum ativo
+            if (!container.querySelector('.chip.active') && options.length > 0) {
+                container.querySelector('.chip').classList.add('active');
+            }
         };
 
-        const addCustomOption = (optionsArray, inputElement, containerElement, type) => {
+        const addCustomOption = (options, inputElement, container, type) => {
             const value = inputElement.value.trim();
-            if (value && !optionsArray.includes(value)) {
-                optionsArray.push(value);
+            if (value && !options.includes(value)) {
+                options.push(value);
                 saveCustomOptions();
-                renderCustomOptions(optionsArray, containerElement, inputElement, type);
+                renderCustomOptions(options, container, inputElement, type);
                 inputElement.value = '';
+            }
+        };
+
+        const resetForm = () => {
+            noteForm.reset();
+            noteForm.removeAttribute('data-editing-id');
+            saveButton.textContent = 'Salvar Anotação';
+            saveButton.classList.remove('edit-mode');
+
+            // Ativa o primeiro chip de tipo e status por padrão
+            typeChipsContainer.querySelectorAll('.chip').forEach((chip, index) => {
+                chip.classList.toggle('active', index === 0);
+            });
+            statusChipsContainer.querySelectorAll('.chip').forEach((chip, index) => {
+                chip.classList.toggle('active', index === 0);
+            });
+
+            recurrenceNeverRadio.checked = true;
+            currentRecurrence = { type: 'never' };
+            updateCustomRecurrenceButtonText();
+        };
+
+        const editNote = (id) => {
+            const note = notes.find(n => n.id === id);
+            if (note) {
+                noteForm.dataset.editingId = note.id;
+                noteTitleInput.value = note.titulo;
+                noteResponsibleInput.value = note.responsavel;
+                noteContentInput.value = note.conteudo;
+                noteDateInput.value = note.prazo;
+                noteTimeInput.value = note.horario;
+
+                // Ativa o chip de tipo correto
+                typeChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                    chip.classList.toggle('active', chip.textContent.replace(' ×', '').trim() === note.tipo);
+                });
+                // Ativa o chip de status correto
+                statusChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                    chip.classList.toggle('active', chip.textContent.replace(' ×', '').trim() === note.status);
+                });
+
+                // Carrega a recorrência
+                currentRecurrence = note.recurrence || { type: 'never' };
+                if (currentRecurrence.type === 'never') {
+                    recurrenceNeverRadio.checked = true;
+                    recurrenceCustomRadio.checked = false;
+                } else {
+                    recurrenceCustomRadio.checked = true;
+                    openCustomRecurrenceModalButton.style.display = 'block';
+                }
+                updateCustomRecurrenceButtonText();
+
+                saveButton.textContent = 'Atualizar Anotação';
+                saveButton.classList.add('edit-mode');
             }
         };
 
         const renderNotes = (filterText = '', filterType = 'total') => {
             notesTableBody.innerHTML = '';
-            let filteredNotes = [...notes];
+            selectedNotes.clear(); // Limpa a seleção ao renderizar
+            selectAllNotesCheckbox.checked = false;
+            toggleDeleteSelectedButton();
+
+            let filteredNotes = notes;
 
             // Aplica filtro de texto
             if (filterText) {
@@ -1495,33 +1579,29 @@
 
             // Aplica filtro de métricas
             if (filterType === 'pendente') {
-                filteredNotes = filteredNotes.filter(note => note.status === 'Pendente');
+                filteredNotes = filteredNotes.filter(note => note.status !== 'Concluído' && !isOverdue(note.prazo, note.horario, note.status));
             } else if (filterType === 'atrasada') {
-                filteredNotes = filteredNotes.filter(note => note.status !== 'Concluído' && note.prazo && new Date(note.prazo) < new Date());
+                filteredNotes = filteredNotes.filter(note => isOverdue(note.prazo, note.horario, note.status));
             } else if (filterType === 'concluido') {
                 filteredNotes = filteredNotes.filter(note => note.status === 'Concluído');
             }
+            // 'total' não precisa de filtro adicional aqui
 
-            // Obtém a ordem atual das colunas
-            const columnOrder = Array.from(tableHeaderRow.querySelectorAll('th[data-column-id]'))
-                                .map(th => th.dataset.columnId)
-                                .filter(id => id !== 'select' && id !== 'acoes'); // Exclui checkbox e ações
+            // Aplica a ordem das colunas salvas
+            const columnOrder = columnSettings.order || Array.from(tableHeaderRow.querySelectorAll('th[data-column]')).map(th => th.dataset.column);
+            const headerColumns = Array.from(tableHeaderRow.querySelectorAll('th[data-column]'));
 
             filteredNotes.forEach(note => {
-                const row = notesTableBody.insertRow();
+                const row = document.createElement('tr');
                 row.dataset.id = note.id;
-
-                // Adiciona classe 'overdue' se a anotação estiver atrasada e não concluída
-                if (note.status !== 'Concluído' && note.prazo && new Date(note.prazo) < new Date()) {
+                if (isOverdue(note.prazo, note.horario, note.status)) {
                     row.classList.add('overdue');
                 }
 
-                // Coluna de seleção
-                const selectCell = row.insertCell();
+                const checkboxCell = document.createElement('td');
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.classList.add('note-select-checkbox');
-                checkbox.checked = selectedNotes.has(note.id);
                 checkbox.addEventListener('change', () => {
                     if (checkbox.checked) {
                         selectedNotes.add(note.id);
@@ -1530,173 +1610,84 @@
                     }
                     toggleDeleteSelectedButton();
                 });
-                selectCell.appendChild(checkbox);
+                checkboxCell.appendChild(checkbox);
+                row.appendChild(checkboxCell);
 
-                // Renderiza as outras colunas na ordem definida
-                columnOrder.forEach(columnId => {
-                    const cell = row.insertCell();
-                    let cellContent = '';
-
-                    switch (columnId) {
+                // Cria as células na ordem definida
+                columnOrder.forEach(colName => {
+                    const cell = document.createElement('td');
+                    switch (colName) {
                         case 'tipo':
-                            cellContent = note.tipo || '';
+                            cell.textContent = note.tipo;
                             break;
                         case 'titulo':
-                            cellContent = note.titulo || '';
+                            cell.textContent = note.titulo;
                             break;
                         case 'responsavel':
-                            cellContent = note.responsavel || '';
+                            cell.textContent = note.responsavel;
                             break;
                         case 'conteudo':
-                            cellContent = note.conteudo || '';
+                            cell.textContent = note.conteudo;
                             break;
                         case 'prazo':
-                            cellContent = note.prazo ? new Date(note.prazo).toLocaleDateString('pt-BR') : '';
+                            cell.textContent = note.prazo ? formatDate(note.prazo) + (note.horario ? ` ${note.horario}` : '') : '';
                             break;
                         case 'status':
                             const statusBadge = document.createElement('span');
                             statusBadge.classList.add('status-badge', note.status.toLowerCase().replace(/\s/g, '-'));
-                            statusBadge.textContent = note.status || '';
+                            statusBadge.textContent = note.status;
                             cell.appendChild(statusBadge);
                             break;
                         default:
-                            cellContent = note[columnId] || ''; // Fallback para outras colunas
+                            cell.textContent = note[colName] || '';
                     }
-                    if (columnId !== 'status') { // Evita sobrescrever o badge
-                        cell.textContent = cellContent;
-                    }
+                    row.appendChild(cell);
                 });
 
-                // Coluna de Ações
-                const actionsCell = row.insertCell();
-                actionsCell.classList.add('actions-cell');
+                const actionsCell = document.createElement('td');
+                actionsCell.classList.add('actions');
 
                 const viewButton = document.createElement('button');
-                viewButton.classList.add('view-button');
                 viewButton.innerHTML = '<i class="fas fa-eye"></i>';
                 viewButton.title = 'Visualizar';
-                viewButton.addEventListener('click', () => viewNote(note.id));
-                actionsCell.appendChild(viewButton);
+                viewButton.addEventListener('click', () => openViewModal(note));
 
                 const editButton = document.createElement('button');
-                editButton.classList.add('edit-button');
                 editButton.innerHTML = '<i class="fas fa-edit"></i>';
                 editButton.title = 'Editar';
                 editButton.addEventListener('click', () => editNote(note.id));
-                actionsCell.appendChild(editButton);
+
+                const toggleCompleteButton = document.createElement('button');
+                toggleCompleteButton.innerHTML = note.status === 'Concluído' ? '<i class="fas fa-undo"></i>' : '<i class="fas fa-check"></i>';
+                toggleCompleteButton.title = note.status === 'Concluído' ? 'Marcar como Pendente' : 'Marcar como Concluído';
+                toggleCompleteButton.addEventListener('click', () => toggleNoteCompletion(note.id, note.status));
 
                 const deleteButton = document.createElement('button');
-                deleteButton.classList.add('delete-button');
-                deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
                 deleteButton.title = 'Excluir';
+                deleteButton.classList.add('delete-button');
                 deleteButton.addEventListener('click', () => deleteNote(note.id));
+
+                actionsCell.appendChild(viewButton);
+                actionsCell.appendChild(editButton);
+                actionsCell.appendChild(toggleCompleteButton);
                 actionsCell.appendChild(deleteButton);
+                row.appendChild(actionsCell);
+
+                notesTableBody.appendChild(row);
             });
-            toggleDeleteSelectedButton();
         };
 
         const updateMetricCards = () => {
             const total = notes.length;
-            const pending = notes.filter(note => note.status === 'Pendente').length;
-            const overdue = notes.filter(note => note.status !== 'Concluído' && note.prazo && new Date(note.prazo) < new Date()).length;
+            const pending = notes.filter(note => note.status !== 'Concluído' && !isOverdue(note.prazo, note.horario, note.status)).length;
+            const overdue = notes.filter(note => isOverdue(note.prazo, note.horario, note.status)).length;
             const completed = notes.filter(note => note.status === 'Concluído').length;
 
             totalNotesCount.textContent = total;
             pendingNotesCount.textContent = pending;
             overdueNotesCount.textContent = overdue;
             completedNotesCount.textContent = completed;
-        };
-
-        const resetForm = () => {
-            noteForm.reset();
-            noteForm.removeAttribute('data-editing-id');
-            saveNoteButton.textContent = 'Salvar Anotação';
-
-            // Reseta chips de tipo
-            typeChipsContainer.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
-            // Ativa o chip 'Geral' por padrão, se existir
-            const defaultTypeChip = typeChipsContainer.querySelector('.chip');
-            if (defaultTypeChip) defaultTypeChip.classList.add('active');
-
-            // Reseta chips de status
-            statusChipsContainer.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
-            // Ativa o chip 'Não Analisado' por padrão, se existir
-            const defaultStatusChip = statusChipsContainer.querySelector('.chip');
-            if (defaultStatusChip) defaultStatusChip.classList.add('active');
-
-            currentRecurrence = { type: 'never' };
-            updateCustomRecurrenceButtonText();
-            recurrenceNeverRadio.checked = true;
-        };
-
-        const editNote = (id) => {
-            const note = notes.find(n => n.id === id);
-            if (!note) return;
-
-            noteForm.dataset.editingId = note.id;
-            noteTitleInput.value = note.titulo;
-            noteResponsibleInput.value = note.responsavel;
-            noteContentInput.value = note.conteudo;
-            noteDateInput.value = note.prazo;
-            noteTimeInput.value = note.horario;
-
-            // Ativa os chips de tipo
-            typeChipsContainer.querySelectorAll('.chip').forEach(chip => {
-                if (note.tipo && chip.textContent.includes(note.tipo)) {
-                    chip.classList.add('active');
-                } else {
-                    chip.classList.remove('active');
-                }
-            });
-
-            // Ativa os chips de status
-            statusChipsContainer.querySelectorAll('.chip').forEach(chip => {
-                if (note.status && chip.textContent.includes(note.status)) {
-                    chip.classList.add('active');
-                } else {
-                    chip.classList.remove('active');
-                }
-            });
-
-            currentRecurrence = note.recurrence || { type: 'never' };
-            updateCustomRecurrenceButtonText();
-
-            saveNoteButton.textContent = 'Atualizar Anotação';
-            panelLeft.scrollTop = 0; // Rola para o topo do painel esquerdo
-        };
-
-        const viewNote = (id) => {
-            const note = notes.find(n => n.id === id);
-            if (!note) return;
-
-            viewModal.dataset.noteId = note.id;
-            viewModalTitle.textContent = note.titulo;
-            viewModalResponsible.textContent = note.responsavel || 'Não informado';
-            viewModalContent.textContent = note.conteudo || 'Sem conteúdo';
-            viewModalDate.textContent = note.prazo ? new Date(note.prazo).toLocaleDateString('pt-BR') : 'Não informado';
-            viewModalTime.textContent = note.horario || 'Não informado';
-            viewModalType.textContent = note.tipo || 'Não informado';
-            viewModalStatus.textContent = note.status || 'Não informado';
-
-            let recurrenceText = 'Nunca';
-            if (note.recurrence && note.recurrence.type === 'custom') {
-                recurrenceText = `Repete a cada ${note.recurrence.interval} ${note.recurrence.unit}(s)`;
-                if (note.recurrence.unit === 'week' && note.recurrence.daysOfWeek && note.recurrence.daysOfWeek.length > 0) {
-                    const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-                    const selectedDays = note.recurrence.daysOfWeek.map(day => dayNames[day]).join(', ');
-                    recurrenceText += ` nos dias: ${selectedDays}`;
-                }
-                if (note.recurrence.ends) {
-                    if (note.recurrence.ends.type === 'onDate') {
-                        recurrenceText += ` até ${new Date(note.recurrence.ends.value).toLocaleDateString('pt-BR')}`;
-                    } else if (note.recurrence.ends.type === 'afterOccurrences') {
-                        recurrenceText += ` por ${note.recurrence.ends.value} ocorrência(s)`;
-                    }
-                }
-            }
-            viewModalRecurrence.textContent = recurrenceText;
-
-            viewModal.style.display = 'flex';
         };
 
         const toggleDeleteSelectedButton = () => {
@@ -1707,50 +1698,135 @@
             }
         };
 
-        // --- Funções de Colunas (Salvar/Carregar) ---
-
-        const saveColumnSettings = () => {
-            const columnSettings = [];
-            tableHeaderRow.querySelectorAll('th[data-column-id]').forEach(th => {
-                columnSettings.push({
-                    id: th.dataset.columnId,
-                    width: th.style.width,
-                    order: Array.from(tableHeaderRow.children).indexOf(th)
-                });
-            });
-            localStorage.setItem('columnSettings', JSON.stringify(columnSettings));
-            alert('Configurações de colunas salvas!');
+        const openViewModal = (note) => {
+            viewModalTitle.textContent = note.titulo;
+            viewModalResponsible.textContent = note.responsavel;
+            viewModalContent.textContent = note.conteudo;
+            viewModalDate.textContent = note.prazo ? formatDate(note.prazo) : 'N/A';
+            viewModalTime.textContent = note.horario || 'N/A';
+            viewModalType.textContent = note.tipo;
+            viewModalStatus.textContent = note.status;
+            viewModalRecurrence.textContent = formatRecurrence(note.recurrence);
+            viewModal.dataset.noteId = note.id; // Armazena o ID para edição
+            viewModal.style.display = 'flex';
         };
 
-        const loadColumnSettings = () => {
-            const savedSettings = JSON.parse(localStorage.getItem('columnSettings'));
-            if (savedSettings) {
-                // Aplica a ordem das colunas
-                const headerCells = Array.from(tableHeaderRow.children);
-                savedSettings.sort((a, b) => a.order - b.order).forEach(setting => {
-                    const th = tableHeaderRow.querySelector(`th[data-column-id="${setting.id}"]`);
-                    if (th) {
-                        tableHeaderRow.appendChild(th); // Move o elemento para a nova posição
-                        th.style.width = setting.width; // Aplica a largura
-                        th.style.minWidth = setting.width;
-                        th.style.maxWidth = setting.width;
-                    }
+        const formatRecurrence = (recurrence) => {
+            if (!recurrence || recurrence.type === 'never') {
+                return 'Nunca';
+            }
+            let description = `A cada ${recurrence.interval} ${recurrence.intervalUnit}`;
+            if (recurrence.intervalUnit === 'week' && recurrence.daysOfWeek && recurrence.daysOfWeek.length > 0) {
+                const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+                const selectedDays = recurrence.daysOfWeek.map(dayIndex => dayNames[dayIndex]).join(', ');
+                description += ` nas ${selectedDays}`;
+            }
+            if (recurrence.ends === 'onDate' && recurrence.endDate) {
+                description += ` até ${formatDate(recurrence.endDate)}`;
+            } else if (recurrence.ends === 'afterOccurrences' && recurrence.endOccurrences) {
+                description += ` por ${recurrence.endOccurrences} ocorrência(s)`;
+            }
+            return description;
+        };
+
+        const openCustomRecurrenceModal = () => {
+            // Preenche o modal com os dados da recorrência atual
+            recurrenceIntervalInput.value = currentRecurrence.interval || 1;
+            recurrenceIntervalUnitSelect.value = currentRecurrence.intervalUnit || 'day';
+
+            customRecurrenceDays.querySelectorAll('.day-chip').forEach(chip => chip.classList.remove('active'));
+            if (currentRecurrence.intervalUnit === 'week' && currentRecurrence.daysOfWeek) {
+                recurrenceDaysOfWeekGroup.style.display = 'flex';
+                currentRecurrence.daysOfWeek.forEach(dayIndex => {
+                    customRecurrenceDays.querySelector(`[data-day="${dayIndex}"]`).classList.add('active');
                 });
+            } else {
+                recurrenceDaysOfWeekGroup.style.display = 'none';
+            }
+
+            recurrenceEndsNeverRadio.checked = currentRecurrence.ends === 'never' || !currentRecurrence.ends;
+            recurrenceEndsOnDateRadio.checked = currentRecurrence.ends === 'onDate';
+            recurrenceEndDateInput.value = currentRecurrence.endDate || '';
+            recurrenceEndDateInput.disabled = !recurrenceEndsOnDateRadio.checked;
+
+            recurrenceEndsAfterOccurrencesRadio.checked = currentRecurrence.ends === 'afterOccurrences';
+            recurrenceEndOccurrencesInput.value = currentRecurrence.endOccurrences || 1;
+            recurrenceEndOccurrencesInput.disabled = !recurrenceEndsAfterOccurrencesRadio.checked;
+
+            customRecurrenceModal.style.display = 'flex';
+        };
+
+        const closeCustomRecurrenceModal = () => {
+            customRecurrenceModal.style.display = 'none';
+        };
+
+        const saveCustomRecurrence = () => {
+            const interval = parseInt(recurrenceIntervalInput.value, 10);
+            const intervalUnit = recurrenceIntervalUnitSelect.value;
+            const ends = document.querySelector('input[name="recurrenceEnds"]:checked').value;
+
+            let daysOfWeek = [];
+            if (intervalUnit === 'week') {
+                customRecurrenceDays.querySelectorAll('.day-chip.active').forEach(chip => {
+                    daysOfWeek.push(parseInt(chip.dataset.day, 10));
+                });
+            }
+
+            let endDate = null;
+            if (ends === 'onDate') {
+                endDate = recurrenceEndDateInput.value;
+            }
+
+            let endOccurrences = null;
+            if (ends === 'afterOccurrences') {
+                endOccurrences = parseInt(recurrenceEndOccurrencesInput.value, 10);
+            }
+
+            currentRecurrence = {
+                type: 'custom',
+                interval,
+                intervalUnit,
+                daysOfWeek,
+                ends,
+                endDate,
+                endOccurrences
+            };
+
+            updateCustomRecurrenceButtonText();
+            closeCustomRecurrenceModal();
+        };
+
+        const updateCustomRecurrenceButtonText = () => {
+            if (currentRecurrence.type === 'never') {
+                recurrenceCustomRadio.checked = false;
+                openCustomRecurrenceModalButton.style.display = 'none';
+            } else {
+                recurrenceCustomRadio.checked = true;
+                openCustomRecurrenceModalButton.style.display = 'block';
+                openCustomRecurrenceModalButton.textContent = `Recorrência: ${formatRecurrence(currentRecurrence)}`;
             }
         };
 
-        // --- Funções de Importação/Exportação ---
+        const exportData = () => {
+            const dataStr = JSON.stringify(notes, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'anotacoes_certhil.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        };
 
-        importDataButton.addEventListener('click', () => {
+        const importData = () => {
             importModal.style.display = 'flex';
-        });
+        };
 
-        importFileInput.addEventListener('change', (event) => {
-            __pendingImportFile = event.target.files[0];
-        });
-
-        const processImport = async (mode) => {
-            if (!__pendingImportFile) {
+        confirmImportButton.addEventListener('click', () => {
+            const file = importFileInput.files[0];
+            if (!file) {
                 alert('Por favor, selecione um arquivo JSON para importar.');
                 return;
             }
@@ -1763,113 +1839,88 @@
                         throw new Error('O arquivo JSON não contém um array de anotações válido.');
                     }
 
-                    if (mode === 'replace') {
-                        // Exclui todas as anotações existentes
-                        const { error: deleteError } = await supabase.from('anotacoes').delete().neq('id', 0); // Deleta tudo onde id não é 0 (ou qualquer condição que delete tudo)
-                        if (deleteError) throw deleteError;
+                    const importOption = document.querySelector('input[name="importOption"]:checked').value;
 
-                        // Insere as novas anotações
-                        const { error: insertError } = await supabase.from('anotacoes').insert(importedNotes.map(note => ({
-                            titulo: note.titulo,
-                            responsavel: note.responsavel,
-                            conteudo: note.conteudo,
-                            prazo: note.prazo,
-                            horario: note.horario,
-                            tipo: note.tipo,
-                            status: note.status,
-                            recurrence: note.recurrence,
-                        })));
-                        if (insertError) throw insertError;
+                    if (importOption === 'replace') {
+                        // Excluir tudo e inserir o novo
+                        if (confirm('Esta ação substituirá TODAS as anotações existentes. Deseja continuar?')) {
+                            const { error: deleteError } = await supabase.from('anotacoes').delete().neq('id', 0); // Deleta tudo
+                            if (deleteError) throw deleteError;
 
-                    } else if (mode === 'add') {
-                        // Insere apenas as novas anotações
-                        const { error: insertError } = await supabase.from('anotacoes').insert(importedNotes.map(note => ({
-                            titulo: note.titulo,
-                            responsavel: note.responsavel,
-                            conteudo: note.conteudo,
-                            prazo: note.prazo,
-                            horario: note.horario,
-                            tipo: note.tipo,
-                            status: note.status,
-                            recurrence: note.recurrence,
-                        })));
-                        if (insertError) throw insertError;
-
-                    } else if (mode === 'update') {
-                        // Tenta atualizar as existentes, adiciona as novas
+                            const { error: insertError } = await supabase.from('anotacoes').insert(importedNotes.map(note => {
+                                delete note.id; // Remove IDs para que o Supabase gere novos
+                                return note;
+                            }));
+                            if (insertError) throw insertError;
+                            alert('Dados importados e substituídos com sucesso!');
+                        }
+                    } else if (importOption === 'add') {
+                        // Adicionar novos, ignorar IDs existentes
+                        const { error } = await supabase.from('anotacoes').insert(importedNotes.map(note => {
+                            delete note.id; // Remove IDs para que o Supabase gere novos
+                            return note;
+                        }));
+                        if (error) throw error;
+                        alert('Novas anotações adicionadas com sucesso!');
+                    } else if (importOption === 'update') {
+                        // Atualizar existentes, adicionar novos
                         for (const importedNote of importedNotes) {
-                            const existingNote = notes.find(n => n.id === importedNote.id); // Assume que o ID é o identificador único
-                            if (existingNote) {
-                                const { error: updateError } = await supabase
+                            if (importedNote.id) {
+                                // Tenta atualizar
+                                const { data, error: updateError } = await supabase
                                     .from('anotacoes')
-                                    .update({
-                                        titulo: importedNote.titulo,
-                                        responsavel: importedNote.responsavel,
-                                        conteudo: importedNote.conteudo,
-                                        prazo: importedNote.prazo,
-                                        horario: importedNote.horario,
-                                        tipo: importedNote.tipo,
-                                        status: importedNote.status,
-                                        recurrence: importedNote.recurrence,
-                                    })
+                                    .update(importedNote)
                                     .eq('id', importedNote.id);
-                                if (updateError) throw updateError;
+
+                                if (updateError) {
+                                    console.warn(`Erro ao atualizar anotação ID ${importedNote.id}: ${updateError.message}. Tentando inserir como nova.`);
+                                    // Se falhou a atualização (ID não existe), insere como nova
+                                    delete importedNote.id;
+                                    const { error: insertError } = await supabase.from('anotacoes').insert([importedNote]);
+                                    if (insertError) console.error(`Erro ao inserir anotação como nova: ${insertError.message}`);
+                                }
                             } else {
-                                const { error: insertError } = await supabase.from('anotacoes').insert({
-                                    titulo: importedNote.titulo,
-                                    responsavel: importedNote.responsavel,
-                                    conteudo: importedNote.conteudo,
-                                    prazo: importedNote.prazo,
-                                    horario: importedNote.horario,
-                                    tipo: importedNote.tipo,
-                                    status: importedNote.status,
-                                    recurrence: importedNote.recurrence,
-                                });
-                                if (insertError) throw insertError;
+                                // Insere como nova se não tiver ID
+                                const { error: insertError } = await supabase.from('anotacoes').insert([importedNote]);
+                                if (insertError) console.error(`Erro ao inserir anotação sem ID: ${insertError.message}`);
                             }
                         }
+                        alert('Anotações atualizadas e novas adicionadas com sucesso!');
                     }
 
-                    await loadNotes(); // Recarrega as anotações do Supabase
                     importModal.style.display = 'none';
-                    __pendingImportFile = null;
-                    alert('Importação concluída com sucesso!');
-                } catch (err) {
-                    console.error('Erro durante a importação:', err);
-                    alert('Erro ao importar arquivo: ' + err.message);
+                    importFileInput.value = ''; // Limpa o input do arquivo
+                    await loadNotes(); // Recarrega os dados após a importação
+                } catch (error) {
+                    console.error('Erro ao importar dados:', error.message);
+                    alert('Erro ao importar dados: ' + error.message);
                 }
             };
-            reader.readAsText(__pendingImportFile);
-        }
-
-        // Conecta botões do modal
-        importReplaceButton.onclick = () => processImport('replace');
-        importAddButton.onclick = () => processImport('add');
-        importUpdateButton.onclick = () => processImport('update');
+            reader.readAsText(file);
+        });
 
 
         const exportCalendar = () => {
             let icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//CERTHIL Anotacoes//NONSGML v1.0//EN\n`;
 
-            notes.filter(note => note.prazo).forEach(note => { // Usar 'prazo'
-                const startDate = new Date(note.prazo + (note.horario ? `T${note.horario}` : 'T00:00')); // Usar 'prazo' e 'horario'
-                const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // Duração de 1 hora
+            notes.forEach(note => {
+                if (note.prazo) {
+                    const startDate = new Date(`${note.prazo}T${note.horario || '00:00'}:00`);
+                    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // Adiciona 1 hora para o evento
 
-                const formatICSDate = (d) => {
-                    return d.toISOString().replace(/[-:]|\.\d{3}/g, '').slice(0, -1) + 'Z';
-                };
+                    const formatDateTime = (date) => {
+                        return date.toISOString().replace(/[-:]|\.\d{3}/g, '').slice(0, -1) + 'Z';
+                    };
 
-                icsContent += `BEGIN:VEVENT\n`;
-                icsContent += `UID:${note.id}@certhil.com\n`;
-                icsContent += `DTSTAMP:${formatICSDate(new Date())}\n`;
-                icsContent += `DTSTART:${formatICSDate(startDate)}\n`;
-                icsContent += `DTEND:${formatICSDate(endDate)}\n`;
-                icsContent += `SUMMARY:${note.titulo}\n`; // Usar 'titulo'
-                icsContent += `DESCRIPTION:${note.conteudo || 'Sem descrição.'}\n`; // Usar 'conteudo'
-                if (note.responsavel) { // Usar 'responsavel'
-                    icsContent += `ORGANIZER;CN=${note.responsavel}:mailto:noreply@certhil.com\n`;
+                    icsContent += `BEGIN:VEVENT\n`;
+                    icsContent += `UID:${note.id}@certhil.com\n`;
+                    icsContent += `DTSTAMP:${formatDateTime(new Date())}\n`;
+                    icsContent += `DTSTART:${formatDateTime(startDate)}\n`;
+                    icsContent += `DTEND:${formatDateTime(endDate)}\n`;
+                    icsContent += `SUMMARY:${note.titulo} (${note.status})\n`;
+                    icsContent += `DESCRIPTION:${note.conteudo || 'Sem descrição.'}\\nResponsável: ${note.responsavel || 'N/A'}\\nTipo: ${note.tipo || 'N/A'}\n`;
+                    icsContent += `END:VEVENT\n`;
                 }
-                icsContent += `END:VEVENT\n`;
             });
 
             icsContent += `END:VCALENDAR`;
@@ -1878,164 +1929,122 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'certhil_agenda.ics';
+            a.download = 'anotacoes_certhil.ics';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         };
 
-        // --- Funções do Modal de Recorrência Personalizada ---
+        // --- Funções de Redimensionamento e Reordenação de Colunas ---
 
-        const openCustomRecurrenceModal = () => {
-            // Preenche o modal com os dados da recorrência atual
-            recurrenceIntervalInput.value = currentRecurrence.interval || 1;
-            recurrenceIntervalUnitSelect.value = currentRecurrence.unit || 'day';
+        const saveColumnSettings = () => {
+            const currentOrder = Array.from(tableHeaderRow.querySelectorAll('th[data-column]')).map(th => th.dataset.column);
+            const currentWidths = {};
+            tableHeaderRow.querySelectorAll('th').forEach(th => {
+                if (th.style.width) {
+                    currentWidths[th.dataset.column || th.textContent.trim()] = th.style.width;
+                }
+            });
+            columnSettings = { order: currentOrder, widths: currentWidths };
+            localStorage.setItem('columnSettings', JSON.stringify(columnSettings));
+            alert('Configurações de colunas salvas!');
+        };
 
-            // Reseta a seleção de dias da semana
-            customRecurrenceDays.querySelectorAll('.day-chip').forEach(chip => chip.classList.remove('active'));
-            if (currentRecurrence.daysOfWeek) {
-                currentRecurrence.daysOfWeek.forEach(day => {
-                    const chip = customRecurrenceDays.querySelector(`.day-chip[data-day="${day}"]`);
-                    if (chip) chip.classList.add('active');
+        const loadColumnSettings = () => {
+            const savedSettings = JSON.parse(localStorage.getItem('columnSettings'));
+            if (savedSettings && savedSettings.order && savedSettings.order.length > 0) {
+                columnSettings = savedSettings;
+                // Reordena os cabeçalhos
+                const fragment = document.createDocumentFragment();
+                const existingHeaders = new Map();
+                tableHeaderRow.querySelectorAll('th').forEach(th => {
+                    existingHeaders.set(th.dataset.column || th.textContent.trim(), th);
                 });
-            }
 
-            // Lógica para mostrar/esconder seleção de dias da semana
-            if (recurrenceIntervalUnitSelect.value === 'week') {
-                recurrenceDaysOfWeekGroup.style.display = 'flex';
-            } else {
-                recurrenceDaysOfWeekGroup.style.display = 'none';
-            }
+                // Primeiro, adicione o checkbox (que não tem data-column)
+                const checkboxHeader = existingHeaders.get(''); // Ou encontre de outra forma se não tiver data-column
+                if (checkboxHeader) {
+                    fragment.appendChild(checkboxHeader);
+                }
 
-            // Preenche as opções de término
-            recurrenceEndsNeverRadio.checked = true; // Padrão
-            recurrenceEndDateInput.disabled = true;
-            recurrenceEndOccurrencesInput.disabled = true;
+                savedSettings.order.forEach(colName => {
+                    const th = existingHeaders.get(colName);
+                    if (th) {
+                        fragment.appendChild(th);
+                    }
+                });
+                // Adiciona o cabeçalho de Ações (que não tem data-column)
+                const actionsHeader = existingHeaders.get('Ações');
+                if (actionsHeader) {
+                    fragment.appendChild(actionsHeader);
+                }
 
-            if (currentRecurrence.ends) {
-                if (currentRecurrence.ends.type === 'onDate') {
-                    recurrenceEndsOnDateRadio.checked = true;
-                    recurrenceEndDateInput.value = currentRecurrence.ends.value;
-                    recurrenceEndDateInput.disabled = false;
-                } else if (currentRecurrence.ends.type === 'afterOccurrences') {
-                    recurrenceEndsAfterOccurrencesRadio.checked = true;
-                    recurrenceEndOccurrencesInput.value = currentRecurrence.ends.value;
-                    recurrenceEndOccurrencesInput.disabled = false;
+                tableHeaderRow.innerHTML = ''; // Limpa o cabeçalho existente
+                tableHeaderRow.appendChild(fragment); // Adiciona os cabeçalhos reordenados
+
+                // Aplica as larguras salvas
+                for (const colName in savedSettings.widths) {
+                    const th = tableHeaderRow.querySelector(`th[data-column="${colName}"]`) || Array.from(tableHeaderRow.querySelectorAll('th')).find(h => h.textContent.trim() === colName);
+                    if (th) {
+                        th.style.width = savedSettings.widths[colName];
+                    }
                 }
             }
-
-            customRecurrenceModal.style.display = 'flex';
         };
-
-        const closeCustomRecurrenceModal = () => {
-            customRecurrenceModal.style.display = 'none';
-        };
-
-        const saveCustomRecurrence = () => {
-            const interval = parseInt(recurrenceIntervalInput.value, 10);
-            const unit = recurrenceIntervalUnitSelect.value;
-            const daysOfWeek = [];
-
-            if (unit === 'week') {
-                customRecurrenceDays.querySelectorAll('.day-chip.active').forEach(chip => {
-                    daysOfWeek.push(parseInt(chip.dataset.day, 10));
-                });
-            }
-
-            let ends = { type: 'never' };
-            if (recurrenceEndsOnDateRadio.checked) {
-                ends = { type: 'onDate', value: recurrenceEndDateInput.value };
-            } else if (recurrenceEndsAfterOccurrencesRadio.checked) {
-                ends = { type: 'afterOccurrences', value: parseInt(recurrenceEndOccurrencesInput.value, 10) };
-            }
-
-            currentRecurrence = {
-                type: 'custom',
-                interval,
-                unit,
-                daysOfWeek: unit === 'week' ? daysOfWeek : [],
-                ends
-            };
-
-            updateCustomRecurrenceButtonText();
-            closeCustomRecurrenceModal();
-        };
-
-        const updateCustomRecurrenceButtonText = () => {
-            if (currentRecurrence.type === 'never') {
-                openCustomRecurrenceModalButton.textContent = 'Configurar recorrência';
-                recurrenceNeverRadio.checked = true;
-            } else {
-                let text = `Repete a cada ${currentRecurrence.interval} ${currentRecurrence.unit}(s)`;
-                if (currentRecurrence.unit === 'week' && currentRecurrence.daysOfWeek && currentRecurrence.daysOfWeek.length > 0) {
-                    const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-                    const selectedDays = currentRecurrence.daysOfWeek.map(day => dayNames[day]).join(', ');
-                    text += ` nos dias: ${selectedDays}`;
-                }
-                openCustomRecurrenceModalButton.textContent = text;
-                recurrenceNeverRadio.checked = false; // Desmarca "Nunca" se houver recorrência personalizada
-            }
-        };
-
-        // --- Funções de Redimensionamento de Colunas ---
 
         const enableColumnResizing = () => {
-            if (window.innerWidth <= 768) return; // Desabilita em mobile
-
             tableHeaderRow.querySelectorAll('th').forEach(th => {
-                if (th.dataset.columnId === 'select') return; // Não redimensiona o checkbox
-                let resizer = th.querySelector('.resizer-handle');
-                if (!resizer) {
-                    resizer = document.createElement('div');
-                    resizer.classList.add('resizer-handle');
-                    th.appendChild(resizer);
-                }
+                if (th.querySelector('.col-resizer')) return; // Evita adicionar múltiplos resizers
+
+                const resizer = document.createElement('div');
+                resizer.classList.add('col-resizer');
+                th.appendChild(resizer);
 
                 resizer.addEventListener('mousedown', (e) => {
                     thBeingResized = th;
                     startX = e.clientX;
                     startWidth = th.offsetWidth;
-                    document.addEventListener('mousemove', doResize);
-                    document.addEventListener('mouseup', stopResize);
-                    notesTable.style.cursor = 'ew-resize'; // Altera cursor da tabela
-                    document.body.style.userSelect = 'none'; // Evita seleção de texto
+                    document.addEventListener('mousemove', doColumnResize);
+                    document.addEventListener('mouseup', stopColumnResize);
+                    document.body.style.cursor = 'col-resize';
+                    document.body.style.userSelect = 'none';
                 });
             });
         };
 
-        const doResize = (e) => {
+        const doColumnResize = (e) => {
             if (thBeingResized) {
                 const newWidth = startWidth + (e.clientX - startX);
-                thBeingResized.style.width = `${newWidth}px`;
-                thBeingResized.style.minWidth = `${newWidth}px`; // Garante que a largura mínima seja mantida
-                thBeingResized.style.maxWidth = `${newWidth}px`; // Garante que a largura máxima seja mantida
+                thBeingResized.style.width = `${Math.max(50, newWidth)}px`; // Largura mínima de 50px
             }
         };
 
-        const stopResize = () => {
+        const stopColumnResize = () => {
             thBeingResized = null;
-            document.removeEventListener('mousemove', doResize);
-            document.removeEventListener('mouseup', stopResize);
-            notesTable.style.cursor = 'default';
+            document.removeEventListener('mousemove', doColumnResize);
+            document.removeEventListener('mouseup', stopColumnResize);
+            document.body.style.cursor = 'auto';
             document.body.style.userSelect = 'auto';
         };
 
-        // --- Funções de Reordenação de Colunas ---
-
         const enableColumnReordering = () => {
-            if (window.innerWidth <= 768) return; // Desabilita em mobile
+            tableHeaderRow.querySelectorAll('th').forEach(th => {
+                if (th.dataset.column === undefined && th.querySelector('input[type="checkbox"]')) {
+                    // Não permite arrastar a coluna do checkbox
+                    return;
+                }
+                if (th.textContent.trim() === 'Ações') {
+                    // Não permite arrastar a coluna de Ações
+                    return;
+                }
 
-            const headers = tableHeaderRow.querySelectorAll('th[data-column-id]');
-            headers.forEach(th => {
-                if (th.dataset.columnId === 'select') return; // Não arrasta o checkbox
-
-                th.setAttribute('draggable', true);
+                th.setAttribute('draggable', 'true');
 
                 th.addEventListener('dragstart', (e) => {
                     thBeingDragged = th;
                     e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('text/plain', th.dataset.columnId); // Necessário para Firefox
+                    e.dataTransfer.setData('text/plain', th.dataset.column || th.textContent.trim());
 
                     // Cria um placeholder visual
                     dragPlaceholder = document.createElement('div');
@@ -2141,6 +2150,15 @@
             }
         });
 
+        recurrenceCustomRadio.addEventListener('change', () => {
+            if (recurrenceCustomRadio.checked) {
+                openCustomRecurrenceModalButton.style.display = 'block';
+                openCustomRecurrenceModal(); // Abre o modal automaticamente ao selecionar "Configurar recorrência"
+            } else {
+                openCustomRecurrenceModalButton.style.display = 'none';
+            }
+        });
+
         openCustomRecurrenceModalButton.addEventListener('click', openCustomRecurrenceModal);
 
         viewModalEditButton.addEventListener('click', () => {
@@ -2173,6 +2191,7 @@
         });
 
         exportDataButton.addEventListener('click', exportData);
+        importDataButton.addEventListener('click', importData); // Adicionado event listener para o botão de importação
         exportCalendarButton.addEventListener('click', exportCalendar);
 
         // Seleção de múltiplas anotações
