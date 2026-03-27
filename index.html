@@ -1661,7 +1661,6 @@ case 'date':
             // Adiciona ou atualiza uma anotação
 		const addOrUpdateNote = async (event) => {
                 event.preventDefault();
-
                 const id = noteIdInput.value ? parseInt(noteIdInput.value, 10) : null;
                 const title = noteTitleInput.value.trim();
                 const responsible = noteResponsibleInput.value.trim();
@@ -1675,6 +1674,8 @@ case 'date':
 
                 if (!title) {
                     alert('O título da anotação é obrigatório!');
+  // Atualiza anotação existente
+
                     return;
                 }
 
@@ -1690,21 +1691,19 @@ case 'date':
                     recurrence: currentRecurrence // Salva a configuração de recorrência
                 };
 
-                if (id) {
-                    // Atualiza anotação existente
-                    const index = notes.findIndex(note => note.id === id);
-                    if (index !== -1) {
-                        notes[index] = newNote;
-                    }
-                } else {
-                    // Adiciona nova anotação
-                    await window.supabase
-		.from('anotacoes')
-		.upsert(newNote);
 
-		await loadNotes();
-		resetForm();
-		renderNotes(filterTextInput.value, currentFilter);
+// ✅ SALVA OU ATUALIZA PELO SUPABASE (independe se é novo ou edição)
+await window.supabase
+  .from('anotacoes')
+  .upsert(newNote);
+
+// ✅ RECARREGA OS DADOS DO BANCO
+await loadNotes();
+
+// ✅ ATUALIZA A TELA
+resetForm();
+renderNotes(filterTextInput.value, currentFilter);
+
             			};
 
             // Edita uma anotação
@@ -2452,5 +2451,3 @@ window.addEventListener('supabase-update', () => {
 
 </body>
 </html>
-
-
