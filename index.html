@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>CERTHIL | Anotações</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>CERTHIL | Anotações</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Font Awesome (ícones) -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Supabase Client -->
+  <script>
+    const SUPABASE_URL = 'https://koegynrtboafzpxtmglw.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtvZWd5bnJ0Ym9hZnpweHRtZ2x3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNzM0MjQsImV4cCI6MjA4OTg0OTQyNH0.OnBujMbRBQ2-kJIY3qQsbW4Q-B_1mkeFJp30up_gnDY';
+    window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  </script>
+
+  <!-- CSS (layout preserved) -->
+  <style>
         :root {
             --primary-green: #5d8b6d;
             --primary-green-dark: #2f5b3a;
@@ -1372,6 +1384,7 @@
 // };
 
 
+
 // ✅ Carrega anotações do Supabase
 async function loadNotes() {
   const { data, error } = await window.supabase
@@ -1386,14 +1399,6 @@ async function loadNotes() {
 
   notes = data || [];
 }
-
-
-            const loadNotes = () => {
-                const storedNotes = localStorage.getItem('notes');
-                if (storedNotes) {
-                    notes = JSON.parse(storedNotes);
-                }
-            };
 
             const saveCustomOptions = () => {
                 localStorage.setItem('customTypes', JSON.stringify(customTypes));
