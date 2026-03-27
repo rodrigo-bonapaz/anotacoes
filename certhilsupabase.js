@@ -8,8 +8,8 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 // ✅ Realtime sync
 // Ajustado o nome da tabela para 'anotacoes'
-supabase.channel('realtime-anotacoes')
-  .on('postgres_changes', { event: '*', schema: 'public', table: 'anotacoes' }, payload => {
+supabase.channel('realtime-anotacoes') // Corrigido para 'realtime-anotacoes'
+  .on('postgres_changes', { event: '*', schema: 'public', table: 'anotacoes' }, payload => { // Corrigido para 'anotacoes'
     console.log('Alteração detectada:', payload)
     // Se você tiver um mecanismo de recarregamento no seu script principal,
     // ele será acionado por esta detecção.
