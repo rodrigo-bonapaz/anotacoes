@@ -1579,7 +1579,7 @@ case 'date':
 
                         case 'status':
                             const statusBadge = document.createElement('span');
-                            statusBadge.classList.add('status-badge', `status-${note.status.toLowerCase().replace(/\s/g, '-')}`);
+                            statusBadge.classList.add('status-badge', `status-${note.status.toLowerCase().replace(/s/g, '-')}`);
                             statusBadge.textContent = note.status;
                             cell.appendChild(statusBadge);
                             break;
@@ -1613,7 +1613,7 @@ case 'date':
                             cell.appendChild(viewButton);
                             cell.appendChild(editButton);
  const duplicateButton = document.createElement('button');
- duplicateButton.innerHTML = '<i class=\"fas fa-copy\"></i>';
+ duplicateButton.innerHTML = '<i class="fas fa-copy"></i>';
  duplicateButton.classList.add('edit-button');
  duplicateButton.title = 'Duplicar';
  duplicateButton.addEventListener('click', () => duplicateToEdit(note.id));
@@ -1807,9 +1807,9 @@ resetForm();
   noteDateInput.value = note.date;
   noteTimeInput.value = note.time;
   document.querySelectorAll('#typeChipsContainer .chip').forEach(c => c.classList.remove('active'));
-  var t = typeChipsContainer.querySelector('.chip[data-type=\"' + note.type + '\"]'); if (t) t.classList.add('active');
+  var t = typeChipsContainer.querySelector('.chip[data-type="' + note.type + '"]'); if (t) t.classList.add('active');
   document.querySelectorAll('#statusChipsContainer .chip').forEach(c => c.classList.remove('active'));
-  var s = statusChipsContainer.querySelector('.chip[data-status=\"' + note.status + '\"]'); if (s) s.classList.add('active');
+  var s = statusChipsContainer.querySelector('.chip[data-status="' + note.status + '"]'); if (s) s.classList.add('active');
   currentRecurrence = note.recurrence || { type: 'never' };
   updateCustomRecurrenceButtonText();
   saveButton.textContent = 'Salvar Cópia';
@@ -1884,7 +1884,7 @@ resetForm();
                     viewModalType.className = 'badge'; // Reseta classes
                     // Adiciona classe específica para o tipo se necessário
                     viewModalStatus.textContent = note.status;
-                    viewModalStatus.className = `badge status-${note.status.toLowerCase().replace(/\s/g, '-')}`;
+                    viewModalStatus.className = `badge status-${note.status.toLowerCase().replace(/s/g, '-')}`;
 
                     // Exibe a recorrência
                     let recurrenceText = 'Nunca';
@@ -1971,27 +1971,27 @@ resetForm();
             };
 
             const exportCalendar = () => {
-                let icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//CERTHIL Anotacoes//NONSGML v1.0//EN\n`;
+                let icsContent = `BEGIN:VCALENDARnVERSION:2.0nPRODID:-//CERTHIL Anotacoes//NONSGML v1.0//ENn`;
 
                 notes.filter(note => note.date).forEach(note => {
                     const startDate = new Date(note.date + (note.time ? `T${note.time}` : 'T00:00'));
                     const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // Duração de 1 hora
 
                     const formatICSDate = (d) => {
-                        return d.toISOString().replace(/[-:]|\.\d{3}/g, '').slice(0, -1) + 'Z';
+                        return d.toISOString().replace(/[-:]|.d{3}/g, '').slice(0, -1) + 'Z';
                     };
 
-                    icsContent += `BEGIN:VEVENT\n`;
-                    icsContent += `UID:${note.id}@certhil.com\n`;
-                    icsContent += `DTSTAMP:${formatICSDate(new Date())}\n`;
-                    icsContent += `DTSTART:${formatICSDate(startDate)}\n`;
-                    icsContent += `DTEND:${formatICSDate(endDate)}\n`;
-                    icsContent += `SUMMARY:${note.title}\n`;
-                    icsContent += `DESCRIPTION:${note.content || 'Sem descrição.'}\n`;
+                    icsContent += `BEGIN:VEVENTn`;
+                    icsContent += `UID:${note.id}@certhil.comn`;
+                    icsContent += `DTSTAMP:${formatICSDate(new Date())}n`;
+                    icsContent += `DTSTART:${formatICSDate(startDate)}n`;
+                    icsContent += `DTEND:${formatICSDate(endDate)}n`;
+                    icsContent += `SUMMARY:${note.title}n`;
+                    icsContent += `DESCRIPTION:${note.content || 'Sem descrição.'}n`;
                     if (note.responsible) {
-                        icsContent += `ORGANIZER;CN=${note.responsible}:mailto:noreply@certhil.com\n`;
+                        icsContent += `ORGANIZER;CN=${note.responsible}:mailto:noreply@certhil.comn`;
                     }
-                    icsContent += `END:VEVENT\n`;
+                    icsContent += `END:VEVENTn`;
                 });
 
                 icsContent += `END:VCALENDAR`;
