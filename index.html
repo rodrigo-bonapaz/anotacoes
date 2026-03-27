@@ -1698,9 +1698,17 @@ case 'date':
 
 
 // ✅ SALVA OU ATUALIZA PELO SUPABASE (independe se é novo ou edição)
-await window.supabase
+
+const { error } = await window.supabase
   .from('anotacoes')
   .upsert(newNote);
+
+if (error) {
+  console.error('Erro ao salvar no Supabase:', error);
+  alert('Erro ao salvar anotação. Verifique o console.');
+  return;
+}
+
 
 // ✅ RECARREGA OS DADOS DO BANCO
 await loadNotes();
