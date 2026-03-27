@@ -1684,17 +1684,19 @@ case 'date':
                     return;
                 }
 
-                const newNote = {
-                    id: id || generateId(),
-                    title,
-                    responsible,
-                    content,
-                    date,
-                    time,
-                    type,
-                    status,
-                    recurrence: currentRecurrence // Salva a configuração de recorrência
-                };
+
+const newNote = {
+  id: id || Date.now(),                // sempre existe
+  title,                               // obrigatório
+  responsible: responsible || null,
+  content: content || null,
+  date: noteDateInput.value || null,   // ✅ ESSENCIAL
+  time: noteTimeInput.value || null,   // ✅ ESSENCIAL
+  type: type || null,
+  status: status || null,
+  recurrence: currentRecurrence || null
+};
+
 
 
 // ✅ SALVA OU ATUALIZA PELO SUPABASE (independe se é novo ou edição)
