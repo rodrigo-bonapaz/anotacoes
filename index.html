@@ -1358,10 +1358,35 @@
                 return notes.length > 0 ? Math.max(...notes.map(note => note.id)) + 1 : 1;
             };
 
-            // Salva dados no localStorage
-            const saveNotes = () => {
-                localStorage.setItem('notes', JSON.stringify(notes));
-            };
+            
+// LOCAL DESATIVADO (substituído por Supabase)
+// const saveNotes = () => {
+//   localStorage.setItem('notes', JSON.stringify(notes));
+// };
+
+// const loadNotes = () => {
+//   const storedNotes = localStorage.getItem('notes');
+//   if (storedNotes) {
+//     notes = JSON.parse(storedNotes);
+//   }
+// };
+
+
+// ✅ Carrega anotações do Supabase
+async function loadNotes() {
+  const { data, error } = await window.supabase
+    .from('anotacoes')
+    .select('*')
+    .order('id', { ascending: true });
+
+  if (error) {
+    console.error('Erro ao carregar notas:', error);
+    return;
+  }
+
+  notes = data || [];
+}
+
 
             const loadNotes = () => {
                 const storedNotes = localStorage.getItem('notes');
@@ -1634,7 +1659,7 @@ case 'date':
             // --- Funções de CRUD e Ações ---
 
             // Adiciona ou atualiza uma anotação
-            const addOrUpdateNote = (event) => {
+		const addOrUpdateNote = async (event) => {
                 event.preventDefault();
 
                 const id = noteIdInput.value ? parseInt(noteIdInput.value, 10) : null;
@@ -1673,13 +1698,14 @@ case 'date':
                     }
                 } else {
                     // Adiciona nova anotação
-                    notes.push(newNote);
-                }
+                    await window.supabase
+		.from('anotacoes')
+		.upsert(newNote);
 
-                saveNotes();
-                resetForm();
-                renderNotes(filterTextInput.value, currentFilter);
-            };
+		await loadNotes();
+		resetForm();
+		renderNotes(filterTextInput.value, currentFilter);
+            			};
 
             // Edita uma anotação
             const editNote = (id) => {
