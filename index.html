@@ -513,46 +513,46 @@
         }
 
         .action-buttons .export-button {
-            background-color: var(--accent-orange);
-            color: white;
-        }
-
-        .action-buttons .export-button:hover {
-            background-color: #a85a24;
-        }
-
-        .action-buttons .import-button {
             background-color: var(--info);
             color: white;
         }
 
-        .action-buttons .import-button:hover {
+        .action-buttons .export-button:hover {
             background-color: #2980b9;
         }
 
-        .action-buttons .save-columns-button {
-            background-color: var(--primary-green);
+        .action-buttons .import-button {
+            background-color: var(--warning);
             color: white;
         }
 
-        .action-buttons .save-columns-button:hover {
-            background-color: var(--primary-green-dark);
+        .action-buttons .import-button:hover {
+            background-color: #e67e22;
+        }
+
+        .action-buttons .settings-button {
+            background-color: var(--text-muted);
+            color: white;
+        }
+
+        .action-buttons .settings-button:hover {
+            background-color: #555;
         }
 
         .table-wrapper {
             flex-grow: 1;
-            overflow-x: auto; /* Habilita scroll horizontal na tabela */
-            border: 1px solid var(--border-soft);
-            border-radius: 8px;
+            overflow: auto; /* Adiciona barra de rolagem se a tabela for muito grande */
             background-color: var(--card-bg);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            position: relative; /* Para o placeholder de arrastar */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-soft);
         }
 
         .notes-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 800px; /* Largura mínima para evitar quebras */
+            font-size: 0.9em;
+            min-width: 800px; /* Garante que a tabela não fique muito pequena */
         }
 
         .notes-table th,
@@ -560,38 +560,22 @@
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid var(--border-soft);
-            white-space: nowrap; /* Evita quebra de linha nas células */
+            white-space: nowrap; /* Evita que o texto quebre */
             overflow: hidden;
             text-overflow: ellipsis;
-            position: relative; /* Para o resizer e drag handle */
+            position: relative; /* Para o resizer-handle */
         }
 
         .notes-table th {
             background-color: var(--bg-page);
-            color: var(--text-main);
+            color: var(--primary-green-dark);
             font-weight: bold;
-            cursor: grab; /* Cursor para indicar que pode ser arrastado */
+            cursor: grab; /* Indica que a coluna pode ser arrastada */
             user-select: none; /* Evita seleção de texto ao arrastar */
         }
 
-        .notes-table th.dragging {
-            cursor: grabbing;
-            opacity: 0.7;
-        }
-
-        .notes-table th .resizer-handle {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 10px; /* Área de clique maior */
-            height: 100%;
-            cursor: ew-resize;
-            background-color: transparent; /* Invisível por padrão */
-            z-index: 1; /* Acima do conteúdo do TH */
-        }
-
-        .notes-table th .resizer-handle:hover {
-            background-color: rgba(0, 0, 0, 0.1); /* Visível ao passar o mouse */
+        .notes-table th.drag-over {
+            border-left: 2px solid var(--accent-orange); /* Feedback visual ao arrastar */
         }
 
         .notes-table tbody tr:hover {
@@ -605,43 +589,43 @@
             font-size: 0.75em;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: center;
+            white-space: nowrap;
         }
 
         /* Estilos para os badges de status */
-        .status-nao-analisado {
+        .status-badge.nao-analisado {
             background-color: var(--status-nao-analisado-bg);
             color: var(--status-nao-analisado-text);
         }
 
-        .status-pendente {
+        .status-badge.pendente {
             background-color: var(--status-pendente-bg);
             color: var(--status-pendente-text);
         }
 
-        .status-em-processamento {
+        .status-badge.em-processamento {
             background-color: var(--status-em-processamento-bg);
             color: var(--status-em-processamento-text);
         }
 
-        .status-programado {
+        .status-badge.programado {
             background-color: var(--status-programado-bg);
             color: var(--status-programado-text);
         }
 
-        .status-cancelado {
+        .status-badge.cancelado {
             background-color: var(--status-cancelado-bg);
             color: var(--status-cancelado-text);
         }
 
-        .status-concluido {
+        .status-badge.concluido {
             background-color: var(--status-concluido-bg);
             color: var(--status-concluido-text);
         }
 
         .notes-table .actions-cell {
             display: flex;
-            gap: 8px;
+            gap: 5px;
             justify-content: center;
             align-items: center;
         }
@@ -649,15 +633,15 @@
         .notes-table .actions-cell button {
             background: none;
             border: none;
-            cursor: pointer;
             font-size: 1.1em;
+            cursor: pointer;
             color: var(--text-muted);
             transition: color 0.2s ease;
-            padding: 5px; /* Aumenta a área de clique */
+            padding: 5px;
         }
 
         .notes-table .actions-cell button:hover {
-            color: var(--primary-green-dark);
+            color: var(--primary-green);
         }
 
         .notes-table .actions-cell .delete-button:hover {
@@ -665,51 +649,41 @@
         }
 
         .notes-table .actions-cell .edit-button:hover {
-            color: var(--info);
+            color: var(--accent-orange);
         }
 
         .notes-table .actions-cell .view-button:hover {
-            color: var(--primary-green);
+            color: var(--info);
         }
 
-        .notes-table .actions-cell .complete-button:hover {
-            color: var(--success);
-        }
-
-        .notes-table .actions-cell .note-select-checkbox {
+        .notes-table .note-select-checkbox {
             width: 18px;
             height: 18px;
             accent-color: var(--primary-green);
             cursor: pointer;
         }
 
-        .notes-table .note-checkbox-header {
-            width: 40px; /* Largura fixa para o checkbox do cabeçalho */
-            text-align: center;
+        .notes-table .overdue {
+            background-color: #ffe0e0; /* Fundo vermelho claro para atrasadas */
         }
 
-        .notes-table .note-checkbox-header input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary-green);
-            cursor: pointer;
+        /* Resizer para colunas da tabela */
+        .resizer-handle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            cursor: ew-resize;
+            background-color: transparent; /* Invisível por padrão */
+            transition: background-color 0.2s ease;
         }
 
-        .notes-table .note-title-cell {
-            font-weight: 500;
-            color: var(--primary-green-dark);
+        .notes-table th:hover .resizer-handle {
+            background-color: var(--border-soft); /* Visível ao passar o mouse */
         }
 
-        .notes-table .note-content-cell {
-            max-width: 250px; /* Limita a largura do conteúdo */
-        }
-
-        .notes-table .note-prazo-cell.atrasada {
-            color: var(--danger);
-            font-weight: bold;
-        }
-
-        /* Modal */
+        /* Modal (base) */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
@@ -719,7 +693,7 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
             justify-content: center;
             align-items: center;
         }
@@ -727,13 +701,12 @@
         .modal-content {
             background-color: var(--card-bg);
             margin: auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             width: 90%;
-            max-width: 600px;
+            max-width: 500px;
             position: relative;
-            animation: fadeIn 0.3s ease-out;
         }
 
         .modal-header {
@@ -751,46 +724,38 @@
             color: var(--primary-green-dark);
         }
 
-        .modal-close {
+        .modal-close-button {
             color: var(--text-muted);
-            font-size: 1.8em;
+            font-size: 2em;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s ease;
         }
 
-        .modal-close:hover,
-        .modal-close:focus {
+        .modal-close-button:hover,
+        .modal-close-button:focus {
             color: var(--danger);
             text-decoration: none;
         }
 
         .modal-body p {
             margin-bottom: 10px;
-            line-height: 1.6;
             font-size: 0.95em;
+            line-height: 1.5;
         }
 
-        .modal-body strong {
+        .modal-body p strong {
             color: var(--primary-green-dark);
-        }
-
-        .modal-body .badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-left: 5px;
+            margin-right: 5px;
         }
 
         .modal-footer {
             display: flex;
             justify-content: flex-end;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-soft);
-            margin-top: 20px;
             gap: 10px;
+            border-top: 1px solid var(--border-soft);
+            padding-top: 15px;
+            margin-top: 20px;
         }
 
         .modal-footer button {
@@ -798,7 +763,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.9em;
             transition: background-color 0.2s ease;
         }
 
@@ -812,134 +777,114 @@
         }
 
         .modal-footer .edit-button {
-            background-color: var(--info);
+            background-color: var(--accent-orange);
             color: white;
         }
 
         .modal-footer .edit-button:hover {
-            background-color: #2980b9;
+            background-color: #a85a24;
         }
 
-        /* Modal de Importação */
-        .import-options {
+        /* Estilos específicos para o modal de recorrência personalizada */
+        #customRecurrenceModal .modal-body {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-top: 20px;
         }
 
-        .import-options button {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-soft);
-            border-radius: 8px;
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        #customRecurrenceModal .modal-body .form-group {
+            margin-bottom: 0; /* Ajusta o espaçamento dentro do modal */
         }
 
-        .import-options button:hover {
-            background-color: var(--primary-green);
-            color: white;
-            border-color: var(--primary-green);
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        #customRecurrenceModal .recurrence-interval-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Modal de Recorrência Personalizada */
-        .custom-recurrence-modal .modal-content {
-            max-width: 500px;
+        #customRecurrenceModal .recurrence-interval-group input[type="number"] {
+            width: 80px;
+            text-align: center;
         }
 
-        .custom-recurrence-modal .form-group {
-            margin-bottom: 15px;
+        #customRecurrenceModal .recurrence-interval-group select {
+            flex-grow: 1;
         }
 
-        .custom-recurrence-modal .form-group label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .custom-recurrence-modal .form-group input[type="number"],
-        .custom-recurrence-modal .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid var(--border-soft);
-            border-radius: 5px;
-            font-size: 0.9em;
-        }
-
-        .custom-recurrence-modal .recurrence-days-of-week {
+        #customRecurrenceModal .recurrence-days-of-week-group {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 10px;
-            display: none; /* Escondido por padrão, só aparece para 'semana' */
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            background-color: var(--bg-page);
         }
 
-        .custom-recurrence-modal .day-chip {
+        #customRecurrenceModal .recurrence-days-of-week-group .day-chip {
             padding: 8px 12px;
             border-radius: 20px;
             background-color: #e0e0e0;
             color: #333;
-            font-size: 0.85em;
             cursor: pointer;
             transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.9em;
         }
 
-        .custom-recurrence-modal .day-chip.active {
+        #customRecurrenceModal .recurrence-days-of-week-group .day-chip.active {
             background-color: var(--primary-green);
             color: white;
         }
 
-        .custom-recurrence-modal .recurrence-ends-options {
-            margin-top: 15px;
-            border-top: 1px solid var(--border-soft);
-            padding-top: 15px;
-        }
-
-        .custom-recurrence-modal .recurrence-ends-options .radio-group {
+        #customRecurrenceModal .recurrence-ends-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            padding: 10px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            background-color: var(--bg-page);
         }
 
-        .custom-recurrence-modal .recurrence-ends-options .radio-option {
+        #customRecurrenceModal .recurrence-ends-option {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .custom-recurrence-modal .recurrence-ends-options input[type="radio"] {
+        #customRecurrenceModal .recurrence-ends-option input[type="radio"] {
             margin: 0;
+            width: 16px;
+            height: 16px;
             accent-color: var(--primary-green);
         }
 
-        .custom-recurrence-modal .recurrence-ends-options input[type="date"],
-        .custom-recurrence-modal .recurrence-ends-options input[type="number"] {
-            width: auto;
-            padding: 6px 10px;
-            margin-left: 5px;
+        #customRecurrenceModal .recurrence-ends-option label {
+            margin: 0;
+            font-weight: normal;
         }
 
-        .custom-recurrence-modal .modal-footer {
-            justify-content: space-between;
+        #customRecurrenceModal .recurrence-ends-option input[type="date"],
+        #customRecurrenceModal .recurrence-ends-option input[type="number"] {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid var(--border-soft);
+            border-radius: 5px;
+            font-size: 0.9em;
+            background-color: white;
         }
 
-        /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+        #customRecurrenceModal .recurrence-ends-option input:disabled {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
         }
 
-        /* Responsividade */
+        /* Media Queries para Responsividade */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
-                overflow-y: auto;
+                overflow-y: auto; /* Permite rolagem na página inteira em telas menores */
             }
 
             .panel-left {
@@ -947,20 +892,20 @@
                 max-width: none;
                 border-right: none;
                 border-bottom: 1px solid var(--border-soft);
-                padding-bottom: 10px;
+                padding-bottom: 0;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             }
 
             .resizer {
-                display: none; /* Desabilita redimensionamento do painel esquerdo em mobile */
+                display: none; /* Esconde o resizer em mobile */
             }
 
             .panel-right {
-                padding-top: 10px;
+                padding-top: 15px;
             }
 
             .metrics-grid {
-                grid-template-columns: 1fr 1fr; /* Duas colunas em telas menores */
+                grid-template-columns: 1fr; /* Uma coluna em mobile */
             }
 
             .filter-bar, .action-buttons {
@@ -968,30 +913,47 @@
                 align-items: stretch;
             }
 
-            .filter-bar input[type="text"],
-            .filter-bar button,
+            .filter-bar input, .filter-bar button,
             .action-buttons button {
                 width: 100%;
             }
 
-            .notes-table th .resizer-handle {
-                display: none; /* Desabilita redimensionamento de colunas em mobile */
+            .notes-table {
+                min-width: unset; /* Remove largura mínima em mobile */
             }
 
-            .notes-table th {
-                cursor: default; /* Remove cursor de arrastar em mobile */
+            .notes-table th, .notes-table td {
+                padding: 8px 10px;
+                font-size: 0.8em;
+            }
+
+            .notes-table .actions-cell {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .notes-table .actions-cell button {
+                font-size: 0.9em;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.2em;
+            }
+
+            .modal-close-button {
+                font-size: 1.5em;
             }
         }
-
-.overdue-text{color:#e74c3c;font-weight:bold;font-size:0.8em;}
-
-.chip .remove-chip{margin-left:6px;font-size:0.8em;cursor:pointer;opacity:0.8}
-.chip .remove-chip:hover{opacity:1}
-</style>
+    </style>
 </head>
 <body>
-    <div class="panel-left" id="panelLeft">
-        <div class="resizer" id="panelResizer"></div>
+    <div class="panel-left">
+        <div class="resizer"></div>
         <div class="panel-left-header">
             <i class="fas fa-clipboard-list"></i>
             <div>
@@ -1004,35 +966,31 @@
         </div>
 
         <h2>Nova Anotação</h2>
+
         <form id="noteForm">
-            <input type="hidden" id="noteId">
             <div class="form-group">
                 <label for="noteTitle">Título:</label>
-                <input type="text" id="noteTitle" placeholder="Título da anotação" required>
+                <input type="text" id="noteTitle" required>
             </div>
 
             <div class="form-group">
                 <label for="noteResponsible">Responsável:</label>
-                <input type="text" id="noteResponsible" placeholder="Nome do responsável">
+                <input type="text" id="noteResponsible">
             </div>
 
             <div class="form-group">
                 <label for="noteContent">Conteúdo:</label>
-                <textarea id="noteContent" placeholder="Detalhes da anotação"></textarea>
+                <textarea id="noteContent" rows="3"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="noteDate">Prazo:</label>
-                <div class="input-with-icon">
-                    <input type="date" id="noteDate">
-                </div>
+                <input type="date" id="noteDate">
             </div>
 
             <div class="form-group">
                 <label for="noteTime">Horário:</label>
-                <div class="input-with-icon">
-                    <input type="time" id="noteTime">
-                </div>
+                <input type="time" id="noteTime">
             </div>
 
             <div class="form-group">
@@ -1061,7 +1019,7 @@
                 <label>Repetir:</label>
                 <div class="recurrence-options">
                     <div class="recurrence-option">
-                        <input type="radio" id="recurrenceNever" name="recurrence" value="never" checked>
+                        <input type="radio" id="recurrenceNever" name="recurrenceOption" value="never" checked>
                         <label for="recurrenceNever">Nunca</label>
                     </div>
                     <button type="button" id="openCustomRecurrenceModalButton" class="recurrence-custom-button">Configurar recorrência</button>
@@ -1069,8 +1027,8 @@
             </div>
 
             <div class="form-actions">
-                <button type="button" class="cancel-button" id="cancelButton">Cancelar</button>
-                <button type="submit" class="save-button" id="saveButton">Salvar Anotação</button>
+                <button type="button" id="cancelButton" class="cancel-button">Cancelar</button>
+                <button type="submit" id="saveNoteButton" class="save-button">Salvar Anotação</button>
             </div>
         </form>
     </div>
@@ -1097,35 +1055,34 @@
 
         <div class="filter-bar">
             <input type="text" id="filterTextInput" placeholder="Filtrar por título, responsável, conteúdo...">
-            <button class="filter-button" id="filterButton"><i class="fas fa-search"></i> Filtrar</button>
-            <button class="clear-button" id="clearFilterButton"><i class="fas fa-times"></i> Limpar</button>
+            <button type="button" id="filterButton" class="filter-button"><i class="fas fa-filter"></i> Filtrar</button>
+            <button type="button" id="clearFilterButton" class="clear-button"><i class="fas fa-times"></i> Limpar</button>
         </div>
 
         <div class="action-buttons">
-            <button class="delete-selected-button" id="deleteSelectedButton" style="display: none;"><i class="fas fa-trash-alt"></i> Excluir Selecionados</button>
-            <button class="export-button" id="exportDataButton"><i class="fas fa-file-export"></i> Exportar Dados</button>
-            <input type="file" id="importFileInput" accept=".json" style="display: none;">
-            <button class="import-button" id="importDataButton"><i class="fas fa-file-import"></i> Importar Dados</button>
-            <button class="export-button" id="exportCalendarButton"><i class="far fa-calendar-alt"></i> Exportar Agenda</button>
-            <button class="save-columns-button" id="saveColumnSettingsButton"><i class="fas fa-save"></i> Salvar Colunas</button>
+            <button type="button" id="deleteSelectedButton" class="delete-selected-button" style="display: none;"><i class="fas fa-trash-alt"></i> Excluir Selecionados</button>
+            <button type="button" id="exportDataButton" class="export-button"><i class="fas fa-file-export"></i> Exportar Dados</button>
+            <button type="button" id="importDataButton" class="import-button"><i class="fas fa-file-import"></i> Importar Dados</button>
+            <button type="button" id="exportCalendarButton" class="export-button"><i class="fas fa-calendar-alt"></i> Exportar Agenda</button>
+            <button type="button" id="saveColumnSettingsButton" class="settings-button"><i class="fas fa-columns"></i> Salvar Colunas</button>
         </div>
 
         <div class="table-wrapper">
             <table class="notes-table" id="notesTable">
                 <thead>
                     <tr id="tableHeaderRow">
-                        <th class="note-checkbox-header" data-column-id="select"><input type="checkbox" id="selectAllNotesCheckbox"></th>
-                        <th data-column-id="type">Tipo<div class="resizer-handle"></div></th>
-                        <th data-column-id="title">Título<div class="resizer-handle"></div></th>
-                        <th data-column-id="responsible">Responsável<div class="resizer-handle"></div></th>
-                        <th data-column-id="content">Conteúdo<div class="resizer-handle"></div></th>
-                        <th data-column-id="date">Prazo<div class="resizer-handle"></div></th>
-                        <th data-column-id="status">Status<div class="resizer-handle"></div></th>
-                        <th data-column-id="actions">Ações<div class="resizer-handle"></div></th>
+                        <th data-column-id="select" style="width: 50px;"><input type="checkbox" id="selectAllNotesCheckbox"></th>
+                        <th data-column-id="tipo" style="width: 100px;">Tipo</th>
+                        <th data-column-id="titulo" style="width: 150px;">Título</th>
+                        <th data-column-id="responsavel" style="width: 150px;">Responsável</th>
+                        <th data-column-id="conteudo" style="width: 250px;">Conteúdo</th>
+                        <th data-column-id="prazo" style="width: 120px;">Prazo</th>
+                        <th data-column-id="status" style="width: 120px;">Status</th>
+                        <th data-column-id="acoes" style="width: 100px;">Ações</th>
                     </tr>
                 </thead>
                 <tbody id="notesTableBody">
-                    <!-- As anotações serão inseridas aqui -->
+                    <!-- Anotações serão carregadas aqui -->
                 </tbody>
             </table>
         </div>
@@ -1136,115 +1093,111 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="viewModalTitle"></h2>
-                <span class="modal-close" id="modalCloseButton">&times;</span>
+                <span class="modal-close-button" id="modalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
                 <p><strong>Responsável:</strong> <span id="viewModalResponsible"></span></p>
                 <p><strong>Conteúdo:</strong> <span id="viewModalContent"></span></p>
                 <p><strong>Prazo:</strong> <span id="viewModalDate"></span> às <span id="viewModalTime"></span></p>
-                <p><strong>Tipo:</strong> <span id="viewModalType" class="badge"></span></p>
-                <p><strong>Status:</strong> <span id="viewModalStatus" class="badge"></span></p>
+                <p><strong>Tipo:</strong> <span id="viewModalType"></span></p>
+                <p><strong>Status:</strong> <span id="viewModalStatus"></span></p>
                 <p><strong>Repetição:</strong> <span id="viewModalRecurrence"></span></p>
             </div>
             <div class="modal-footer">
-                <button class="close-button" id="viewModalCloseButton">Fechar</button>
-                <button class="edit-button" id="viewModalEditButton">Editar</button>
+                <button type="button" class="close-button" id="viewModalCloseButton">Fechar</button>
+                <button type="button" class="edit-button" id="viewModalEditButton">Editar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Opções de Importação -->
+    <!-- Modal de Importação -->
     <div id="importModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Opções de Importação</h2>
-                <span class="modal-close" id="importModalCloseButton">&times;</span>
+                <span class="modal-close-button" id="importModalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
                 <p>Como você gostaria de importar os dados?</p>
-                <div class="import-options">
-                    <button id="importReplaceButton">Substituir tudo</button>
-                    <button id="importAddButton">Adicionar aos existentes</button>
-                    <button id="importUpdateButton">Atualizar existentes (manter novos)</button>
-                </div>
+                <input type="file" id="importFileInput" accept=".json">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button" id="importCancelButton">Cancelar</button>
+                <button type="button" class="import-button" id="importReplaceButton">Substituir tudo</button>
+                <button type="button" class="import-button" id="importAddButton">Adicionar aos existentes</button>
+                <button type="button" class="import-button" id="importUpdateButton">Atualizar existentes (manter novos)</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Recorrência Personalizada -->
-    <div id="customRecurrenceModal" class="modal custom-recurrence-modal">
+    <!-- Modal de Configuração de Recorrência Personalizada -->
+    <div id="customRecurrenceModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Configurar Recorrência</h2>
-                <span class="modal-close" id="customRecurrenceModalCloseButton">&times;</span>
+                <span class="modal-close-button" id="customRecurrenceModalCloseButton">&times;</span>
             </div>
             <div class="modal-body">
+                <div class="form-group recurrence-interval-group">
+                    <label for="recurrenceIntervalInput">Repetir a cada:</label>
+                    <input type="number" id="recurrenceIntervalInput" min="1" value="1">
+                    <select id="recurrenceIntervalUnitSelect">
+                        <option value="day">Dia(s)</option>
+                        <option value="week">Semana(s)</option>
+                        <option value="month">Mês(es)</option>
+                        <option value="year">Ano(s)</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
-                    <label for="recurrenceInterval">Repetir a cada:</label>
-                    <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="number" id="recurrenceInterval" value="1" min="1" style="width: 80px;">
-                        <select id="recurrenceIntervalUnit">
-                            <option value="day">Dia(s)</option>
-                            <option value="week">Semana(s)</option>
-                            <option value="month">Mês(es)</option>
-                            <option value="year">Ano(s)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group recurrence-days-of-week" id="recurrenceDaysOfWeekGroup">
                     <label>Repetir em:</label>
-                    <div class="chip-container custom-recurrence-days" id="customRecurrenceDays">
-                        <div class="day-chip" data-day="1">Dom</div>
-                        <div class="day-chip" data-day="2">Seg</div>
-                        <div class="day-chip" data-day="3">Ter</div>
-                        <div class="day-chip" data-day="4">Qua</div>
-                        <div class="day-chip" data-day="5">Qui</div>
-                        <div class="day-chip" data-day="6">Sex</div>
-                        <div class="day-chip" data-day="0">Sáb</div>
+                    <div id="recurrenceDaysOfWeekGroup" class="recurrence-days-of-week-group" style="display: none;">
+                        <span class="day-chip" data-day="0">Dom</span>
+                        <span class="day-chip" data-day="1">Seg</span>
+                        <span class="day-chip" data-day="2">Ter</span>
+                        <span class="day-chip" data-day="3">Qua</span>
+                        <span class="day-chip" data-day="4">Qui</span>
+                        <span class="day-chip" data-day="5">Sex</span>
+                        <span class="day-chip" data-day="6">Sáb</span>
                     </div>
                 </div>
 
-                <div class="form-group recurrence-ends-options">
+                <div class="form-group recurrence-ends-group">
                     <label>Termina:</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="recurrenceEndsNever" name="recurrenceEnds" value="never" checked>
-                            <label for="recurrenceEndsNever">Nunca</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="recurrenceEndsOnDate" name="recurrenceEnds" value="onDate">
-                            <label for="recurrenceEndsOnDate">Em</label>
-                            <input type="date" id="recurrenceEndDateInput" disabled>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="recurrenceEndsAfterOccurrences" name="recurrenceEnds" value="afterOccurrences">
-                            <label for="recurrenceEndsAfterOccurrences">Após</label>
-                            <input type="number" id="recurrenceEndOccurrencesInput" min="1" value="1" disabled> ocorrência(s)
-                        </div>
+                    <div class="recurrence-ends-option">
+                        <input type="radio" id="recurrenceEndsNeverRadio" name="recurrenceEnds" value="never" checked>
+                        <label for="recurrenceEndsNeverRadio">Nunca</label>
+                    </div>
+                    <div class="recurrence-ends-option">
+                        <input type="radio" id="recurrenceEndsOnDateRadio" name="recurrenceEnds" value="onDate">
+                        <label for="recurrenceEndsOnDateRadio">Em</label>
+                        <input type="date" id="recurrenceEndDateInput" disabled>
+                    </div>
+                    <div class="recurrence-ends-option">
+                        <input type="radio" id="recurrenceEndsAfterOccurrencesRadio" name="recurrenceEnds" value="afterOccurrences">
+                        <label for="recurrenceEndsAfterOccurrencesRadio">Após</label>
+                        <input type="number" id="recurrenceEndOccurrencesInput" min="1" disabled> ocorrência(s)
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="cancel-button" id="cancelCustomRecurrenceButton">Cancelar</button>
-                <button class="save-button" id="saveCustomRecurrenceButton">Salvar</button>
+                <button type="button" class="cancel-button" id="cancelCustomRecurrenceButton">Cancelar</button>
+                <button type="button" class="save-button" id="saveCustomRecurrenceButton">Salvar</button>
             </div>
         </div>
     </div>
 
-    <!-- Script do Supabase (carregado como módulo) -->
-    <script type="module" src="certhilsupabase.js"></script>
+    <!-- Script do Supabase (como módulo) -->
+    <script type="module" src="./certhilsupabase.js"></script>
 
     <!-- Script principal da aplicação -->
     <script type="module">
-        // Importa a instância do Supabase do arquivo certhilsupabase.js
         import { supabase } from './certhilsupabase.js';
 
         // --- Variáveis Globais e Elementos do DOM ---
-        const panelLeft = document.getElementById('panelLeft');
-        const panelResizer = document.getElementById('panelResizer');
+        const panelLeft = document.querySelector('.panel-left');
+        const panelResizer = document.querySelector('.resizer');
         const noteForm = document.getElementById('noteForm');
-        const noteIdInput = document.getElementById('noteId');
         const noteTitleInput = document.getElementById('noteTitle');
         const noteResponsibleInput = document.getElementById('noteResponsible');
         const noteContentInput = document.getElementById('noteContent');
@@ -1259,27 +1212,29 @@
         const recurrenceNeverRadio = document.getElementById('recurrenceNever');
         const openCustomRecurrenceModalButton = document.getElementById('openCustomRecurrenceModalButton');
         const cancelButton = document.getElementById('cancelButton');
-        const saveButton = document.getElementById('saveButton');
+        const saveNoteButton = document.getElementById('saveNoteButton');
+
         const totalNotesCount = document.getElementById('totalNotesCount');
         const pendingNotesCount = document.getElementById('pendingNotesCount');
         const overdueNotesCount = document.getElementById('overdueNotesCount');
         const completedNotesCount = document.getElementById('completedNotesCount');
         const metricCards = document.querySelectorAll('.metric-card');
+
         const filterTextInput = document.getElementById('filterTextInput');
         const filterButton = document.getElementById('filterButton');
         const clearFilterButton = document.getElementById('clearFilterButton');
+
         const deleteSelectedButton = document.getElementById('deleteSelectedButton');
         const exportDataButton = document.getElementById('exportDataButton');
         const importDataButton = document.getElementById('importDataButton');
-        const importFileInput = document.getElementById('importFileInput');
         const exportCalendarButton = document.getElementById('exportCalendarButton');
         const saveColumnSettingsButton = document.getElementById('saveColumnSettingsButton');
+
         const notesTable = document.getElementById('notesTable');
         const tableHeaderRow = document.getElementById('tableHeaderRow');
         const notesTableBody = document.getElementById('notesTableBody');
         const selectAllNotesCheckbox = document.getElementById('selectAllNotesCheckbox');
 
-        // Modais
         const viewModal = document.getElementById('viewModal');
         const modalCloseButton = document.getElementById('modalCloseButton');
         const viewModalTitle = document.getElementById('viewModalTitle');
@@ -1295,109 +1250,42 @@
 
         const importModal = document.getElementById('importModal');
         const importModalCloseButton = document.getElementById('importModalCloseButton');
+        const importFileInput = document.getElementById('importFileInput');
+        const importCancelButton = document.getElementById('importCancelButton');
         const importReplaceButton = document.getElementById('importReplaceButton');
         const importAddButton = document.getElementById('importAddButton');
         const importUpdateButton = document.getElementById('importUpdateButton');
+        let __pendingImportFile = null; // Variável para armazenar o arquivo de importação
 
         const customRecurrenceModal = document.getElementById('customRecurrenceModal');
         const customRecurrenceModalCloseButton = document.getElementById('customRecurrenceModalCloseButton');
-        const recurrenceIntervalInput = document.getElementById('recurrenceInterval');
-        const recurrenceIntervalUnitSelect = document.getElementById('recurrenceIntervalUnit');
+        const recurrenceIntervalInput = document.getElementById('recurrenceIntervalInput');
+        const recurrenceIntervalUnitSelect = document.getElementById('recurrenceIntervalUnitSelect');
         const recurrenceDaysOfWeekGroup = document.getElementById('recurrenceDaysOfWeekGroup');
-        const customRecurrenceDays = document.getElementById('customRecurrenceDays');
-        const recurrenceEndsNeverRadio = document.getElementById('recurrenceEndsNever');
-        const recurrenceEndsOnDateRadio = document.getElementById('recurrenceEndsOnDate');
+        const customRecurrenceDays = document.getElementById('recurrenceDaysOfWeekGroup'); // Reutiliza o mesmo ID
+        const recurrenceEndsNeverRadio = document.getElementById('recurrenceEndsNeverRadio');
+        const recurrenceEndsOnDateRadio = document.getElementById('recurrenceEndsOnDateRadio');
         const recurrenceEndDateInput = document.getElementById('recurrenceEndDateInput');
-        const recurrenceEndsAfterOccurrencesRadio = document.getElementById('recurrenceEndsAfterOccurrences');
+        const recurrenceEndsAfterOccurrencesRadio = document.getElementById('recurrenceEndsAfterOccurrencesRadio');
         const recurrenceEndOccurrencesInput = document.getElementById('recurrenceEndOccurrencesInput');
         const cancelCustomRecurrenceButton = document.getElementById('cancelCustomRecurrenceButton');
         const saveCustomRecurrenceButton = document.getElementById('saveCustomRecurrenceButton');
 
-        // --- Estados da Aplicação ---
-        let notes = []; // Array para armazenar as anotações
-        let customTypes = ['Geral', 'Trabalho', 'Pessoal', 'Estudo'];
-        let customStatus = ['Não Analisado', 'Pendente', 'Em Processamento', 'Programado', 'Cancelado', 'Concluido'];
-        let selectedNotes = new Set(); // Para exclusão múltipla
-        let currentFilter = 'total'; // Filtro ativo (total, pendente, atrasada, concluida)
-        let currentRecurrence = { type: 'never' }; // Configuração de recorrência da anotação atual no formulário
 
-        // Variáveis para redimensionamento de colunas
+        // --- Estado da Aplicação ---
+        let notes = [];
+        let customTypes = JSON.parse(localStorage.getItem('customTypes')) || ['Geral', 'Trabalho', 'Pessoal', 'Estudo'];
+        let customStatus = JSON.parse(localStorage.getItem('customStatus')) || ['Não Analisado', 'Pendente', 'Em Processamento', 'Programado', 'Cancelado', 'Concluído'];
+        let currentFilter = 'total'; // 'total', 'pendente', 'atrasada', 'concluido'
+        let selectedNotes = new Set(); // Para seleção múltipla
+        let currentRecurrence = { type: 'never' }; // Objeto para armazenar a recorrência atual
         let thBeingResized = null;
         let startX, startWidth;
-
-        // Variáveis para reordenação de colunas
         let thBeingDragged = null;
         let dragPlaceholder = null;
 
-        // --- Funções Utilitárias ---
-
-        // Gera um ID único (simples, para fins de exemplo)
-        const generateId = () => {
-            return notes.length > 0 ? Math.max(...notes.map(note => note.id)) + 1 : 1;
-        };
-
-        // Formata data e hora
-        const formatDateTime = (dateStr, timeStr) => {
-            let formattedDate = 'N/A';
-            let formattedTime = 'N/A';
-            let isOverdue = false;
-            const now = new Date();
-
-            if (dateStr) {
-                const date = new Date(dateStr + 'T00:00:00'); // Garante que a data seja interpretada no fuso horário local
-                formattedDate = new Intl.DateTimeFormat('pt-BR').format(date);
-
-                let noteDateTime = date;
-                if (timeStr) {
-                    const [hours, minutes] = timeStr.split(':').map(Number);
-                    noteDateTime.setHours(hours, minutes, 0, 0);
-                    formattedTime = timeStr;
-                } else {
-                    // Se não há hora, considera o final do dia para atraso
-                    noteDateTime.setHours(23, 59, 59, 999);
-                }
-
-                // Verifica se está atrasado (se a data/hora da anotação já passou e não é o dia atual)
-                if (noteDateTime < now && !isSameDay(noteDateTime, now)) {
-                    isOverdue = true;
-                }
-            }
-            return { date: formattedDate, time: formattedTime, isOverdue };
-        };
-
-        // Verifica se duas datas são do mesmo dia (ignorando a hora)
-        const isSameDay = (d1, d2) => {
-            return d1.getFullYear() === d2.getFullYear() &&
-                   d1.getMonth() === d2.getMonth() &&
-                   d1.getDate() === d2.getDate();
-        };
 
         // --- Funções de Persistência (Supabase) ---
-
-        const saveNotes = async () => {
-            // Esta função é chamada após cada alteração local em 'notes'.
-            // Para Supabase, cada operação (inserir, atualizar, deletar) já interage diretamente.
-            // Portanto, esta função pode ser mais simples ou até removida se as operações de CRUD
-            // já estiverem chamando o Supabase diretamente.
-            // Por enquanto, vamos apenas recarregar para garantir a consistência visual.
-            await loadNotes();
-        };
-
-        const loadNotes = async () => {
-            const { data, error } = await supabase
-                .from('anotacoes') // Nome da sua tabela no Supabase
-                .select('*')
-                .order('date', { ascending: true }); // Ordena por data
-
-            if (error) {
-                console.error('Erro ao carregar anotações:', error.message);
-                alert('Erro ao carregar anotações: ' + error.message);
-            } else {
-                notes = data || [];
-                renderNotes(filterTextInput.value, currentFilter);
-                updateMetricCards();
-            }
-        };
 
         const saveCustomOptions = () => {
             localStorage.setItem('customTypes', JSON.stringify(customTypes));
@@ -1405,20 +1293,429 @@
         };
 
         const loadCustomOptions = () => {
-            const storedTypes = localStorage.getItem('customTypes');
-            const storedStatus = localStorage.getItem('customStatus');
-            if (storedTypes) customTypes = JSON.parse(storedTypes);
-            if (storedStatus) customStatus = JSON.parse(storedStatus);
+            customTypes = JSON.parse(localStorage.getItem('customTypes')) || ['Geral', 'Trabalho', 'Pessoal', 'Estudo'];
+            customStatus = JSON.parse(localStorage.getItem('customStatus')) || ['Não Analisado', 'Pendente', 'Em Processamento', 'Programado', 'Cancelado', 'Concluído'];
         };
+
+        const loadNotes = async () => {
+            try {
+                const { data, error } = await supabase
+                    .from('anotacoes')
+                    .select('*'); // Seleciona todas as colunas
+
+                if (error) {
+                    throw error;
+                }
+                notes = data || [];
+                renderNotes(filterTextInput.value, currentFilter);
+                updateMetricCards();
+            } catch (error) {
+                console.error('Erro ao carregar anotações:', error.message);
+                alert('Erro ao carregar anotações: ' + error.message);
+            }
+        };
+
+        const addOrUpdateNote = async (event) => {
+            event.preventDefault();
+
+            const id = noteForm.dataset.editingId ? parseInt(noteForm.dataset.editingId, 10) : null;
+            const titulo = noteTitleInput.value.trim();
+            const responsavel = noteResponsibleInput.value.trim();
+            const conteudo = noteContentInput.value.trim();
+            const prazo = noteDateInput.value;
+            const horario = noteTimeInput.value;
+            const tipo = Array.from(typeChipsContainer.querySelectorAll('.chip.active')).map(chip => chip.textContent.replace(' ×', '').trim());
+            const status = Array.from(statusChipsContainer.querySelectorAll('.chip.active')).map(chip => chip.textContent.replace(' ×', '').trim());
+
+            if (!titulo) {
+                alert('O título da anotação é obrigatório.');
+                return;
+            }
+
+            const newNote = {
+                titulo,
+                responsavel,
+                conteudo,
+                prazo,
+                horario,
+                tipo: tipo.length > 0 ? tipo[0] : 'Não Analisado', // Pega o primeiro tipo ou padrão
+                status: status.length > 0 ? status[0] : 'Não Analisado', // Pega o primeiro status ou padrão
+                recurrence: currentRecurrence,
+            };
+
+            try {
+                let result;
+                if (id) {
+                    // Atualizar anotação existente
+                    result = await supabase
+                        .from('anotacoes')
+                        .update(newNote)
+                        .eq('id', id);
+                } else {
+                    // Adicionar nova anotação
+                    result = await supabase
+                        .from('anotacoes')
+                        .insert([newNote]);
+                }
+
+                if (result.error) {
+                    throw result.error;
+                }
+
+                await loadNotes(); // Recarrega as anotações após a operação
+                resetForm();
+            } catch (error) {
+                console.error('Erro ao adicionar/atualizar anotação:', error.message);
+                alert('Erro ao adicionar/atualizar anotação: ' + error.message);
+            }
+        };
+
+        const deleteNote = async (id) => {
+            if (!confirm('Tem certeza que deseja excluir esta anotação?')) return;
+
+            try {
+                const { error } = await supabase
+                    .from('anotacoes')
+                    .delete()
+                    .eq('id', id);
+
+                if (error) {
+                    throw error;
+                }
+
+                await loadNotes(); // Recarrega as anotações
+                toggleDeleteSelectedButton();
+            } catch (error) {
+                console.error('Erro ao excluir anotação:', error.message);
+                alert('Erro ao excluir anotação: ' + error.message);
+            }
+        };
+
+        const deleteSelectedNotes = async () => {
+            if (selectedNotes.size === 0) {
+                alert('Nenhuma anotação selecionada para exclusão.');
+                return;
+            }
+            if (!confirm(`Tem certeza que deseja excluir as ${selectedNotes.size} anotação(ões) selecionada(s)?`)) return;
+
+            try {
+                const { error } = await supabase
+                    .from('anotacoes')
+                    .delete()
+                    .in('id', Array.from(selectedNotes));
+
+                if (error) {
+                    throw error;
+                }
+
+                selectedNotes.clear();
+                await loadNotes(); // Recarrega as anotações
+                toggleDeleteSelectedButton();
+                selectAllNotesCheckbox.checked = false;
+            } catch (error) {
+                console.error('Erro ao excluir anotações selecionadas:', error.message);
+                alert('Erro ao excluir anotações selecionadas: ' + error.message);
+            }
+        };
+
+        const toggleNoteCompletion = async (id, isCompleted) => {
+            const newStatus = isCompleted ? 'Concluído' : 'Pendente'; // Ou outro status padrão
+            try {
+                const { error } = await supabase
+                    .from('anotacoes')
+                    .update({ status: newStatus })
+                    .eq('id', id);
+
+                if (error) {
+                    throw error;
+                }
+                await loadNotes();
+            } catch (error) {
+                console.error('Erro ao atualizar status da anotação:', error.message);
+                alert('Erro ao atualizar status da anotação: ' + error.message);
+            }
+        };
+
+        // --- Funções de Renderização e UI ---
+
+        const renderCustomOptions = (options, container, inputElement, type) => {
+            container.innerHTML = '';
+            options.forEach(option => {
+                const chip = document.createElement('span');
+                chip.classList.add('chip');
+                chip.textContent = option;
+                chip.addEventListener('click', () => {
+                    chip.classList.toggle('active');
+                });
+
+                const closeIcon = document.createElement('i');
+                closeIcon.classList.add('fas', 'fa-times');
+                closeIcon.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evita que o clique no 'x' ative/desative o chip
+                    if (confirm(`Tem certeza que deseja remover "${option}"?`)) {
+                        if (type === 'type') {
+                            customTypes = customTypes.filter(t => t !== option);
+                        } else {
+                            customStatus = customStatus.filter(s => s !== option);
+                        }
+                        saveCustomOptions();
+                        renderCustomOptions(type === 'type' ? customTypes : customStatus, container, inputElement, type);
+                    }
+                });
+                chip.appendChild(closeIcon);
+                container.appendChild(chip);
+            });
+        };
+
+        const addCustomOption = (optionsArray, inputElement, containerElement, type) => {
+            const value = inputElement.value.trim();
+            if (value && !optionsArray.includes(value)) {
+                optionsArray.push(value);
+                saveCustomOptions();
+                renderCustomOptions(optionsArray, containerElement, inputElement, type);
+                inputElement.value = '';
+            }
+        };
+
+        const renderNotes = (filterText = '', filterType = 'total') => {
+            notesTableBody.innerHTML = '';
+            let filteredNotes = [...notes];
+
+            // Aplica filtro de texto
+            if (filterText) {
+                const lowerCaseFilter = filterText.toLowerCase();
+                filteredNotes = filteredNotes.filter(note =>
+                    note.titulo.toLowerCase().includes(lowerCaseFilter) ||
+                    note.responsavel.toLowerCase().includes(lowerCaseFilter) ||
+                    note.conteudo.toLowerCase().includes(lowerCaseFilter) ||
+                    note.tipo.toLowerCase().includes(lowerCaseFilter) ||
+                    note.status.toLowerCase().includes(lowerCaseFilter)
+                );
+            }
+
+            // Aplica filtro de métricas
+            if (filterType === 'pendente') {
+                filteredNotes = filteredNotes.filter(note => note.status === 'Pendente');
+            } else if (filterType === 'atrasada') {
+                filteredNotes = filteredNotes.filter(note => note.status !== 'Concluído' && note.prazo && new Date(note.prazo) < new Date());
+            } else if (filterType === 'concluido') {
+                filteredNotes = filteredNotes.filter(note => note.status === 'Concluído');
+            }
+
+            // Obtém a ordem atual das colunas
+            const columnOrder = Array.from(tableHeaderRow.querySelectorAll('th[data-column-id]'))
+                                .map(th => th.dataset.columnId)
+                                .filter(id => id !== 'select' && id !== 'acoes'); // Exclui checkbox e ações
+
+            filteredNotes.forEach(note => {
+                const row = notesTableBody.insertRow();
+                row.dataset.id = note.id;
+
+                // Adiciona classe 'overdue' se a anotação estiver atrasada e não concluída
+                if (note.status !== 'Concluído' && note.prazo && new Date(note.prazo) < new Date()) {
+                    row.classList.add('overdue');
+                }
+
+                // Coluna de seleção
+                const selectCell = row.insertCell();
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.classList.add('note-select-checkbox');
+                checkbox.checked = selectedNotes.has(note.id);
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        selectedNotes.add(note.id);
+                    } else {
+                        selectedNotes.delete(note.id);
+                    }
+                    toggleDeleteSelectedButton();
+                });
+                selectCell.appendChild(checkbox);
+
+                // Renderiza as outras colunas na ordem definida
+                columnOrder.forEach(columnId => {
+                    const cell = row.insertCell();
+                    let cellContent = '';
+
+                    switch (columnId) {
+                        case 'tipo':
+                            cellContent = note.tipo || '';
+                            break;
+                        case 'titulo':
+                            cellContent = note.titulo || '';
+                            break;
+                        case 'responsavel':
+                            cellContent = note.responsavel || '';
+                            break;
+                        case 'conteudo':
+                            cellContent = note.conteudo || '';
+                            break;
+                        case 'prazo':
+                            cellContent = note.prazo ? new Date(note.prazo).toLocaleDateString('pt-BR') : '';
+                            break;
+                        case 'status':
+                            const statusBadge = document.createElement('span');
+                            statusBadge.classList.add('status-badge', note.status.toLowerCase().replace(/\s/g, '-'));
+                            statusBadge.textContent = note.status || '';
+                            cell.appendChild(statusBadge);
+                            break;
+                        default:
+                            cellContent = note[columnId] || ''; // Fallback para outras colunas
+                    }
+                    if (columnId !== 'status') { // Evita sobrescrever o badge
+                        cell.textContent = cellContent;
+                    }
+                });
+
+                // Coluna de Ações
+                const actionsCell = row.insertCell();
+                actionsCell.classList.add('actions-cell');
+
+                const viewButton = document.createElement('button');
+                viewButton.classList.add('view-button');
+                viewButton.innerHTML = '<i class="fas fa-eye"></i>';
+                viewButton.title = 'Visualizar';
+                viewButton.addEventListener('click', () => viewNote(note.id));
+                actionsCell.appendChild(viewButton);
+
+                const editButton = document.createElement('button');
+                editButton.classList.add('edit-button');
+                editButton.innerHTML = '<i class="fas fa-edit"></i>';
+                editButton.title = 'Editar';
+                editButton.addEventListener('click', () => editNote(note.id));
+                actionsCell.appendChild(editButton);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button');
+                deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                deleteButton.title = 'Excluir';
+                deleteButton.addEventListener('click', () => deleteNote(note.id));
+                actionsCell.appendChild(deleteButton);
+            });
+            toggleDeleteSelectedButton();
+        };
+
+        const updateMetricCards = () => {
+            const total = notes.length;
+            const pending = notes.filter(note => note.status === 'Pendente').length;
+            const overdue = notes.filter(note => note.status !== 'Concluído' && note.prazo && new Date(note.prazo) < new Date()).length;
+            const completed = notes.filter(note => note.status === 'Concluído').length;
+
+            totalNotesCount.textContent = total;
+            pendingNotesCount.textContent = pending;
+            overdueNotesCount.textContent = overdue;
+            completedNotesCount.textContent = completed;
+        };
+
+        const resetForm = () => {
+            noteForm.reset();
+            noteForm.removeAttribute('data-editing-id');
+            saveNoteButton.textContent = 'Salvar Anotação';
+
+            // Reseta chips de tipo
+            typeChipsContainer.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+            // Ativa o chip 'Geral' por padrão, se existir
+            const defaultTypeChip = typeChipsContainer.querySelector('.chip');
+            if (defaultTypeChip) defaultTypeChip.classList.add('active');
+
+            // Reseta chips de status
+            statusChipsContainer.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+            // Ativa o chip 'Não Analisado' por padrão, se existir
+            const defaultStatusChip = statusChipsContainer.querySelector('.chip');
+            if (defaultStatusChip) defaultStatusChip.classList.add('active');
+
+            currentRecurrence = { type: 'never' };
+            updateCustomRecurrenceButtonText();
+            recurrenceNeverRadio.checked = true;
+        };
+
+        const editNote = (id) => {
+            const note = notes.find(n => n.id === id);
+            if (!note) return;
+
+            noteForm.dataset.editingId = note.id;
+            noteTitleInput.value = note.titulo;
+            noteResponsibleInput.value = note.responsavel;
+            noteContentInput.value = note.conteudo;
+            noteDateInput.value = note.prazo;
+            noteTimeInput.value = note.horario;
+
+            // Ativa os chips de tipo
+            typeChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                if (note.tipo && chip.textContent.includes(note.tipo)) {
+                    chip.classList.add('active');
+                } else {
+                    chip.classList.remove('active');
+                }
+            });
+
+            // Ativa os chips de status
+            statusChipsContainer.querySelectorAll('.chip').forEach(chip => {
+                if (note.status && chip.textContent.includes(note.status)) {
+                    chip.classList.add('active');
+                } else {
+                    chip.classList.remove('active');
+                }
+            });
+
+            currentRecurrence = note.recurrence || { type: 'never' };
+            updateCustomRecurrenceButtonText();
+
+            saveNoteButton.textContent = 'Atualizar Anotação';
+            panelLeft.scrollTop = 0; // Rola para o topo do painel esquerdo
+        };
+
+        const viewNote = (id) => {
+            const note = notes.find(n => n.id === id);
+            if (!note) return;
+
+            viewModal.dataset.noteId = note.id;
+            viewModalTitle.textContent = note.titulo;
+            viewModalResponsible.textContent = note.responsavel || 'Não informado';
+            viewModalContent.textContent = note.conteudo || 'Sem conteúdo';
+            viewModalDate.textContent = note.prazo ? new Date(note.prazo).toLocaleDateString('pt-BR') : 'Não informado';
+            viewModalTime.textContent = note.horario || 'Não informado';
+            viewModalType.textContent = note.tipo || 'Não informado';
+            viewModalStatus.textContent = note.status || 'Não informado';
+
+            let recurrenceText = 'Nunca';
+            if (note.recurrence && note.recurrence.type === 'custom') {
+                recurrenceText = `Repete a cada ${note.recurrence.interval} ${note.recurrence.unit}(s)`;
+                if (note.recurrence.unit === 'week' && note.recurrence.daysOfWeek && note.recurrence.daysOfWeek.length > 0) {
+                    const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+                    const selectedDays = note.recurrence.daysOfWeek.map(day => dayNames[day]).join(', ');
+                    recurrenceText += ` nos dias: ${selectedDays}`;
+                }
+                if (note.recurrence.ends) {
+                    if (note.recurrence.ends.type === 'onDate') {
+                        recurrenceText += ` até ${new Date(note.recurrence.ends.value).toLocaleDateString('pt-BR')}`;
+                    } else if (note.recurrence.ends.type === 'afterOccurrences') {
+                        recurrenceText += ` por ${note.recurrence.ends.value} ocorrência(s)`;
+                    }
+                }
+            }
+            viewModalRecurrence.textContent = recurrenceText;
+
+            viewModal.style.display = 'flex';
+        };
+
+        const toggleDeleteSelectedButton = () => {
+            if (selectedNotes.size > 0) {
+                deleteSelectedButton.style.display = 'flex';
+            } else {
+                deleteSelectedButton.style.display = 'none';
+            }
+        };
+
+        // --- Funções de Colunas (Salvar/Carregar) ---
 
         const saveColumnSettings = () => {
             const columnSettings = [];
-            const headers = tableHeaderRow.querySelectorAll('th[data-column-id]');
-            headers.forEach(th => {
+            tableHeaderRow.querySelectorAll('th[data-column-id]').forEach(th => {
                 columnSettings.push({
                     id: th.dataset.columnId,
-                    width: th.style.width || '', // Salva a largura definida
-                    order: Array.from(tableHeaderRow.children).indexOf(th) // Salva a ordem
+                    width: th.style.width,
+                    order: Array.from(tableHeaderRow.children).indexOf(th)
                 });
             });
             localStorage.setItem('columnSettings', JSON.stringify(columnSettings));
@@ -1426,560 +1723,108 @@
         };
 
         const loadColumnSettings = () => {
-            const storedSettings = localStorage.getItem('columnSettings');
-            if (storedSettings) {
-                const columnSettings = JSON.parse(storedSettings);
-                const currentHeaders = Array.from(tableHeaderRow.querySelectorAll('th[data-column-id]'));
-                const headerMap = new Map(currentHeaders.map(th => [th.dataset.columnId, th]));
-
-                // Aplica largura e reordena
-                columnSettings.sort((a, b) => a.order - b.order).forEach(setting => {
-                    const th = headerMap.get(setting.id);
+            const savedSettings = JSON.parse(localStorage.getItem('columnSettings'));
+            if (savedSettings) {
+                // Aplica a ordem das colunas
+                const headerCells = Array.from(tableHeaderRow.children);
+                savedSettings.sort((a, b) => a.order - b.order).forEach(setting => {
+                    const th = tableHeaderRow.querySelector(`th[data-column-id="${setting.id}"]`);
                     if (th) {
-                        th.style.width = setting.width;
-                        tableHeaderRow.appendChild(th); // Reordena
+                        tableHeaderRow.appendChild(th); // Move o elemento para a nova posição
+                        th.style.width = setting.width; // Aplica a largura
+                        th.style.minWidth = setting.width;
+                        th.style.maxWidth = setting.width;
                     }
                 });
-            }
-        };
-
-        // --- Funções de Renderização ---
-
-        // Renderiza chips de tipo/status
-        const renderCustomOptions = (options, container, inputElement, type) => {
-            container.innerHTML = '';
-            options.forEach(option => {
-                const chip = document.createElement('div');
-                chip.classList.add('chip');
-                chip.textContent = option;
-
-                const remove = document.createElement('span');
-                remove.className = 'remove-chip';
-                remove.textContent = '×';
-                remove.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (options.length === 1) {
-                        alert('É necessário manter pelo menos um item.');
-                        return;
-                    }
-                    options.splice(options.indexOf(option), 1);
-                    saveCustomOptions();
-                    renderCustomOptions(options, container, inputElement, type);
-                });
-                chip.appendChild(remove);
-
-                if (type === 'type') {
-                    chip.dataset.type = option;
-                    chip.addEventListener('click', () => {
-                        document.querySelectorAll('#typeChipsContainer .chip').forEach(c => c.classList.remove('active'));
-                        chip.classList.add('active');
-                    });
-                } else {
-                    chip.dataset.status = option;
-                    chip.addEventListener('click', () => {
-                        document.querySelectorAll('#statusChipsContainer .chip').forEach(c => c.classList.remove('active'));
-                        chip.classList.add('active');
-                    });
-                }
-                container.appendChild(chip);
-            });
-            if (options.length > 0) container.querySelector('.chip').classList.add('active');
-        };
-
-
-        // Adiciona um novo tipo/status
-        const addCustomOption = (options, inputElement, container, type) => {
-            const newValue = inputElement.value.trim();
-            if (newValue && !options.includes(newValue)) {
-                options.push(newValue);
-                saveCustomOptions();
-                renderCustomOptions(options, container, inputElement, type);
-                inputElement.value = '';
-            }
-        };
-
-        // Renderiza uma única anotação na tabela
-        const renderNoteRow = (note) => {
-            const row = document.createElement('tr');
-            row.dataset.id = note.id;
-
-            const { date: formattedDate, time: formattedTime, isOverdue } = formatDateTime(note.date, note.time);
-
-            const columnOrder = Array.from(tableHeaderRow.querySelectorAll('th[data-column-id]')).map(th => th.dataset.columnId);
-
-            const cells = {};
-            columnOrder.forEach(colId => {
-                const cell = document.createElement('td');
-                switch (colId) {
-                    case 'select':
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.classList.add('note-select-checkbox');
-                        checkbox.checked = selectedNotes.has(note.id);
-                        checkbox.addEventListener('change', () => {
-                            if (checkbox.checked) {
-                                selectedNotes.add(note.id);
-                            } else {
-                                selectedNotes.delete(note.id);
-                            }
-                            toggleDeleteSelectedButton();
-                        });
-                        cell.appendChild(checkbox);
-                        break;
-                    case 'type':
-                        const typeBadge = document.createElement('span');
-                        typeBadge.classList.add('status-badge');
-                        typeBadge.textContent = note.type;
-                        // Adiciona classe específica para o tipo se necessário
-                        cell.appendChild(typeBadge);
-                        break;
-                    case 'title':
-                        cell.textContent = note.title;
-                        cell.classList.add('note-title-cell');
-                        break;
-                    case 'responsible':
-                        cell.textContent = note.responsible;
-                        break;
-                    case 'content':
-                        cell.textContent = note.content;
-                        cell.classList.add('note-content-cell');
-                        break;
-
-                    case 'date':
-                        var dateHtml = '<div>' + formattedDate + (note.time ? ' às ' + formattedTime : '') + '</div>';
-                        if (isOverdue && note.status !== 'Concluido') { // Removido 'Concluído' para consistência
-                            dateHtml += '<div class="overdue-text">Atrasado</div>';
-                        }
-                        cell.innerHTML = dateHtml;
-                        break;
-
-                    case 'status':
-                        const statusBadge = document.createElement('span');
-                        statusBadge.classList.add('status-badge', `status-${note.status.toLowerCase().replace(/\s/g, '-')}`);
-                        statusBadge.textContent = note.status;
-                        cell.appendChild(statusBadge);
-                        break;
-                    case 'actions':
-                        cell.classList.add('actions-cell');
-
-                        const viewButton = document.createElement('button');
-                        viewButton.innerHTML = '<i class="fas fa-eye"></i>';
-                        viewButton.classList.add('view-button');
-                        viewButton.title = 'Visualizar';
-                        viewButton.addEventListener('click', () => viewNote(note.id));
-
-                        const editButton = document.createElement('button');
-                        editButton.innerHTML = '<i class="fas fa-edit"></i>';
-                        editButton.classList.add('edit-button');
-                        editButton.title = 'Editar';
-                        editButton.addEventListener('click', () => editNote(note.id));
-
-                        const deleteButton = document.createElement('button');
-                        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-                        deleteButton.classList.add('delete-button');
-                        deleteButton.title = 'Excluir';
-                        deleteButton.addEventListener('click', () => deleteNote(note.id));
-
-                        const completeButton = document.createElement('button');
-                        completeButton.innerHTML = note.status === 'Concluido' ? '<i class="fas fa-undo-alt"></i>' : '<i class="fas fa-check-square"></i>';
-                        completeButton.classList.add('complete-button');
-                        completeButton.title = note.status === 'Concluido' ? 'Marcar como Pendente' : 'Marcar como Concluído';
-                        completeButton.addEventListener('click', () => toggleNoteCompletion(note.id));
-
-                        cell.appendChild(viewButton);
-                        cell.appendChild(editButton);
-                        const duplicateButton = document.createElement('button');
-                        duplicateButton.innerHTML = '<i class="fas fa-copy"></i>';
-                        duplicateButton.classList.add('edit-button');
-                        duplicateButton.title = 'Duplicar';
-                        duplicateButton.addEventListener('click', () => duplicateToEdit(note.id));
-                        cell.appendChild(duplicateButton);
-                        cell.appendChild(deleteButton);
-                        cell.appendChild(completeButton); // Adiciona o botão de concluir/reabrir
-                        break;
-                }
-                cells[colId] = cell;
-            });
-
-            columnOrder.forEach(colId => row.appendChild(cells[colId]));
-            notesTableBody.appendChild(row);
-        };
-
-
-        // Renderiza todas as anotações na tabela
-        const renderNotes = (filterText = '', filterType = 'total') => {
-            notesTableBody.innerHTML = '';
-            selectedNotes.clear();
-            selectAllNotesCheckbox.checked = false;
-            toggleDeleteSelectedButton();
-
-            const now = new Date();
-
-            const filteredNotes = notes.filter(note => {
-                const matchesFilterText = filterText ?
-                    (note.title.toLowerCase().includes(filterText.toLowerCase()) ||
-                     note.responsible.toLowerCase().includes(filterText.toLowerCase()) ||
-                     note.content.toLowerCase().includes(filterText.toLowerCase())) : true;
-
-                let matchesFilterType = true;
-                if (filterType === 'pendente') {
-                    matchesFilterType = note.status !== 'Concluido';
-                } else if (filterType === 'atrasada') {
-                    const noteDateTime = note.date ? new Date(note.date + (note.time ? `T${note.time}` : 'T00:00')) : null;
-                    matchesFilterType = note.status !== 'Concluido' && noteDateTime && noteDateTime < now && !isSameDay(noteDateTime, now);
-                } else if (filterType === 'concluido') {
-                    matchesFilterType = note.status === 'Concluido';
-                }
-                // 'total' não precisa de filtro de tipo adicional
-
-                return matchesFilterText && matchesFilterType;
-            });
-
-            filteredNotes.forEach(renderNoteRow);
-            updateMetricCards();
-        };
-
-        // Atualiza os cards de métricas
-        const updateMetricCards = () => {
-            const now = new Date();
-            const pending = notes.filter(note => note.status !== 'Concluido').length;
-            const completed = notes.filter(note => note.status === 'Concluido').length;
-            const overdue = notes.filter(note => {
-                const noteDateTime = note.date ? new Date(note.date + (note.time ? `T${note.time}` : 'T00:00')) : null;
-                return note.status !== 'Concluido' && noteDateTime && noteDateTime < now && !isSameDay(noteDateTime, now);
-            }).length;
-
-            totalNotesCount.textContent = notes.length;
-            pendingNotesCount.textContent = pending;
-            overdueNotesCount.textContent = overdue;
-            completedNotesCount.textContent = completed;
-        };
-
-        // Habilita/desabilita o botão de excluir selecionados
-        const toggleDeleteSelectedButton = () => {
-            deleteSelectedButton.style.display = selectedNotes.size > 0 ? 'flex' : 'none';
-        };
-
-        // --- Funções de CRUD e Ações (Integradas com Supabase) ---
-
-        // Adiciona ou atualiza uma anotação
-        const addOrUpdateNote = async (event) => {
-            event.preventDefault();
-
-            const id = noteIdInput.value ? parseInt(noteIdInput.value, 10) : null;
-            const title = noteTitleInput.value.trim();
-            const responsible = noteResponsibleInput.value.trim();
-            const content = noteContentInput.value.trim();
-            const date = noteDateInput.value;
-            const time = noteTimeInput.value;
-            const selectedTypeChip = typeChipsContainer.querySelector('.chip.active');
-            const type = selectedTypeChip ? selectedTypeChip.dataset.type : (customTypes.length > 0 ? customTypes[0] : 'Geral');
-            const selectedStatusChip = statusChipsContainer.querySelector('.chip.active');
-            const status = selectedStatusChip ? selectedStatusChip.dataset.status : (customStatus.length > 0 ? customStatus[0] : 'Não Analisado');
-
-            if (!title) {
-                alert('O título da anotação é obrigatório!');
-                return;
-            }
-
-            const noteData = {
-                title,
-                responsible,
-                content,
-                date,
-                time,
-                type,
-                status,
-                recurrence: currentRecurrence // Salva a configuração de recorrência
-            };
-
-            if (id) {
-                // Atualiza anotação existente no Supabase
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .update(noteData)
-                    .eq('id', id);
-
-                if (error) {
-                    console.error('Erro ao atualizar anotação:', error.message);
-                    alert('Erro ao atualizar anotação: ' + error.message);
-                } else {
-                    alert('Anotação atualizada com sucesso!');
-                }
-            } else {
-                // Adiciona nova anotação ao Supabase
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .insert([noteData]);
-
-                if (error) {
-                    console.error('Erro ao adicionar anotação:', error.message);
-                    alert('Erro ao adicionar anotação: ' + error.message);
-                } else {
-                    alert('Anotação adicionada com sucesso!');
-                }
-            }
-
-            resetForm();
-            await loadNotes(); // Recarrega as anotações após a operação
-        };
-
-        // Edita uma anotação
-        const editNote = (id) => {
-            const note = notes.find(n => n.id === id);
-            if (note) {
-                noteIdInput.value = note.id;
-                noteTitleInput.value = note.title;
-                noteResponsibleInput.value = note.responsible;
-                noteContentInput.value = note.content;
-                noteDateInput.value = note.date;
-                noteTimeInput.value = note.time;
-
-                // Ativa o chip de tipo correto
-                document.querySelectorAll('#typeChipsContainer .chip').forEach(c => c.classList.remove('active'));
-                const typeChip = typeChipsContainer.querySelector(`.chip[data-type="${note.type}"]`);
-                if (typeChip) typeChip.classList.add('active');
-
-                // Ativa o chip de status correto
-                document.querySelectorAll('#statusChipsContainer .chip').forEach(c => c.classList.remove('active'));
-                const statusChip = statusChipsContainer.querySelector(`.chip[data-status="${note.status}"]`);
-                if (statusChip) statusChip.classList.add('active');
-
-                // Carrega a recorrência
-                currentRecurrence = note.recurrence || { type: 'never' };
-                updateCustomRecurrenceButtonText(); // Atualiza o texto do botão de recorrência
-
-                saveButton.textContent = 'Atualizar Anotação';
-                panelLeft.scrollTop = 0; // Volta para o topo do painel esquerdo
-            }
-        };
-
-        // Duplica anotação para edição antes de salvar
-        const duplicateToEdit = (id) => {
-            const note = notes.find(n => n.id === id);
-            if (!note) return;
-            noteIdInput.value = ''; // Limpa o ID para que seja uma nova anotação
-            noteTitleInput.value = note.title;
-            noteResponsibleInput.value = note.responsible;
-            noteContentInput.value = note.content;
-            noteDateInput.value = note.date;
-            noteTimeInput.value = note.time;
-            document.querySelectorAll('#typeChipsContainer .chip').forEach(c => c.classList.remove('active'));
-            var t = typeChipsContainer.querySelector('.chip[data-type="' + note.type + '"]'); if (t) t.classList.add('active');
-            document.querySelectorAll('#statusChipsContainer .chip').forEach(c => c.classList.remove('active'));
-            var s = statusChipsContainer.querySelector('.chip[data-status="' + note.status + '"]'); if (s) s.classList.add('active');
-            currentRecurrence = note.recurrence || { type: 'never' };
-            updateCustomRecurrenceButtonText();
-            saveButton.textContent = 'Salvar Cópia';
-            panelLeft.scrollTop = 0;
-        };
-
-        // Exclui uma anotação
-        const deleteNote = async (id) => {
-            if (confirm('Tem certeza que deseja excluir esta anotação?')) {
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .delete()
-                    .eq('id', id);
-
-                if (error) {
-                    console.error('Erro ao excluir anotação:', error.message);
-                    alert('Erro ao excluir anotação: ' + error.message);
-                } else {
-                    alert('Anotação excluída com sucesso!');
-                    await loadNotes(); // Recarrega as anotações após a exclusão
-                }
-            }
-        };
-
-        // Exclui anotações selecionadas
-        const deleteSelectedNotes = async () => {
-            if (confirm(`Tem certeza que deseja excluir as ${selectedNotes.size} anotações selecionadas?`)) {
-                const idsToDelete = Array.from(selectedNotes);
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .delete()
-                    .in('id', idsToDelete);
-
-                if (error) {
-                    console.error('Erro ao excluir anotações selecionadas:', error.message);
-                    alert('Erro ao excluir anotações selecionadas: ' + error.message);
-                } else {
-                    alert('Anotação(ões) excluída(s) com sucesso!');
-                    await loadNotes(); // Recarrega as anotações
-                }
-            }
-        };
-
-        // Alterna o status de conclusão de uma anotação
-        const toggleNoteCompletion = async (id) => {
-            const note = notes.find(n => n.id === id);
-            if (note) {
-                const newStatus = note.status === 'Concluido' ? 'Pendente' : 'Concluido';
-                const { error } = await supabase
-                    .from('anotacoes')
-                    .update({ status: newStatus })
-                    .eq('id', id);
-
-                if (error) {
-                    console.error('Erro ao alternar status da anotação:', error.message);
-                    alert('Erro ao alternar status da anotação: ' + error.message);
-                } else {
-                    alert('Status da anotação atualizado!');
-                    await loadNotes(); // Recarrega as anotações
-                }
-            }
-        };
-
-        // Reseta o formulário
-        const resetForm = () => {
-            noteForm.reset();
-            noteIdInput.value = '';
-            saveButton.textContent = 'Salvar Anotação';
-
-            // Reseta chips de tipo
-            document.querySelectorAll('#typeChipsContainer .chip').forEach(c => c.classList.remove('active'));
-            if (customTypes.length > 0) {
-                typeChipsContainer.querySelector(`.chip[data-type="${customTypes[0]}"]`).classList.add('active');
-            }
-
-            // Reseta chips de status
-            document.querySelectorAll('#statusChipsContainer .chip').forEach(c => c.classList.remove('active'));
-            if (customStatus.length > 0) {
-                statusChipsContainer.querySelector(`.chip[data-status="${customStatus[0]}"]`).classList.add('active');
-            }
-
-            // Reseta recorrência
-            recurrenceNeverRadio.checked = true;
-            currentRecurrence = { type: 'never' };
-            updateCustomRecurrenceButtonText();
-        };
-
-        // Visualiza uma anotação no modal
-        const viewNote = (id) => {
-            const note = notes.find(n => n.id === id);
-            if (note) {
-                const { date: formattedDate, time: formattedTime } = formatDateTime(note.date, note.time);
-
-                viewModal.dataset.noteId = note.id; // Armazena o ID para o botão de editar
-                viewModalTitle.textContent = note.title;
-                viewModalResponsible.textContent = note.responsible;
-                viewModalContent.textContent = note.content;
-                viewModalDate.textContent = formattedDate;
-                viewModalTime.textContent = formattedTime;
-                viewModalType.textContent = note.type;
-                viewModalType.className = 'badge'; // Reseta classes
-                // Adiciona classe específica para o tipo se necessário
-                viewModalStatus.textContent = note.status;
-                viewModalStatus.className = `badge status-${note.status.toLowerCase().replace(/\s/g, '-')}`;
-
-                // Exibe a recorrência
-                let recurrenceText = 'Nunca';
-                if (note.recurrence && note.recurrence.type !== 'never') {
-                    const { interval, unit, ends } = note.recurrence;
-                    recurrenceText = `A cada ${interval} ${unit}(s)`;
-                    if (ends.type === 'onDate') {
-                        recurrenceText += ` até ${new Intl.DateTimeFormat('pt-BR').format(new Date(ends.value))}`;
-                    } else if (ends.type === 'afterOccurrences') {
-                        recurrenceText += ` por ${ends.value} ocorrência(s)`;
-                    }
-                    if (unit === 'week' && note.recurrence.daysOfWeek && note.recurrence.daysOfWeek.length > 0) {
-                        const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-                        const selectedDays = note.recurrence.daysOfWeek.map(day => dayNames[day]).join(', ');
-                        recurrenceText += ` nos dias: ${selectedDays}`;
-                    }
-                }
-                viewModalRecurrence.textContent = recurrenceText;
-
-                viewModal.style.display = 'flex';
             }
         };
 
         // --- Funções de Importação/Exportação ---
 
-        const exportData = () => {
-            const dataStr = JSON.stringify(notes, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'certhil_anotacoes.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        };
-
-        // FIX DEFINITIVO – IMPORTAÇÃO DE DADOS
-        let __pendingImportFile = null;
-
-        // Dispara seleção de arquivo
         importDataButton.addEventListener('click', () => {
-            importFileInput.value = '';
-            importFileInput.click();
-        });
-
-        // Captura arquivo selecionado
-        importFileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            __pendingImportFile = file;
             importModal.style.display = 'flex';
         });
 
-        // Função central de importação
-        async function processImport(mode) {
+        importFileInput.addEventListener('change', (event) => {
+            __pendingImportFile = event.target.files[0];
+        });
+
+        const processImport = async (mode) => {
             if (!__pendingImportFile) {
-                alert('Nenhum arquivo selecionado.');
+                alert('Por favor, selecione um arquivo JSON para importar.');
                 return;
             }
 
             const reader = new FileReader();
-            reader.onload = async (e) => { // Adicionado 'async' aqui
+            reader.onload = async (e) => {
                 try {
-                    const imported = JSON.parse(e.target.result);
-                    if (!Array.isArray(imported)) {
-                        alert('Arquivo inválido. Esperado um JSON de lista.');
-                        return;
+                    const importedNotes = JSON.parse(e.target.result);
+                    if (!Array.isArray(importedNotes)) {
+                        throw new Error('O arquivo JSON não contém um array de anotações válido.');
                     }
 
                     if (mode === 'replace') {
-                        // Exclui tudo e insere os novos
-                        const { error: deleteError } = await supabase.from('anotacoes').delete().neq('id', 0); // Deleta tudo
+                        // Exclui todas as anotações existentes
+                        const { error: deleteError } = await supabase.from('anotacoes').delete().neq('id', 0); // Deleta tudo onde id não é 0 (ou qualquer condição que delete tudo)
                         if (deleteError) throw deleteError;
 
-                        const { error: insertError } = await supabase.from('anotacoes').insert(imported);
+                        // Insere as novas anotações
+                        const { error: insertError } = await supabase.from('anotacoes').insert(importedNotes.map(note => ({
+                            titulo: note.titulo,
+                            responsavel: note.responsavel,
+                            conteudo: note.conteudo,
+                            prazo: note.prazo,
+                            horario: note.horario,
+                            tipo: note.tipo,
+                            status: note.status,
+                            recurrence: note.recurrence,
+                        })));
                         if (insertError) throw insertError;
 
                     } else if (mode === 'add') {
-                        // Adiciona novos, ajustando IDs se houver conflito
-                        const { data: existingNotes, error: fetchError } = await supabase.from('anotacoes').select('id');
-                        if (fetchError) throw fetchError;
-                        const existingIds = new Set(existingNotes.map(n => n.id));
-                        let maxId = existingNotes.length > 0 ? Math.max(...existingNotes.map(n => n.id)) : 0;
-
-                        const notesToAdd = imported.map(n => {
-                            if (existingIds.has(n.id)) {
-                                return { ...n, id: ++maxId }; // Gera novo ID
-                            }
-                            return n;
-                        });
-                        const { error: insertError } = await supabase.from('anotacoes').insert(notesToAdd);
+                        // Insere apenas as novas anotações
+                        const { error: insertError } = await supabase.from('anotacoes').insert(importedNotes.map(note => ({
+                            titulo: note.titulo,
+                            responsavel: note.responsavel,
+                            conteudo: note.conteudo,
+                            prazo: note.prazo,
+                            horario: note.horario,
+                            tipo: note.tipo,
+                            status: note.status,
+                            recurrence: note.recurrence,
+                        })));
                         if (insertError) throw insertError;
 
                     } else if (mode === 'update') {
-                        // Atualiza existentes e adiciona novos
-                        for (const importedNote of imported) {
-                            const { data: existing, error: fetchError } = await supabase.from('anotacoes').select('id').eq('id', importedNote.id);
-                            if (fetchError) throw fetchError;
-
-                            if (existing && existing.length > 0) {
-                                // Atualiza
-                                const { error: updateError } = await supabase.from('anotacoes').update(importedNote).eq('id', importedNote.id);
+                        // Tenta atualizar as existentes, adiciona as novas
+                        for (const importedNote of importedNotes) {
+                            const existingNote = notes.find(n => n.id === importedNote.id); // Assume que o ID é o identificador único
+                            if (existingNote) {
+                                const { error: updateError } = await supabase
+                                    .from('anotacoes')
+                                    .update({
+                                        titulo: importedNote.titulo,
+                                        responsavel: importedNote.responsavel,
+                                        conteudo: importedNote.conteudo,
+                                        prazo: importedNote.prazo,
+                                        horario: importedNote.horario,
+                                        tipo: importedNote.tipo,
+                                        status: importedNote.status,
+                                        recurrence: importedNote.recurrence,
+                                    })
+                                    .eq('id', importedNote.id);
                                 if (updateError) throw updateError;
                             } else {
-                                // Adiciona
-                                const { error: insertError } = await supabase.from('anotacoes').insert(importedNote);
+                                const { error: insertError } = await supabase.from('anotacoes').insert({
+                                    titulo: importedNote.titulo,
+                                    responsavel: importedNote.responsavel,
+                                    conteudo: importedNote.conteudo,
+                                    prazo: importedNote.prazo,
+                                    horario: importedNote.horario,
+                                    tipo: importedNote.tipo,
+                                    status: importedNote.status,
+                                    recurrence: importedNote.recurrence,
+                                });
                                 if (insertError) throw insertError;
                             }
                         }
@@ -2006,8 +1851,8 @@
         const exportCalendar = () => {
             let icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//CERTHIL Anotacoes//NONSGML v1.0//EN\n`;
 
-            notes.filter(note => note.date).forEach(note => {
-                const startDate = new Date(note.date + (note.time ? `T${note.time}` : 'T00:00'));
+            notes.filter(note => note.prazo).forEach(note => { // Usar 'prazo'
+                const startDate = new Date(note.prazo + (note.horario ? `T${note.horario}` : 'T00:00')); // Usar 'prazo' e 'horario'
                 const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // Duração de 1 hora
 
                 const formatICSDate = (d) => {
@@ -2019,10 +1864,10 @@
                 icsContent += `DTSTAMP:${formatICSDate(new Date())}\n`;
                 icsContent += `DTSTART:${formatICSDate(startDate)}\n`;
                 icsContent += `DTEND:${formatICSDate(endDate)}\n`;
-                icsContent += `SUMMARY:${note.title}\n`;
-                icsContent += `DESCRIPTION:${note.content || 'Sem descrição.'}\n`;
-                if (note.responsible) {
-                    icsContent += `ORGANIZER;CN=${note.responsible}:mailto:noreply@certhil.com\n`;
+                icsContent += `SUMMARY:${note.titulo}\n`; // Usar 'titulo'
+                icsContent += `DESCRIPTION:${note.conteudo || 'Sem descrição.'}\n`; // Usar 'conteudo'
+                if (note.responsavel) { // Usar 'responsavel'
+                    icsContent += `ORGANIZER;CN=${note.responsavel}:mailto:noreply@certhil.com\n`;
                 }
                 icsContent += `END:VEVENT\n`;
             });
