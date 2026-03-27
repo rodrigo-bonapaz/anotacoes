@@ -996,6 +996,29 @@
 
 .chip .remove-chip{margin-left:6px;font-size:0.8em;cursor:pointer;opacity:0.8}
 .chip .remove-chip:hover{opacity:1}
+@media (max-width: 768px) {
+  body {
+    height: auto !important;
+    overflow-y: auto !important;
+  }
+
+  .panel-left, .panel-right {
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+
+  .table-wrapper {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .panel-right {
+    padding-bottom: 30px;
+  }
+}
+
 </style>
 </head>
 <body>
